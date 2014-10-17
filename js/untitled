@@ -1,0 +1,9 @@
+document.getElementById('avg_rating').innerHTML=response_d.avgRating;
+					  	document.getElementById('feedbacks').innerHTML=response_d.countResponsesToday ;
+					  	document.getElementById('nps').innerHTML=5 ;
+					  	document.getElementById('positive').innerHTML="positives" + response_d.countResponsesPositiveToday;
+					  	document.getElementById('negative').innerHTML="negatives" + response_d.countResponsesNegativeToday;
+					  	document.getElementById('neutral').innerHTML="neutral" + (response_d.countResponsesToday-(response_d.countResponsesPositiveToday+response_d.countResponsesNegativeToday));
+					  	document.getElementById('promoters').innerHTML="promoters" + response_d.npsPositive;
+					  	document.getElementById('detractors').innerHTML="" + response_d.npsNegative;
+					  	document.getElementById('passive').innerHTML ="passive" + (response_d.countResponsesToday- (response_d.npsPositive+response_d.npsNegative));

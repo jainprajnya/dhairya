@@ -1,0 +1,81 @@
+
+
+#header-toolbar-div {
+ height: 85px;
+ background-color: #193c63;
+  width: 100%;
+  text-align: right;
+  padding-top: 1px;
+  margin-top: 0px;  
+ 
+ 
+  /*margin-top: -10;*/
+}
+
+#company_contact
+{
+
+    font-family: 'Roboto', sans-serif;
+    color:#9ea6b3;
+    font-size: 30px;
+    float: right;
+}
+
+#company_logo
+{
+  padding-top: 0px;
+}
+
+#header-toolbar-div a{
+  color: white;  
+  font-size: 17px;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+}
+
+
+ul.header_toolbar li{
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  display:inline;
+  list-style: none;
+  text-align: right;
+  padding-right: 15px;
+
+}
+
+.float-left {
+  color: black;
+ 
+float:left;
+width:25%; // or 33% for equal width independent of parent width
+}
+
+
+#footer
+{
+  
+  color: black;
+  /*text-align: left;*/
+}
+
+#footer_menus
+{
+  color: black;
+  /*background-color: rgb(192,0,0);*/
+border-bottom-style:  dotted;
+
+float: left;
+width: 68%;
+/*margin-right: 0%;*/
+
+}
+
+#toolbar,
+#toolbar a {color: black;} 
+#headerbar,
+#footer { color: black; background-color: rgb(192,0,0);  }
+#headerbar a,
+#footer a { color: black; }
+#toolbar a:hover,
+#headerbar a:hover,

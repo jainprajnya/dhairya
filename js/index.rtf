@@ -1,0 +1,290 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 var chart,graph_id,graph_type,attributeList,filterList,left_pane;\
+var overview_index=-1;\
+var rendered_attr_id=[];\
+ var hash_obj = new Object();\
+ var graphsValues;\
+ var series_data=\{\};\
+\
+	var drilldownSeries = [1,2,3,4];\
+	var options = \{\
+					chart: \{\
+						type: 'column',\
+						renderTo:'container_graph'\
+							\},\
+					title: \{\
+						text:'PJ' 		\
+						\},\
+					subtitle: \{\
+						text: 'customized'\
+					\},\
+					xAxis: \{\
+						 type: 'category',\
+						categories: []\
+					\
+					\},\
+					yAxis: \{\
+						min :0,\
+						title: \{\
+							text: 'Number of people',\
+							align:'high'\
+						\}\
+					\},\
+					tooltip: \{\
+                		valueSuffix: ' number of people'\
+           			 \},\
+           			 plotOptions: \{\
+			                column: \{\
+			                	pointPadding: 0.2,\
+			                    borderWidth: 0,\
+			                    pointWidth: 15,\
+			                    dataLabels: \{\
+			                        enabled: true\
+			                 		   \}\
+			                \},\
+                    series: \{\
+                    	allowPointSelect: true,\
+			                cursor: 'pointer'			                  \
+                \
+           				 \}\
+\
+           				\},\
+			\
+				series: []\
+\
+				\}\
+				 \
+  \
+			$(document).ready(function() \{\
+				var host = 'http://localhost:8080/feedback-review';\
+				 // host = 'http://192.168.1.101:8080/feedback-review';\
+				var graph_type = '/company';\
+				var company_id = '/1';\
+				var params ='/graphs?callback=?'\
+				var uri='';\
+				var response1= $.ajax(\{\
+			          url: uri.concat(host,graph_type,company_id,params),\
+			          dataType: 'jsonp',\
+			          type: 'GET',\
+			          cache: false,\
+			          jsonp: 'handle_data',\
+			          crossDomain:true,\
+			          async:false,\
+			          success: function( response ) \{\
+				        renderLayout(response);\
+				        console.log(response);\
+				        overview_graph = response[overview_index];\
+				        graph_id=overview_graph["graphId"];\
+				        graph_type=overview_graph["graph_type"];\
+				        attributeList= overview_graph["attributeList"];\
+				        filterList=overview_graph["filterList"];\
+				        graph_name=overview_graph["name"]\
+				        console.log(overview_graph);\
+				        set_container_id(0);\
+				        collect_stats(graph_id,attributeList,filterList);\
+    			\}	\
+			\});\
+\
+\
+\
+			\});\
+\
+\
+			function renderLayout(response)\
+			\{\
+				var rows='<table id="inerTable">';\
+				for(var i=0;i<response.length;i++)\
+					\{\
+						// console.log(response[i]["name"]);\
+						rows+='<tr><td class="left_pannel_elem" id='+response[i]["graphId"]+'>'+response[i]["name"]+'</td></tr>';\
+						if (response[i]["name"]=="overview")\{overview_index=i;\}\
+\
+					\}\
+					rows+='</table>'\
+					$( rows ).appendTo( "#left_pannel" );\
+					\
+\
+			\}\
+\
+			function set_container_id(parent)\
+			\{\
+				var container_id='';\
+				// console.log(document.getElementById("container_graph"));\
+				document.getElementById("container_graph_child").id=container_id.concat(graph_name,'_level_',parent);			\
+			\}\
+					function collect_stats(graph_id,attributeList,filterList)\
+					\{\
+\
+						options.xAxis.categories=[];\
+						set_chart_type();\
+						set_chart_name();\
+\
+						 var hash_obj = new Object();\
+						var host = 'http://localhost:8080/feedback-review/company/1/graph/';\
+						var uri='';\
+					 // host = 'http://192.168.1.101:8080/feedback-review';\
+						params='/statistics?callback=?'\
+						$.ajax(\{\
+						          url: uri.concat(host,graph_id,params),\
+						          dataType: 'jsonp',\
+						          type: 'GET',\
+						          cache: false,\
+						          jsonp: 'handle_data',\
+						          crossDomain:true,\
+						          async:false,\
+						          success: function( graphsValues ) \{\
+							        // console.log(graphsValues);\
+							        makeGraph(graphsValues,attributeList,filterList);\
+			    			\}	\
+						\});\
+					\}\
+					function makeGraph(graphsValues,attributeList,filterList)\{\
+\
+						for(var i=0;i<attributeList.length;i++)\
+						\{\
+							// console.log(attributeList[i]["attributeString"]);\
+							// console.log(attributeList[i]["parentId"]);\
+						//	console.log("inside");\
+						var attr_id=attributeList[i]["attributeId"];\
+						//console.log(attr_name);\
+						hash_obj[attr_id]=\{\};\
+						//console.log(hash_obj);\
+						hash_obj[attr_id]["name"]=attributeList[i]["attributeString"];\
+						hash_obj[attr_id]["parent_id"]=attributeList[i]["parentId"];\
+						hash_obj[attr_id]["type"]=attributeList[i]["type"];\
+							// set_chart_xaxis(attributeList[i]["attributeString"],attributeList[i]["parentId"],attributeList[i]["attributeId"]);\
+\
+							// var data =graphsValues[elem][attributes][values]["listDailyAttributeStatisticValues"];\
+							// setDate(data[0]["date"],data[data.length-1]["date"]);\
+							// setDataOfSeries(graphsValues[elem][attributes][values]["name"],data,hash_obj);\
+						\}\
+						// console.log(graphsValues);\
+						for(var i=0;i<graphsValues.length;i++)\{\
+							attr_id= graphsValues[i]["attributeId"];\
+							hash_obj[attr_id]["listCountPPl_7Days"]=graphsValues[i]["listCountPPl_7Days"];\
+							hash_obj[attr_id]["listCountPPl_30Days"]=graphsValues[i]["listCountPPl_30Days"];\
+							hash_obj[attr_id]["listCountPPl_365Days"]=graphsValues[i]["listCountPPl_365Days"];\
+							// set_chart_xaxis(hash_obj[attr_id]["name"],hash_obj[attr_id]["parent_id"],attr_id);\
+						\}\
+						// console.log(options.xAxis.categories);\
+						setDataOfSeries(hash_obj,-1,"listCountPPl_7Days");\
+						 \}\
+					\
+					\
+\
+\
+					function setDataOfSeries(hash_obj,parent_id,period)\
+					\{\
+						var a=0,b=0,c=0;\
+						var category_ids=[];\
+						\
+						var series_name_array=["POOR","AVG","GOOD"];\
+						for(var i=0;i<series_name_array.length;i++)\
+						\{\
+							series_data[i]=\{\};\
+							series_data[i]["data"]=[];\
+							series_data[i]["showInLegend"]=true;\
+							series_data[i]["name"]=series_name_array[i];\
+							series_data[i]["allowPointSelect"]=true;\
+							series_data[i]["point"]=\{events: \{\
+							                        'click': function(e) \{\
+							                        	//alert(this.category);\
+							                        	console.dir(e.chartX.category);\
+							                        	console.dir(e.target.x);\
+							\
+							                          \}  \
+							                        \}\
+                   			 					\}\
+						\}\
+						//console.log(array_of_data_date_wise);\
+						// console.log(hash_obj);\
+						console.log(series_data);\
+						for(attr_id in hash_obj)\{\
+							if(hash_obj[attr_id]["parent_id"]==parent_id )\{\
+							options.xAxis.categories.push(hash_obj[attr_id]["name"]);\
+							category_ids.push(parseInt(attr_id));\
+							if(hash_obj[attr_id]["type"]=="weighted")\
+								\{\
+								 a+=hash_obj[attr_id][period][0]+hash_obj[attr_id][period][1];\
+								 b+=hash_obj[attr_id][period][2];\
+								 a+=hash_obj[attr_id][period][3]+hash_obj[attr_id][period][4];\
+								 hash_obj[attr_id]["count_of_ppl"]=[a,b,c];\
+						  		\}\
+						  \}\
+						\}\
+\
+						set_chartseries_data(category_ids,hash_obj);\
+						make_chart(options);\
+						\
+					\}\
+\
+					function set_chartseries_data(category_ids,hash_obj)\{\
+						\
+						console.log(category_ids);\
+						for (var id in category_ids)\
+						\{\
+							console.log(series_data);\
+							for(var i in series_data)\{\
+								console.log("here");\
+								console.log(series_data[i]["data"]);\
+								console.log(hash_obj[id]["count_of_ppl"]);\
+							series_data[i]["data"].push(hash_obj[id]["count_of_ppl"][i]);\
+							console.log(series_data[i]["data"]);\
+							\}\
+						\}\
+\
+						// var series_array=[series_data];\
+						options.series=series_data;\
+\
+\
+					\}\
+\
+					function make_chart(options)\
+					\{\
+						console.log(options);\
+						chart = new Highcharts.Chart(options);\
+					\}\
+\
+					function set_chart_type()\
+					\{\
+\
+						if (graph_type=='normal')\
+							\{\
+								options.chart.type='column'; \
+								var series_names=["POOR","AVG","GOOD"];\
+							\}\
+						else (graph_type=='trend')\
+							\{\
+								options.chart.type='line'; \
+							\}\
+					\}\
+\
+					function set_chart_name()\
+						\{\
+							options.title.text=graph_name;\
+						\}\
+\
+					function set_chart_xaxis(xaxis_category,parent_id,attr_id)\
+					\{\
+						var node= document.getElementById("container_graph");\
+						var child = node.firstChild;\
+						var id_name= child.id;\
+						// console.log(id_name.split("_")[2]);\
+						if(parent_id==parseInt(id_name.split("_")[2])-1)\
+						\{options.xAxis.categories.push(xaxis_category);rendered_attr_id.push(attr_id);\}\
+					\}	\
+\
+					function find_in_array(array,value)\{\
+						for(var i=0;i<array.length;i++)\
+						\{\
+							if(value==array[i])\
+								return true;\
+						\}\
+						return false;\
+					\}\
+}
