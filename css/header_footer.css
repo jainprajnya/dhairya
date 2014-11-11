@@ -1,12 +1,12 @@
 
-
-#header-toolbar-div {
- height: 85px;
+#header-toolbar-table {
+ height: 115px;
  background-color: #193c63;
   width: 100%;
   text-align: right;
-  padding-top: 1px;
-  margin-top: 0px;  
+  /*padding-top: 1px;*/
+  margin-top: 0px; 
+  top :0px; 
  
  
   /*margin-top: -10;*/
@@ -19,6 +19,10 @@
     color:#9ea6b3;
     font-size: 30px;
     float: right;
+    padding-top: 0px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #company_logo
@@ -32,7 +36,16 @@
   font-family: 'Roboto', sans-serif;
   text-decoration: none;
 }
+#footer-toolbar-div{
+ height: 10px;
+  padding-bottom: 1px;
+  background-color: white;
+ 
+  font-family: 'Roboto', sans-serif;
+    color:#9ea6b3;
+/*height: 50px;*/
 
+}
 
 ul.header_toolbar li{
   font-family: 'Roboto', sans-serif;

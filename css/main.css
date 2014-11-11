@@ -1,3 +1,70 @@
+
+tr#category_level_1_row {
+height: 32px;
+   
+}
+#overall_row{
+  padding-top: 10px;
+  padding-left: 10px;
+  font-size: 30px;
+  font-family: 'Roboto', sans-serif;
+}
+
+#dashboard_slider{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 9px;
+  padding-bottom: 5px;
+  /*border-bottom: 2px solid #193c63;*/
+}
+#slider:after{
+  
+}
+#slider_line label {
+    position: absolute;
+    /*width: px;*/
+    margin-left: -10px;
+    text-align: center;
+    margin-top: 20px;
+}
+#slider_line{
+  /*float: right;*/
+  width: 650px;
+}
+#slider_day{
+  width: 450px;
+  font-size: 30px;
+  font-family: 'Roboto', sans-serif;
+}
+#slider_row
+{
+  /*margin-right: 40px;*/
+  padding-right: 40px;
+  text-align: right;
+  float: right;
+}
+#login{
+  height: 500px;
+   background-color : #193C63
+   color: white;
+   font-family: 'Roboto', sans-serif;
+   text-align: center;
+   padding-top: 50px;
+   
+}
+#static_body_div{
+
+  height: 500px;
+   background-color : #193C63
+   color: white;
+   font-family: 'Roboto', sans-serif;
+   text-align: center;
+   padding-top: 50px;
+   font-size: 50px;
+}
+
 table#skeleton{
     background-color: #f0f0f0;
     padding-top: 10px;
@@ -30,6 +97,15 @@ table#skeleton{
 
 
 }
+
+.category_level_2:after{
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  
+  border-top: 20px solid #f00;
+}
 /*.category_level_2_text{
 height: 22px;
 width: 116px;
@@ -39,15 +115,15 @@ background-color: #bac3cd;
 
 .category_level_1 {
 	margin-top: 10px;
-	/*height: 52px;*/
+	height: 30px;
 	width : 230px;
 	background-color: #193c63;
     color:white;
     font-family: 'Roboto', sans-serif;
     padding-right: 15px;
     padding-left: 15px;
-    padding-top: 12px;
-    padding-bottom: 2px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     text-align: left;
     /*text-align: center;*/
 }
@@ -81,19 +157,23 @@ background-color: #bac3cd;
 }
 table.dashboard_inside_tables{
   border-spacing: 10px;
+  font-size: 16px;
 }
 table.dashboard_inside_tables td{
 background-color: white;
 border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-padding: 15px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+padding: 5px;
+width:425px;
 text-align: center;
 
 }
 
 table#dash_day_nps tr,th{
 
-padding: 5px;
+padding: 15px;
 
 
 }
@@ -102,14 +182,15 @@ padding: 5px;
   font-family: 'Roboto', sans-serif;
 text-align: center;
   font-size: 32px;
+  width: 194px;
 }
 
 .dashboard_icons{
-height: 60px;
-width: 60px;
+height: 50px;
+width: 50px;
 
 }
 table tr.col1col2{
   /*height: 160px;*/
-  width: 194px;
+  /*width: 294px;*/
 }
