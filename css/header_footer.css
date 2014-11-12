@@ -1,12 +1,13 @@
 
 #header-toolbar-table {
- height: 115px;
+ height: 75px;
  background-color: #193c63;
   width: 100%;
   text-align: right;
   /*padding-top: 1px;*/
   margin-top: 0px; 
   top :0px; 
+  border-bottom: 2px solid white;
  
  
   /*margin-top: -10;*/
@@ -52,7 +53,7 @@ ul.header_toolbar li{
   color: white;
   display:inline;
   list-style: none;
-  text-align: right;
+  /*text-align: right;*/
   padding-right: 15px;
 
 }

@@ -7,9 +7,8 @@
 <title>Using Highcharts with PHP and MySQL</title>
 <link href="css/header_footer.css" rel="stylesheet" type="text/css">
 <link href="css/main.css" rel="stylesheet" type="text/css">
- <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-  <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-
+ 
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
 <script type="text/javascript" src="css/bootstrap/js/bootstrap.min.js"></script>
 <!-- <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,700' rel='stylesheet' type='text/css'> -->
 <!-- <link href='http://fonts.googleapis.com/css?family=Oswald:300,700' rel='stylesheet' type='text/css'> -->
@@ -17,31 +16,39 @@
 <!-- <link href="css/base.css" rel="stylesheet" type="text/css">
 <link href="css/layout.css" rel="stylesheet" type="text/css"> -->
 <link href='http://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
-<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 <!-- <script src="jquery/jquery-1.11.1.js"></script> -->
-<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script type="text/javascript" src="js/highcharts.js" ></script>
 <script type="text/javascript" src="js/function.js" ></script>
-<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js" ></script>
-<script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
-<script type="text/javascript" src="jquery/jquery-1.11.1.js" charset="UTF-8"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.datepick.css"> 
+<script type="text/javascript" src="js/jquery_timepicker.js"></script> 
+<script type="text/javascript" src="js/fullcalendar_min.js"></script>
+<script>
+  $('end_date').on('click','.datepicker', function(){
+    $(this).datepicker();
+});​
+  </script>
+<!-- <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+  <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
 <!-- <script src="js/themes/gray.js"></script> -->
 <!-- <script type="text/javascript" src="js/themes/gray.js"></script> -->
 <!-- <script src="http://code.highcharts.com/highcharts.js"></script> -->
-<script type="text/javascript" src="js/highcharts-more.js"></script>
+<!-- <script type="text/javascript" src="js/jquery-ui-timepicker-addon.js" ></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script> -->
 <!-- <script type="text/javascript" src="js/modules/exporting.js"></script> -->
 <!-- <script type="text/javascript" src="js/modules/exporting.src.js"></script> -->
 <script src="http://code.highcharts.com/modules/solid-gauge.src.js"></script>
-
+<script type="text/javascript" src="js/highcharts-more.js"></script>
 
 </head>
-<!-- <div id="container"> -->
+<body>
+<div id="container">
 <?php include("header.php"); ?>
 <?php include("body.php");?>
 <?php include("footer.php"); ?>
 </div>
-</div>
-
 </body>
 <!-- </div> -->
 </html>

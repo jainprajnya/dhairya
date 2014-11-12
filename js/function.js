@@ -2,7 +2,6 @@ var response_d={}
 var month = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
 var dow = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat","Sun" ]
 $(document).ready(function() {
-
 $('body').on('click','.category_level_2',function(){
 	var category_level_2_elements = document.getElementsByClassName('category_level_2');
 	for (var i = 0; i < category_level_2_elements.length; i++) {
@@ -12,12 +11,13 @@ $('body').on('click','.category_level_2',function(){
 
 	this.style.background = "#193c63";
 	this.style.color = "white";
+	console.log("id is *** "+this.id);
 	switch(this.id)
 	{
-		case "gen_stats":load_general_statistics();
-		case "adv_stats": load_advance_statistics();
-		case "emp_perf": load_employee_performance();
-		case "comment": load_comments();
+		case "gen_stats":load_general_statistics();break;
+		case "adv_stats": load_advance_statistics();break;
+		case "emp_perf": load_employee_performance();break;
+		case "comment": load_comments();break;
 		default:load_dashboard();
 	}
 
@@ -34,6 +34,7 @@ $("tr#table_heading").append(heading_row);
 load_dashboard();
 
 });
+
 
 function load_dashboard()
 {
@@ -125,20 +126,13 @@ function dashboard_details()
 						$('#overall_avg_rating').append(3.2);
 					}
 
-function load_general_statistics(){
+function load_general_statistics()
+{
 // var filters = '<div id="gen_stats_filter"><div id=slider> <table><tr><td id="gen_stats_branch"><input></input></td><td id="gen_stats_start"><input></input><td id="gen_stats_end"><input></td></table></div>';
-var filters='<div class="container">    <form action="" class="form-horizontal"  role="form"><fieldset>';
-filters+= '<div class="form-group">';
+var filters='<table id="basic_filters"><tr><td id="branch">Branch id<input></input></td>';
+filters+='<td id="from_date_filter"> <p>Start Date: <input type="text" class="datepicker"></p></td>';
+filters+='<td id="to_date_filter">End date<input id="end_date" class="datepicker" /></td></tr></table>';
 
-   filters+= '<label for="dtp_input2" class="col-md-2 control-label">Start Date</label>';
-   filters+= '<div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">';
-    filters+= ' <input class="form-control" size="16" type="text" value="" readonly>';
-    filters+= '<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>';
-	filters+= '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>';
-     filters+= ' </div>';
-	 filters+= '<input type="hidden" id="dtp_input2" value="" /><br/>';
-    filters+= '</div>';
-     filters+='</fieldset></form></div>';
 $('.main_data').html(filters);	
 
 }

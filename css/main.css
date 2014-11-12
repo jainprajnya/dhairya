@@ -1,3 +1,29 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#basic_filters{
+height: 50px;
+width: 100%;
+border: 1px solid white;
+background-color: white;
+margin: 30px;
+
+
+}
+
+#home_signin_button{
+  height: 50px;
+  width: 110px;
+  font-size: 20px;
+}
+#home_img{
+
+  height: 450px;
+  width: 450px;
+  margin-left: 20px;
+}
 
 tr#category_level_1_row {
 height: 32px;
@@ -57,12 +83,12 @@ height: 32px;
 #static_body_div{
 
   height: 500px;
-   background-color : #193C63
+   background-color : #193c63;
    color: white;
    font-family: 'Roboto', sans-serif;
    text-align: center;
    padding-top: 50px;
-   font-size: 50px;
+   font-size: 45px;
 }
 
 table#skeleton{

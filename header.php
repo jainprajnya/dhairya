@@ -1,6 +1,6 @@
 <?php ?>
 <div id="header-toolbar-div">
-<table id="header-toolbar-table"><tr><td rowspan=2>
+<table id="header-toolbar-table"><tr><td>
 <a href="home.php" ><img src="images/dummy_logo.png" alt="Smiley face"  style="float: left; margin-top: 5px; margin-left: 6px;top: 40px;"> </a>
 </td>
 <td>
@@ -20,9 +20,9 @@
 	<li class="welcome"><a href="login.php" class="level1"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;signin</span></a></li></ul>
   <?php } ?>
 </td>
-<tr><td>
+<!-- <tr><td>
   <p id="company_contact"  style="float: right;"> contact +919000000011 </p>
-</td>
+</td> -->
 </table>
 
 </div>
