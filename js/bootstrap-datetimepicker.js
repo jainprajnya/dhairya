@@ -42,7 +42,7 @@
 
 	var Datetimepicker = function (element, options) {
 		var that = this;
-
+		console.log("--- in bootstarp");
 		this.element = $(element);
 
 		// add container for single page application

@@ -9,7 +9,23 @@
 	<tr class="category_level_1_row">
 		<td class="category_level_1">
 		<img src="images/Analysis_Icon_01.png" class="category_level_1_icons"> <span class="category_level_1_text" id="analysis">ANALYSIS<span></td>
-		<td rowspan=5 colspan=5 class="main_data">
+		<td rowspan=5 colspan=5 class="main_data" id="main_data_td">
+			
+			<table id="graph_filters_table">
+                            <tr id="filter_row"><td>
+                                <a class="filter_dropdown_style"> Timeline </a>
+                                <ul class="filter_dropdown_list" style="visibility: hidden;"> 
+                                    <!-- <li class="filter_list_name" name="select_branch" >Timeline</li> -->
+                                    <li class="filter_list_elements" ><input type="radio" class="filter_list_input timeline" name="time_filter" id="week" checked="checked">&nbsp;&nbsp;Last one week </input></li>
+                                    <li class="filter_list_elements" ><input type="radio" class="filter_list_input timeline" name="time_filter" id="month">&nbsp;&nbsp;Last one month</input></li>
+                                    <li class="filter_list_elements" ><input type="radio" class="filter_list_input timeline" name="time_filter" id="year">&nbsp;&nbsp;Last one year</input></li>                                    
+                                </ul>
+                                </td></tr>
+                        </table>
+			<div name="level_identify_div"></div>
+			<div name="id_identify_div"></div>
+			<div id="container_data">
+		</div>
 		</td>
 	</tr>
 	<tr class="category_level_1_row">

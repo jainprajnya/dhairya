@@ -1,6 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
+     font-family: 'Roboto', sans-serif;
 }
 
 #basic_filters{
@@ -15,7 +16,7 @@ margin: 30px;
 
 #home_signin_button{
   height: 50px;
-  width: 110px;
+  width: 230px;
   font-size: 20px;
 }
 #home_img{
