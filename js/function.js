@@ -6,12 +6,13 @@ var graph_type;
  var hash_obj={};
  var response;
  var applyFilter=[];
+ var graph_list={};
  response_d={}
  var active_div="statistics"
 	var options = {
 					chart: {
 						type: 'column',
-						renderTo:'main_data_td',
+						renderTo:'overview_graph',
 						 // backgroundColor: '#30D5C8'
 							},
 						title: {
@@ -71,7 +72,7 @@ $('body').on('click','.category_level_2',function(){
 
 	this.style.background = "#193c63";
 	this.style.color = "white";
-	console.log("id is *** "+this.id);
+	
 	switch(this.id)
 	{
 		case "gen_stats":load_general_statistics();break;
@@ -89,20 +90,50 @@ var heading_row = '<th class="category_level_2"><span class="category_level_2_te
 	heading_row+='<th class="category_level_2" id="adv_stats"><span class="category_level_2_text" >Advance Statistics</span></th>';
 	heading_row+='<th class="category_level_2" id="emp_perf"><span class="category_level_2_text" >Employee perfomance result</span></th>';
 	heading_row+='<th class="category_level_2" id="comment"><span class="category_level_2_text" >Comments</span></th>';
-	console.log("in here");
+	// console.log("in here");
 $("tr#table_heading").append(heading_row);
-load_dashboard();
+
+var host = 'https://bizviewz.com:8080/feedback-review';
+				var graph_c = '/company';
+				var company_id = '/1';
+				var params ='/graphs'
+				var uri='';
+				var dashboard_stats = $.ajax({
+					  url: uri.concat(host,graph_c,company_id,params),
+			          dataType: 'jsonp',
+			          type: 'GET',
+			          cache: false,
+			          // jsonp: 'handle_data',
+			          crossDomain:true,
+			          async:false,
+					  success: function(response){
+					  	graph_list=response;
+					  	d_index = find_index_of("dashboard");
+					  	// console.log(d_index);
+					  	console.log(graph_list);
+					  	load_dashboard(d_index,graph_list[d_index]["graphId"]);
+					  }
+				});
+
+
 
 });
 
-
-function load_dashboard()
+function find_index_of(graph_name)
 {
+	for(var i=0;i<graph_list.length;i++)
+		{
+			if (graph_list[i]["name"]==graph_name){return i;}
+		}
+	return -1;
+}
 
+function load_dashboard(dasboard_index,dashboard_graphID){
+var current_div = '<div id="activeDiv" className='+dashboard_graphID+'></div>';
 var dashboard_slider = '<div id="dashboard_slider"><div id=slider> <table><tr><td id="slider_day">MONDAY</td><td id="slider_row"><div id="slider_line"></div></td></table></div></div>';
-var slider_values = '<div><table id="slider_values" class="dashboard_inside_tables"><tr><th>Net Promoter Score</th><th>No of Feedbacks</th><th>Average Rating</th></tr><tr><td id="slider_day_nps"></td><td id="slider_day_feedbacks"></td><td id="slider_day_avg_rating" class="rating"></td></tr></table></div>';
-var overall_values = '<div id="overall_row">Overall</div><div><table id="overall_values" class="dashboard_inside_tables"> <tr><th>Net promoter score</th><th>no of feedbacks</th><th>Average rating</th></tr><tr><td id="overall_nps"></td><td id="overall_feedbacks"></td><td id="overall_avg_rating" class="rating"></td></tr></table></div>';
-var dashboard = '<div id="dashboard_elements">' + dashboard_slider + slider_values + overall_values + '</div>';
+var slider_values = '<div id="current_day"></div>';
+var overall_values = '<div id="overall_row">Overall</div>';
+var dashboard = current_div + '<div id="dashboard_elements">' + dashboard_slider + slider_values + overall_values + '</div>';
 $('.main_data').html(dashboard);
 
 var labelArr = new Array("", "1 hour", "12 hours", "1 day", "3 day", "1 week");
@@ -136,55 +167,140 @@ var labelArr = new Array("", "1 hour", "12 hours", "1 day", "3 day", "1 week");
   $( "#slider_line" ).append(el);
 });
 
-var host = 'http://localhost:8080/feedback-review';
+  load_current_day_dashboard(d_index,dashboard_graphID);
+  load_one_year_data_dashboard(d_index,dashboard_graphID);
+}
+
+function load_current_day_dashboard(dashboard_index,dashboard_graphID)
+{
+	if (hash_obj.hasOwnProperty(graph_list[dashboard_index]["name"]+"_current"))
+	{   
+		dashboard_current(dashboard_index);
+		return;
+	}
+	var from_date = new Date();
+	var dd = from_date.getDate().toString();
+  	var mm = (from_date.getMonth()+1).toString();
+  	var yy = from_date.getFullYear().toString();
+  	// var someFormattedDate = yy+mm+dd ;
+  	var someFormattedDate='20141120';
+				var host = 'https://bizviewz.com:8080/feedback-review';
 				var graph_c = '/company';
-				var company_id = '/1';
-				var params ='/graphs?callback=?'
+				var company_id = '/1/graph/';
+				
 				var uri='';
+				filters_g='startDate='+someFormattedDate+'&endDate='+someFormattedDate;
+				params='/statistics?'+filters_g;
+
 				var dashboard_stats = $.ajax({
-					  url: uri.concat(host,graph_c,company_id,"/dashboard?callback=?"),
+					  url: uri.concat(host,graph_c,company_id,dashboard_graphID,params),
 			          dataType: 'jsonp',
 			          type: 'GET',
 			          cache: false,
-			          jsonp: 'handle_data',
+			          // jsonp: 'handle_data',
 			          crossDomain:true,
 			          async:false,
 					  success: function(response){
-					  	response_d=response;
-					  	console.log(response_d);
-					  	dashboard_details();
+					  	current_day_data=response;
+					  	console.log(current_day_data);
+					  	make_graph_obj(current_day_data,"dashboard_current",dashboard_index);
+					  	dashboard_current(dashboard_index);
 					  }
 				});
+
 }
 
-function dashboard_details()
-					{
-						console.log("in dash");
+function load_one_year_data_dashboard(dashboard_index,dashboard_graphID)
+{
+	
+if (hash_obj.hasOwnProperty(graph_list[dashboard_index]["name"]+"_overall"))
+	{   
+		dashboard_overall(dashboard_index);
+		return;
+	}
 
-						var day_nps = '<table id="dash_day_nps"> <tr class= "col1col2"><th> Promoters</th> <th>Detractor</th><th>Passive</th></tr>';
+	var to_date = new Date();
+	// var from_date = to_date.setDate(to_date.getDate() - 365);
+  	// var someFormattedDate = yy+mm+dd ;
+  				var someFormattedDate='20141120';
+				var host = 'https://bizviewz.com:8080/feedback-review';
+				var graph_c = '/company';
+				var company_id = '/1/graph/';
+				var start_date=(to_date.getFullYear()-1).toString()+(to_date.getMonth()+1).toString()+to_date.getDate().toString();
+				var end_date=to_date.getFullYear().toString()+(to_date.getMonth()+1).toString()+to_date.getDate().toString();
+				var uri='';
+				filters_g='startDate='+start_date+'&endDate='+end_date;
+				params='/statistics?'+filters_g;
+
+				var dashboard_stats = $.ajax({
+					  url: uri.concat(host,graph_c,company_id,dashboard_graphID,params),
+			          dataType: 'jsonp',
+			          type: 'GET',
+			          cache: false,
+			          // jsonp: 'handle_data',
+			          crossDomain:true,
+			          async:false,
+					  success: function(response){
+					  	current_day_data=response;
+					  	console.log(current_day_data);
+					  	make_graph_obj(current_day_data,"dashboard_overall",dashboard_index);
+					  	dashboard_overall(dashboard_index);
+					  }
+				});
+
+}
+
+function dashboard_current(dashboard_index)
+{
+var rows='<table id="slider_values" class="dashboard_inside_tables">';
+					  	var table_heading='<tr>';
+					  	// var row2='<tr>';
+					  	var attributeList=graph_list[dashboard_index]["attributeList"];
+					  	var day_nps='';
+					  	for(var i=0;i< attributeList.length;i++)
+						{						  
+						var attr_id=attributeList[i]["attributeId"];
+						table_heading+='<th>'+attributeList[i]["attributeString"]+'</th>';
+						var neutral = hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][2];
+						var negative=hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][3]+hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][4]
+						var positive=hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][0]+hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][1]
+						
+						day_nps+= '<td><table id="dash_day_nps"> <tr class= "col1col2"><th> Promoters</th> <th>Detractor</th><th>Passive</th></tr>';
 						day_nps+= '<tr><td><img class="dashboard_icons" src="images/Promoters_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Detractors_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Passives_Icon.png"></img></td></tr>';
-						day_nps+='<tr><td>'+response_d.npsPositive+'</td><td>'+response_d.npsNegative+'</td><td>'+(response_d.countResponsesToday- (response_d.npsPositive+response_d.npsNegative))+'</td></tr></table>';
-						$('#slider_day_nps').append(day_nps)
+						day_nps+='<tr><td>'+positive+'</td><td>'+negative+'</td><td>'+neutral+'</td></tr></table></td>';
+													
+						}
+						table_heading+='</tr>'
 
-						var day_feedbacks = '<table id="dash_day_feeds"> <tr class= "col1col2"><th> Positive</th> <th>Negative</th><th>Neutral</th></tr>';
-						day_feedbacks+= '<tr><td><img class="dashboard_icons"src="images/Positive_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Negative_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Neutral_Icon.png"></img></td></tr>';
-						day_feedbacks+='<tr><td>'+response_d.countResponsesPositiveToday+'</td><td>'+response_d.countResponsesNegativeToday+'</td><td>'+(response_d.countResponsesTotal-(response_d.countResponsesPositiveTotal+response_d.countResponsesNegativeTotal))+'</td></tr></table>';
-						$('#slider_day_feedbacks').append(day_feedbacks);
+					  	rows=rows+table_heading+'<tr>'+day_nps+'</tr></table>';
+					  	$('#current_day').append(rows)
+}
+function dashboard_overall(dashboard_index)
+{
+						var rows='<table id="overall_values" class="dashboard_inside_tables">';
+					  	var table_heading='<tr>';
+					  	// var row2='<tr>';
+					  	attributeList=graph_list[dashboard_index]["attributeList"];
+					  	var day_nps='';
+					  	for(var i=0;i< attributeList.length;i++)
+						{						  
+						var attr_id=attributeList[i]["attributeId"];
+						table_heading+='<th>'+attributeList[i]["attributeString"]+'</th>';
+						var neutral = hash_obj["dashboard_overall"][attributeList[i]["attributeId"]]["listCountPPl"][2];
+						var negative=hash_obj["dashboard_overall"][attributeList[i]["attributeId"]]["listCountPPl"][3]+hash_obj["dashboard_overall"][attributeList[i]["attributeId"]]["listCountPPl"][4]
+						var positive=hash_obj["dashboard_overall"][attributeList[i]["attributeId"]]["listCountPPl"][0]+hash_obj["dashboard_overall"][attributeList[i]["attributeId"]]["listCountPPl"][1]
+						
+						day_nps+= '<td><table id="dash_day_nps"> <tr class= "col1col2"><th> Promoters</th> <th>Detractor</th><th>Passive</th></tr>';
+						day_nps+= '<tr><td><img class="dashboard_icons" src="images/Promoters_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Detractors_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Passives_Icon.png"></img></td></tr>';
+						day_nps+='<tr><td>'+positive+'</td><td>'+negative+'</td><td>'+neutral+'</td></tr></table></td>';
+													
+						}
+						table_heading+='</tr>'
 
-						// $('#slider_day_avg_rating').append(response_d.avgRating.toFixed(2));
-						$('#slider_day_avg_rating').append(2.3);
-						var overall_nps = '<table id="dash_overall_nps"> <tr class= "col1col2"><th> Promoters</th> <th>Detractor</th><th>Passive</th></tr>';
-						overall_nps+= '<tr><td><img class="dashboard_icons" src="images/Promoters_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Detractors_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Passives_Icon.png"></img></td></tr>';
-						overall_nps+='<tr><td>'+response_d.npsPositiveTotal+'</td><td>'+response_d.npsNegativeTotal+'</td><td>'+(response_d.countResponsesTotal- (response_d.npsPositiveTotal+response_d.npsNegativeTotal))+'</td></tr></table>';
-						$('#overall_nps').append(overall_nps)
+					  	rows=rows+table_heading+'<tr>'+day_nps+'</tr></table>';
+					  	$('#overall_row').append(rows)
+}
 
-						var overall_feedbacks = '<table id="dash_overall_feeds"> <tr class= "col1col2"><th> Positive</th> <th>Negative</th><th>Neutral</th></tr>';
-						overall_feedbacks+= '<tr><td><img class="dashboard_icons" src="images/Positive_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Negative_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Neutral_Icon.png"></img></td></tr>';
-						overall_feedbacks+='<tr><td>'+response_d.countResponsesPositiveTotal+'</td><td>'+response_d.countResponsesNegativeTotal+'</td><td>'+(response_d.countResponsesTotal-(response_d.countResponsesPositiveTotal+response_d.countResponsesNegativeTotal))+'</td></tr></table>';
-						$('#overall_feedbacks').append(overall_feedbacks);
-						// $('#overall_avg_rating').append(response_d.avgRating.toFixed(2));
-						$('#overall_avg_rating').append(3.2);
-					}
 
 function load_general_statistics()
 {
@@ -199,35 +315,21 @@ $('.main_data').html(filters);
 }
 
 function load_advance_statistics(){
-	var host = 'https://bizviewz.com:8080/feedback-review';
-				var graph_c = '/company';
-				var company_id = '/1';
-				var params ='/graphs?callback=?'
-				var uri='';
-				var response1= $.ajax({
-			          url: uri.concat(host,graph_c,company_id,params),
-			          dataType: 'jsonp',
-			          type: 'GET',
-			          cache: false,
-			          jsonp: 'handle_data',
-			          crossDomain:true,
-			          async:false,
-			          success: function( response_g ) {
-						response=response_g;
-					    // renderLayout(response);
-					    console.log(response);
-				        overview_graph = response[0];
-				        graph_id=overview_graph["graphId"];
-				        graph_type=overview_graph["type"];
-				        attributeList= overview_graph["attributeList"];
-				        filterList=overview_graph["filterList"];
-				        console.log(filterList);
-				        graph_name=overview_graph["name"]
-				        set_graph_level(-1);
-						$("div#quick_links").append(' > <a class="back_link" id="-2" href="index_new.php" >overview</a>');
-				        plot_graph(response[0]);
-    			}	
-			});
+
+	var filters='<table id="basic_filters"><tr><td id="branch">Branch id<input></input></td>';
+	filters+='<td id="from_date_filter"> <p>Start Date: <input type="text" class="datepicker"></p></td>';
+	filters+='<td id="to_date_filter">End date<input id="end_date" class="datepicker" /></td></tr></table>';
+	// document.getElementById("activeDiv").className="advance_stats";
+	var adv_overview_div = '<div id="_adv_overview_filters">Overview'+filters+'<table id="adv_overview_graph"><tr><td id="overview_graph"></td></tr></table></div>';
+	var adv_trends_div = '<div id="adv_trends_filters">Trends'+filters+'<table id="adv_overview_graph"></table></div>';
+
+	var adv_stats_div = adv_overview_div + adv_trends_div;
+	adv_overview_index = find_index_of("general_overview");
+	adv_trends_index = find_index_of("general_trend");
+	$('.main_data').html(adv_stats_div);
+	load_overview(adv_overview_index,graph_list[adv_overview_index]["graphId"]);
+	load_trends(adv_trends_index,graph_list[adv_trends_index]["graphId"]);
+	
 				$('a.filter_list_input').live('click',function (){
 								addFilter(this.id,this.name);
 								make_graph_with_filters();
@@ -237,7 +339,6 @@ function load_advance_statistics(){
 
 						var params_index= get_params_index(this.id,response);
 					    applyFilter=[];
-					    console.dir(params_index);
 					    graph_type=response[params_index]["type"];
 					    set_graph_level(-1);
 					    graph_name=response[params_index]["name"];
@@ -247,6 +348,60 @@ function load_advance_statistics(){
 
 }
 
+function load_overview(adv_overview_index,adv_overview_graphId)
+{
+	
+// $('.main_data').html(filters);	
+	if (hash_obj.hasOwnProperty(graph_list[adv_overview_index]["name"]))
+	{   
+		dashboard_current(dashboard_index);
+		return;
+	}
+
+	var to_date = new Date();
+	// var from_date = to_date.setDate(to_date.getDate() - 365);
+  	// var someFormattedDate = yy+mm+dd ;
+  				var someFormattedDate='20141120';
+				var host = 'https://bizviewz.com:8080/feedback-review';
+				var graph_c = '/company';
+				var company_id = '/1/graph/';
+				var start_date=to_date.getFullYear().toString()+(to_date.getMonth()+1).toString()+(to_date.getDate()-7).toString();
+				var end_date=to_date.getFullYear().toString()+(to_date.getMonth()+1).toString()+to_date.getDate().toString();
+				var uri='';
+				filters_g='startDate='+start_date+'&endDate='+end_date;
+				params='/statistics?'+filters_g;
+
+				var response1= $.ajax({
+			          url: uri.concat(host,graph_c,company_id,adv_overview_graphId,params),
+			          dataType: 'jsonp',
+			          type: 'GET',
+			          cache: false,
+			          crossDomain:true,
+			          async:false,
+			          success: function( response_g ) {
+						overview_data=response_g;
+					    // renderLayout(response);
+					    console.log(overview_data);
+					    make_graph_obj(overview_data,"adv_overview",adv_overview_index);
+					    set_data_of_series_normal(hash_obj,-1,null);
+				        // overview_graph = response[1];
+				  //       graph_id=overview_graph["graphId"];
+				  //       graph_type=overview_graph["type"];
+				  //       attributeList= overview_graph["attributeList"];
+				  //       filterList=overview_graph["filterList"];
+				  //       console.log(filterList);
+				  //       graph_name=overview_graph["name"]
+				  //       set_graph_level(-1);
+						// $("div#quick_links").append(' > <a class="back_link" id="-2" href="index_new.php" >overview</a>');
+				  //       plot_graph(response[1]);
+    			}	
+			});
+}
+
+function load_trends(adv_trends_index,adv_trends_graphId)
+{
+
+}
 function make_graph_with_filters(){
 				applyFilter=[];
 				var param=(document.getElementsByName("id_identify_div")[0].id).split("_")[1];								
@@ -276,19 +431,20 @@ function make_graph_with_filters(){
 						options.xAxis.categories=[];
 						set_chart_type();
 						
-						var host = 'http://localhost:8080/feedback-review/company/1/graph/';
+						var host = 'https://bizviewz.com:8080/feedback-review/company/1/graph/';
 						var uri='';
 						graphsValues={};
 					 	var response11;
-					 	filters_g='';
+					 	filters_g='startDate=20141010&endDate=20141122&';
 					 	// console.log("in stats"+applyFilter);
-					 	for(var i=0;i< applyFilter.length;i++)
-					 	{
-					 		filters_g+=applyFilter[i]+"="+applyFilter[i+1]+"&";
-					 		i++;
-					 	}
+					 	// for(var i=0;i< applyFilter.length;i++)
+					 	// {
+					 	// 	filters_g+=applyFilter[i]+"="+applyFilter[i+1]+"&";
+					 	// 	i++;
+					 	// }
 					
-						params='/statistics?'+filters_g+'callback=?'
+						params='/statistics?'+filters_g+'callback=?';
+						a=uri.concat(host,graph_id,params);
 						$.ajax({
 						          url: uri.concat(host,graph_id,params),
 						          dataType: 'jsonp',
@@ -300,53 +456,61 @@ function make_graph_with_filters(){
 						          
 						          success: function( pass ) {
 							        // console.log("query to  graph id "+ graph_id+" : ");
+							        // console.log(uri);
 							         response11=pass;
 							         var graphsValues= '';
 							          // console.log(response11);
 							        
 									make_graph_obj(response11,attributeList,filterList,hash_obj);
-									if(graph_type=="normal")
-										set_data_of_series_normal(hash_obj,-1,"listCountPPl_7Days",null);
-									else if(graph_type=="trend")
-										set_data_of_series_trends(hash_obj,-1,"listDailyAttributeStatisticValues",7);
-									// set_date("listCountPPl_7Days");
+					
+										set_data_of_series_normal(hash_obj,-1,null);
+									// else if(graph_type=="trend")
+									// 	set_data_of_series_trends(hash_obj,-1,"listDailyAttributeStatisticValues",7);
+									// // set_date("listCountPPl_7Days");
 							         
 			    			}	
 						});
 						  
 					}
-			function make_graph_obj(uff,attributeList,filterList,hash_obj)
+			function make_graph_obj(data,name,index)
 					{
-						
+
+						attributeList=graph_list[index]["attributeList"];
+						if (hash_obj.hasOwnProperty(name))
+							{return;}
+						else
+							// hash_obj= new Object()
+							hash_obj[name]={};
+						console.log(hash_obj);
 						for(var i=0;i< attributeList.length;i++)
 						{						  
 						var attr_id=attributeList[i]["attributeId"];
-						hash_obj[attr_id]=new Object();
-						hash_obj[attr_id].name=attributeList[i]["attributeString"];
-						hash_obj[attr_id]["parent_id"]=attributeList[i]["parentId"];
-						hash_obj[attr_id]["type"]=attributeList[i]["type"];							
+						hash_obj[name][attr_id]={};
+						hash_obj[name][attr_id]["name"]=attributeList[i]["attributeString"];
+						hash_obj[name][attr_id]["parent_id"]=attributeList[i]["parentId"];
+						hash_obj[name][attr_id]["type"]=attributeList[i]["type"];							
 						}
 						
-						for(var i=0;i<uff.length;i++){	
-							attr_id= uff[i]["attributeId"];
-							hash_obj[attr_id]["listCountPPl_7Days"]=uff[i]["listCountPPl_7Days"];
-							hash_obj[attr_id]["listCountPPl_30Days"]=uff[i]["listCountPPl_30Days"];
-							hash_obj[attr_id]["listCountPPl_365Days"]=uff[i]["listCountPPl_365Days"];
-							hash_obj[attr_id]["listDailyAttributeStatisticValues"]=uff[i]["listDailyAttributeStatisticValues"];
-							hash_obj[attr_id]["listMonthlyAttributeLevelStatisticValues"]=uff[i]["listMonthlyAttributeLevelStatisticValues"];
+						for(var i=0;i<data.length;i++){	
+							attr_id= data[i]["attributeId"];
+							hash_obj[name][attr_id]["listDailyAttributeStatisticValues"]=data[i]["listDailyAttributeStatisticValues"];
+							hash_obj[name][attr_id]["listCountPPl"]=data[i]["listCountPPl"];
+						
 						}
+
+						console.log(hash_obj);
 						 				
 					}		
 					
-					function set_data_of_series_normal(hash_obj,parent_id,period,days)
+					function set_data_of_series_normal(hash_obj,parent_id,days)
 					{
-						
+						console.log("in series");
 						var category_ids=[];
 						options.xAxis.categories=[];
 						series_data=[];
 						var series_name_array=["POOR","AVG","GOOD"];
 						// var color_array=[];
-						var color_array=['#00B233','#FF7400','#FFCE00'];
+						var color_array=['#FF7400','#FFCE00','#00B233']
 						var child_found=-1;
 						for(var i=0;i<series_name_array.length;i++)
 						{
@@ -359,25 +523,22 @@ function make_graph_with_filters(){
 							series_data.push(temp);							
 						}
 
-						for(attr_id in hash_obj){
+						for(attr_id in hash_obj["adv_overview"]){
 							
-							if(hash_obj[attr_id]["parent_id"]==parent_id ){
+							if(hash_obj["adv_overview"][attr_id]["parent_id"]==parent_id ){
 								child_found=1;
-								set_graph_level(parent_id);								
-								handle_normal_graph(hash_obj,attr_id,period);
-								options.xAxis.categories.push(hash_obj[attr_id]["name"]);
+								// set_graph_level(parent_id);								
+								handle_normal_graph(hash_obj,attr_id);
+								options.xAxis.categories.push(hash_obj["adv_overview"][attr_id]["name"]);
 								category_ids.push(parseInt(attr_id));  	
 						  }
 						}
-						// console.log(category_ids);
+						console.log(category_ids);
 						if(category_ids.length!=0)
 						{
-						if(graph_type=="normal")	
 							set_chartseries_data_normal(category_ids,hash_obj);
-					    else
-					    	set_chartseries_data_trends(category_ids,hash_obj,series_name_array);
-						make_chart(options);
-					}
+							make_chart(options);
+						}
 						
 						
 					}
@@ -389,7 +550,7 @@ function make_graph_with_filters(){
 							
 							for(var i in series_data)
 							{
-								series_data[i]["data"].push(hash_obj[category_ids[id]]["count_of_ppl"][i]);
+								series_data[i]["data"].push(hash_obj["adv_overview"][category_ids[id]]["count_of_ppl"][i]);
 							}
 						}
 						options.series=series_data;
@@ -443,15 +604,15 @@ function make_graph_with_filters(){
 
 					}
 
-					function handle_normal_graph(hash_obj,attr_id,period){
+					function handle_normal_graph(hash_obj,attr_id){
 						var a=0,b=0,c=0;
-						if(hash_obj[attr_id]["type"]=="weighted")
+						if(hash_obj["adv_overview"][attr_id]["type"]=="weighted")
 								{
-								 a+=hash_obj[attr_id][period][0]+hash_obj[attr_id][period][1];
-								 b+=hash_obj[attr_id][period][2];
-								 c+=hash_obj[attr_id][period][3]+hash_obj[attr_id][period][4];
+								 a+=hash_obj["adv_overview"][attr_id]["listCountPPl"][0]+hash_obj["adv_overview"][attr_id]["listCountPPl"][1];
+								 b+=hash_obj["adv_overview"][attr_id]["listCountPPl"][2];
+								 c+=hash_obj["adv_overview"][attr_id]["listCountPPl"][3]+hash_obj["adv_overview"][attr_id]["listCountPPl"][4];
 
-								 hash_obj[attr_id]["count_of_ppl"]=[a,b,c];
+								 hash_obj["adv_overview"][attr_id]["count_of_ppl"]=[a,b,c];
 
 						  		}
 					}
@@ -507,6 +668,7 @@ function make_graph_with_filters(){
 					
 					function make_chart(options)
 					{
+						console.log(options);
 						chart = new Highcharts.Chart(options);
 					}
 
@@ -528,7 +690,7 @@ function make_graph_with_filters(){
 					}
 
 					function populate_filter(filterList){
-						console.log(filterList);
+						// console.log(filterList);
 						a = [{"a" : 1}]
 						filterList = [{"type":"non-weighted","attributeString":"sex","parentId": -1,"attributeId":3,"attributeValues":[{"name":"male","value":1,"maxValue":-1},{"name":"female","value":2,"maxValue":-1}]},
 						{"type":"non-weighted","attributeString":"branch","parentId":-1,"attributeId":3,"attributeValues":[{"name":"a","value":1,"maxValue":-1},{"name":"b","value":2,"maxValue":-1},{"name":"c","value":1,"maxValue":-1}]},
@@ -613,7 +775,7 @@ function make_graph_with_filters(){
 					function makeSubGraph(whose_subgraph)
 					{
 
-						console.log(whose_subgraph);
+						// console.log(whose_subgraph);
 						for(id in hash_obj)
 						{
 
@@ -621,7 +783,7 @@ function make_graph_with_filters(){
 								parent_id=id;
 							}
 						}
-						console.log(parent_id);
+						// console.log(parent_id);
 						setQuickLink(whose_subgraph);
 						if (graph_type=="normal")
 							set_data_of_series_normal(hash_obj,parent_id,"listCountPPl_7Days",hash_obj);
@@ -789,7 +951,7 @@ function make_graph_with_filters(){
 					$('a.marketing').live('click', function(){
 						var offers='';
 						header_navigation(this.className);
-						console.log("in offers");
+						// console.log("in offers");
 						show_offers(offers);
 					});
 
@@ -822,7 +984,7 @@ function make_graph_with_filters(){
 					  success: function(response){
 					  	offersRes=response;
 					  	for(var i in offersRes){
-					  		console.log(offersRes[i]);
+					  		// console.log(offersRes[i]);
 							rows+='<tr>'
 							rows+='<td class="offers_row"><input type="checkbox">&nbsp;&nbsp;Select</input></td>';
 							rows+='<td class="offers_row">'+offersRes[i]["type"]+'</td>';
@@ -835,7 +997,7 @@ function make_graph_with_filters(){
 						}
 						rows+='</table>';
 						$('div#body_table').html(rows);
-					  	console.log(response);
+					  	// console.log(response);
 					  }
 				});
 						
@@ -860,15 +1022,15 @@ function make_graph_with_filters(){
 					});
 
 					$('a.profile').live('click', function(){
-						console.log("in profile");
+						// console.log("in profile");
 						header_navigation(this.className);
 						show_questions(response);	
 					});
 
 					$('a.followup').live('click', function(){
-						console.log(active_div);
+						// console.log(active_div);
 						header_navigation(this.className);
-						console.log("in followup");
+						// console.log("in followup");
 						var rows='<p class="followup_title">Negative Followup</p><form><button class="profile_btn" type="button">Followup Email-id</button><button type="button" class="profile_btn">Branch - 5</button>'
 						rows+='<table class="followup">';
 						rows+='<tr>'
@@ -908,9 +1070,9 @@ function make_graph_with_filters(){
 					});
 
 					$('a.analysis').live('click', function(){
-						console.log("in analysis");
+						// console.log("in analysis");
 						header_navigation(this.className);
-						console.log(active_div);
+						// console.log(active_div);
 						var rows='<p class="followup_title">Analysis Results</p><form><button class="profile_btn" type="button">Month</button><button type="button" class="profile_btn">Branch - 5</button>'
 						rows+='<table class="followup">';
 						rows+='<tr>'

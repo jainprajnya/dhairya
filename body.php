@@ -13,7 +13,7 @@
 			
 			<table id="graph_filters_table">
                             <tr id="filter_row"><td>
-                                <a class="filter_dropdown_style"> Timeline </a>
+                                <a class="filter_dropdown_style">  </a>
                                 <ul class="filter_dropdown_list" style="visibility: hidden;"> 
                                     <!-- <li class="filter_list_name" name="select_branch" >Timeline</li> -->
                                     <li class="filter_list_elements" ><input type="radio" class="filter_list_input timeline" name="time_filter" id="week" checked="checked">&nbsp;&nbsp;Last one week </input></li>
