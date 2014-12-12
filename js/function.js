@@ -7,9 +7,11 @@ var graph_type;
  var response;
  var applyFilter=[];
  var graph_list={};
- response_d={}
+ response_d={};
+ var days_of_week=["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
+ var full_days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
  var active_div="statistics"
-	var options = {
+	var options_overview = {
 					chart: {
 						type: 'column',
 						renderTo:'overview_graph',
@@ -57,8 +59,56 @@ var graph_type;
 
 				}
 
+var options_trends = {
+					chart: {
+						type: 'line',
+						renderTo:'trends_graph',
+						 // backgroundColor: '#30D5C8'
+							},
+						title: {
+							text:''
+						},
+					xAxis: {
+						 type: 'category',
+						categories: []
+					
+					},
+					yAxis: {
+						min :0,
+						title: {
+							text: 'Number of Feedbacks',
+							// align:'left'
+						}
+					},
+					tooltip: {
+                		valueSuffix: ' Number of Feedbacks'
+           			 },
+           			 plotOptions: {
+			                column: {
+			                	pointPadding: 0.2,
+			                    borderWidth: 0,
+			                    pointWidth: 15,
+			                    dataLabels: {
+			                        enabled: true
+			                 		   }
+			                },
+                    series: {
+                    	allowPointSelect: true,
+                    	
+                pointWidth: 25,
+                pointPadding: 0,
+			                cursor: 'pointer'			                  
+                
+           				 }
+
+           				},
+			
+				series: []
+
+				}
+
 var month = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
-var dow = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat","Sun" ]
+// var dow = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat","Sun" ]
 $(document).ready(function() {
 $('body').on('focus',".datepicker", function(){
     $(this).datepicker();
@@ -129,61 +179,72 @@ function find_index_of(graph_name)
 }
 
 function load_dashboard(dasboard_index,dashboard_graphID){
-var current_div = '<div id="activeDiv" className='+dashboard_graphID+'></div>';
-var dashboard_slider = '<div id="dashboard_slider"><div id=slider> <table><tr><td id="slider_day">MONDAY</td><td id="slider_row"><div id="slider_line"></div></td></table></div></div>';
-var slider_values = '<div id="current_day"></div>';
-var overall_values = '<div id="overall_row">Overall</div>';
-var dashboard = current_div + '<div id="dashboard_elements">' + dashboard_slider + slider_values + overall_values + '</div>';
-$('.main_data').html(dashboard);
+   var todays_date = new Date();
+	var todays_day = full_days[todays_date.getDay()];
+	var current_div = '<div id="activeDiv" className='+dashboard_graphID+'></div>';
+	var dashboard_slider = '<div id="dashboard_slider"><div id=slider> <table><tr><td id="slider_day">'+todays_day+'</td><td id="slider_row"><div id="slider_line"></div></td></table></div></div>';
+	var slider_values = '<div id="current_day"></div>';
+	var overall_values = '<div id="overall_row">Overall</div>';
+	var dashboard = current_div + '<div id="dashboard_elements">' + dashboard_slider + slider_values + overall_values + '</div>';
+	$('.main_data').html(dashboard);
 
-var labelArr = new Array("", "1 hour", "12 hours", "1 day", "3 day", "1 week");
-   $( "#slider_line" ).slider({
-      value:3,
-      min: 1,
-      max: 7,
-      step: 1,
-  }).each(function() {
+	var labelArr = new Array("", "1 hour", "12 hours", "1 day", "3 day", "1 week");
+	   $( "#slider_line" ).slider({
+	      value:7,
+	      min: 1,
+	      max: 7,
+	      step: 1,
+	      slide: function( event, ui ) {
+	      			day_diff= 6 - ui.value;
+	      			var date = new Date();
+					date.setDate(date.getDate() - day_diff);
+					delete hash_obj["dashboard_current"];
+	                load_current_day_dashboard(d_index,dashboard_graphID,date);
+	            }
+	  }).each(function() {
+	  var opt = $(this).data().uiSlider.options;
+	  var vals = opt.max - opt.min;
+	  var date = new Date();
+	  date.setDate(date.getDate() - 6);
+	  for (var i = 0; i <vals; i++) {
+	  	var dd = date.getDate();
+	  	var mm = date.getMonth();
+	  	var dy = date.getDay(); 
+	    var someFormattedDate = days_of_week[dy]+', '+dd + ' '+ month[mm] 
+	    var el = $('<label>'+(someFormattedDate)+'</label>').css('left',(i/vals*100 - 2)+'%');
+	  
+	    $( "#slider_line" ).append(el);
+	    date.setDate(date.getDate() +1 );
+	    
+	  }
+	  var dd = date.getDate();
+	  	var mm = date.getMonth();
+	  	var dy = date.getDay(); 
+	    var someFormattedDate = days_of_week[dy]+', '+dd + ' '+ month[mm]
+	  var el = $('<label>'+(someFormattedDate)+'</label>').css('left',(94)+'%');
+	  $( "#slider_line" ).append(el);
+	});
 
-  var opt = $(this).data().uiSlider.options;
-  var vals = opt.max - opt.min;
-  var date = new Date();
-  
-  for (var i = 0; i <vals; i++) {
-  	var dd = date.getDate();
-  	var mm = date.getMonth();
-  	var dy = date.getDay(); 
-    var someFormattedDate = dow[dy]+', '+dd + ' '+ month[mm] 
-    var el = $('<label>'+(someFormattedDate)+'</label>').css('left',(i/vals*100 - 2)+'%');
-  
-    $( "#slider_line" ).append(el);
-    date.setDate(date.getDate() + 1);
-    
-  }
-  var dd = date.getDate();
-  	var mm = date.getMonth();
-  	var dy = date.getDay(); 
-    var someFormattedDate = dow[dy]+', '+dd + ' '+ month[mm]
-  var el = $('<label>'+(someFormattedDate)+'</label>').css('left',(94)+'%');
-  $( "#slider_line" ).append(el);
-});
-
-  load_current_day_dashboard(d_index,dashboard_graphID);
+	  console.log("while starting");
+	  console.log(hash_obj);
+  load_current_day_dashboard(d_index,dashboard_graphID,new Date());
   load_one_year_data_dashboard(d_index,dashboard_graphID);
 }
 
-function load_current_day_dashboard(dashboard_index,dashboard_graphID)
+function load_current_day_dashboard(dashboard_index,dashboard_graphID,from_date)
 {
 	if (hash_obj.hasOwnProperty(graph_list[dashboard_index]["name"]+"_current"))
 	{   
 		dashboard_current(dashboard_index);
 		return;
 	}
-	var from_date = new Date();
+	// var from_date = new Date();
 	var dd = from_date.getDate().toString();
   	var mm = (from_date.getMonth()+1).toString();
   	var yy = from_date.getFullYear().toString();
-  	// var someFormattedDate = yy+mm+dd ;
-  	var someFormattedDate='20141120';
+  	
+  	var someFormattedDate = yy+mm+dd ;
+  	// var someFormattedDate='20141120';
 				var host = 'https://bizviewz.com:8080/feedback-review';
 				var graph_c = '/company';
 				var company_id = '/1/graph/';
@@ -202,7 +263,7 @@ function load_current_day_dashboard(dashboard_index,dashboard_graphID)
 			          async:false,
 					  success: function(response){
 					  	current_day_data=response;
-					  	console.log(current_day_data);
+					  	console.log("fron current day");
 					  	make_graph_obj(current_day_data,"dashboard_current",dashboard_index);
 					  	dashboard_current(dashboard_index);
 					  }
@@ -211,9 +272,8 @@ function load_current_day_dashboard(dashboard_index,dashboard_graphID)
 }
 
 function load_one_year_data_dashboard(dashboard_index,dashboard_graphID)
-{
-	
-if (hash_obj.hasOwnProperty(graph_list[dashboard_index]["name"]+"_overall"))
+{	
+ if (hash_obj.hasOwnProperty(graph_list[dashboard_index]["name"]+"_overall"))
 	{   
 		dashboard_overall(dashboard_index);
 		return;
@@ -242,7 +302,7 @@ if (hash_obj.hasOwnProperty(graph_list[dashboard_index]["name"]+"_overall"))
 			          async:false,
 					  success: function(response){
 					  	current_day_data=response;
-					  	console.log(current_day_data);
+					  	// console.log(current_day_data);
 					  	make_graph_obj(current_day_data,"dashboard_overall",dashboard_index);
 					  	dashboard_overall(dashboard_index);
 					  }
@@ -252,28 +312,39 @@ if (hash_obj.hasOwnProperty(graph_list[dashboard_index]["name"]+"_overall"))
 
 function dashboard_current(dashboard_index)
 {
-var rows='<table id="slider_values" class="dashboard_inside_tables">';
+	var rows='<table id="slider_values" class="dashboard_inside_tables">';
 					  	var table_heading='<tr>';
 					  	// var row2='<tr>';
 					  	var attributeList=graph_list[dashboard_index]["attributeList"];
 					  	var day_nps='';
 					  	for(var i=0;i< attributeList.length;i++)
-						{						  
-						var attr_id=attributeList[i]["attributeId"];
-						table_heading+='<th>'+attributeList[i]["attributeString"]+'</th>';
-						var neutral = hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][2];
-						var negative=hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][3]+hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][4]
-						var positive=hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][0]+hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][1]
-						
-						day_nps+= '<td><table id="dash_day_nps"> <tr class= "col1col2"><th> Promoters</th> <th>Detractor</th><th>Passive</th></tr>';
-						day_nps+= '<tr><td><img class="dashboard_icons" src="images/Promoters_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Detractors_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Passives_Icon.png"></img></td></tr>';
-						day_nps+='<tr><td>'+positive+'</td><td>'+negative+'</td><td>'+neutral+'</td></tr></table></td>';
-													
+						{
+							table_heading+='<th style="font-size: 25px;">'+attributeList[i]["attributeString"]+'</th>';
+							var attr_id=attributeList[i]["attributeId"];
+							console.log(hash_obj["dashboard_current"][attr_id]["listCountPPl"]);
+						 if ((hash_obj["dashboard_current"][attr_id]).hasOwnProperty("listCountPPl"))						  
+							{
+								console.log("in if");
+							
+							
+							var neutral = hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][2];
+							var negative=hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][3]+hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][4]
+							var positive=hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][0]+hash_obj["dashboard_current"][attributeList[i]["attributeId"]]["listCountPPl"][1]
+							
+							day_nps+= '<td><table id="dash_day_nps"> <tr class= "col1col2"><th> Promoters</th> <th>Detractor</th><th>Passive</th></tr>';
+							day_nps+= '<tr><td><img class="dashboard_icons" src="images/Promoters_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Detractors_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Passives_Icon.png"></img></td></tr>';
+							day_nps+='<tr><td>'+positive+'</td><td>'+negative+'</td><td>'+neutral+'</td></tr></table></td>';
+							}
+						  else
+						   {
+						   	console.log("in else");
+						   	day_nps+='<td style="height:120px; text-align:center;"> No Data </td>';
+						   }						
 						}
 						table_heading+='</tr>'
 
 					  	rows=rows+table_heading+'<tr>'+day_nps+'</tr></table>';
-					  	$('#current_day').append(rows)
+					  	$('#current_day').html(rows)
 }
 function dashboard_overall(dashboard_index)
 {
@@ -285,7 +356,7 @@ function dashboard_overall(dashboard_index)
 					  	for(var i=0;i< attributeList.length;i++)
 						{						  
 						var attr_id=attributeList[i]["attributeId"];
-						table_heading+='<th>'+attributeList[i]["attributeString"]+'</th>';
+						table_heading+='<th style="font-size: 25px;">'+attributeList[i]["attributeString"]+'</th>';
 						var neutral = hash_obj["dashboard_overall"][attributeList[i]["attributeId"]]["listCountPPl"][2];
 						var negative=hash_obj["dashboard_overall"][attributeList[i]["attributeId"]]["listCountPPl"][3]+hash_obj["dashboard_overall"][attributeList[i]["attributeId"]]["listCountPPl"][4]
 						var positive=hash_obj["dashboard_overall"][attributeList[i]["attributeId"]]["listCountPPl"][0]+hash_obj["dashboard_overall"][attributeList[i]["attributeId"]]["listCountPPl"][1]
@@ -315,13 +386,26 @@ $('.main_data').html(filters);
 }
 
 function load_advance_statistics(){
+	var adv_overview_div='';
+	var adv_trends_div='';
+	var overview_basic_filters;
+	var trends_basic_filters;
+    var adv_stats_elements =["overview","trends"];
+    for(var i=0 ;i< adv_stats_elements.length;i++)
+		{
 
-	var filters='<table id="basic_filters"><tr><td id="branch">Branch id<input></input></td>';
-	filters+='<td id="from_date_filter"> <p>Start Date: <input type="text" class="datepicker"></p></td>';
-	filters+='<td id="to_date_filter">End date<input id="end_date" class="datepicker" /></td></tr></table>';
-	// document.getElementById("activeDiv").className="advance_stats";
-	var adv_overview_div = '<div id="_adv_overview_filters">Overview'+filters+'<table id="adv_overview_graph"><tr><td id="overview_graph"></td></tr></table></div>';
-	var adv_trends_div = '<div id="adv_trends_filters">Trends'+filters+'<table id="adv_overview_graph"></table></div>';
+		var basic_filters='<table id='+adv_stats_elements[i]+"_basic_filters"+' class="basic_filters">';
+		basic_filters+='<tr><td id='+adv_stats_elements[i]+"_branch"+'>Branch id<input></input></td>';
+		basic_filters+='<td id='+adv_stats_elements[i]+"_from_date_filter"+'><p>Start Date: <input type="text" class="datepicker"></p></td>';
+		basic_filters+='<td id='+adv_stats_elements[i]+"_to_date_filter"+'>End date<input id="end_date" class="datepicker" /></td></tr></table>';
+		if(adv_stats_elements[i]=="overview")
+			adv_overview_div = '<div id="adv_overview_filters">Overview'+basic_filters+'<table id="adv_overview_graph"><tr><td id="overview_graph"></td></tr></table></div>';
+		else
+			adv_trends_div = '<div id="adv_trends_filters">Trends'+basic_filters+'<table id="adv_trends_graph"><tr><td id="trends_graph"></td></tr></table></div>';
+
+		}// document.getElementById("activeDiv").className="advance_stats";
+	
+	
 
 	var adv_stats_div = adv_overview_div + adv_trends_div;
 	adv_overview_index = find_index_of("general_overview");
@@ -330,12 +414,12 @@ function load_advance_statistics(){
 	load_overview(adv_overview_index,graph_list[adv_overview_index]["graphId"]);
 	load_trends(adv_trends_index,graph_list[adv_trends_index]["graphId"]);
 	
-				$('a.filter_list_input').live('click',function (){
+				$('body').on('click','a.filter_list_input',function (){
 								addFilter(this.id,this.name);
 								make_graph_with_filters();
 					});
 
-				$('.label').live('click',function (){
+				$('body').on('click','.label',function (){
 
 						var params_index= get_params_index(this.id,response);
 					    applyFilter=[];
@@ -400,7 +484,50 @@ function load_overview(adv_overview_index,adv_overview_graphId)
 
 function load_trends(adv_trends_index,adv_trends_graphId)
 {
+if (hash_obj.hasOwnProperty(graph_list[adv_trends_index]["name"]))
+	{   
+		dashboard_current(dashboard_index);
+		return;
+	}
 
+	var to_date = new Date();
+	// var from_date = to_date.setDate(to_date.getDate() - 365);
+  	// var someFormattedDate = yy+mm+dd ;
+  				var someFormattedDate='20141120';
+				var host = 'https://bizviewz.com:8080/feedback-review';
+				var graph_c = '/company';
+				var company_id = '/1/graph/';
+				var start_date=to_date.getFullYear().toString()+(to_date.getMonth()+1).toString()+(to_date.getDate()-7).toString();
+				var end_date=to_date.getFullYear().toString()+(to_date.getMonth()+1).toString()+to_date.getDate().toString();
+				var uri='';
+				filters_g='startDate='+start_date+'&endDate='+end_date;
+				params='/statistics?'+filters_g;
+
+				var response1= $.ajax({
+			          url: uri.concat(host,graph_c,company_id,adv_trends_graphId,params),
+			          dataType: 'jsonp',
+			          type: 'GET',
+			          cache: false,
+			          crossDomain:true,
+			          async:false,
+			          success: function( response_g ) {
+						trends_data=response_g;
+					    // renderLayout(response);
+					    console.log(trends_data);
+					    make_graph_obj(trends_data,"adv_trends",adv_trends_index);
+						set_data_of_series_trends(hash_obj,-1,"listDailyAttributeStatisticValues",7);
+				        // overview_graph = response[1];
+				  //       graph_id=overview_graph["graphId"];
+				  //       graph_type=overview_graph["type"];
+				  //       attributeList= overview_graph["attributeList"];
+				  //       filterList=overview_graph["filterList"];
+				  //       console.log(filterList);
+				  //       graph_name=overview_graph["name"]
+				  //       set_graph_level(-1);
+						// $("div#quick_links").append(' > <a class="back_link" id="-2" href="index_new.php" >overview</a>');
+				  //       plot_graph(response[1]);
+    			}	
+			});
 }
 function make_graph_with_filters(){
 				applyFilter=[];
@@ -477,7 +604,7 @@ function make_graph_with_filters(){
 
 						attributeList=graph_list[index]["attributeList"];
 						if (hash_obj.hasOwnProperty(name))
-							{return;}
+							{console.log("second time for "+name); return;}
 						else
 							// hash_obj= new Object()
 							hash_obj[name]={};
@@ -506,7 +633,7 @@ function make_graph_with_filters(){
 					{
 						console.log("in series");
 						var category_ids=[];
-						options.xAxis.categories=[];
+						options_overview.xAxis.categories=[];
 						series_data=[];
 						var series_name_array=["POOR","AVG","GOOD"];
 						// var color_array=[];
@@ -529,7 +656,7 @@ function make_graph_with_filters(){
 								child_found=1;
 								// set_graph_level(parent_id);								
 								handle_normal_graph(hash_obj,attr_id);
-								options.xAxis.categories.push(hash_obj["adv_overview"][attr_id]["name"]);
+								options_overview.xAxis.categories.push(hash_obj["adv_overview"][attr_id]["name"]);
 								category_ids.push(parseInt(attr_id));  	
 						  }
 						}
@@ -537,7 +664,7 @@ function make_graph_with_filters(){
 						if(category_ids.length!=0)
 						{
 							set_chartseries_data_normal(category_ids,hash_obj);
-							make_chart(options);
+							make_chart(options_overview);
 						}
 						
 						
@@ -553,14 +680,15 @@ function make_graph_with_filters(){
 								series_data[i]["data"].push(hash_obj["adv_overview"][category_ids[id]]["count_of_ppl"][i]);
 							}
 						}
-						options.series=series_data;
+						options_overview.series=series_data;
 					}
 
 					function set_data_of_series_trends(hash_obj,parent_id,period,days)
 					{
 						var child_found=-1;
 						var category_ids=[];
-						options.xAxis.categories=[];
+						options_trends.xAxis.categories=[];
+						options_trends.renderTo="trends_graph";
 						series_data=[];
 						
 						var series_name_array=[];
@@ -570,20 +698,25 @@ function make_graph_with_filters(){
 						  		else
 						  			start=0;
 
-						for(start;start<hash_obj[0][period].length;start++)
-						{
-							options.xAxis.categories.push(hash_obj[0][period][start]["date"]);
-							series_name_array.push(hash_obj[0][period][start]["date"]);
-						}
+						// for(start;start<hash_obj["adv_trends"][period].length;start++)
+						// {
+							// options.xAxis.categories.push(hash_obj["adv_trends"][period][start]["date"]);
+							// series_name_array.push(hash_obj["adv_trends"][period][start]["date"]);
+						// }
 
-						for(attr_id in hash_obj)
+						options_trends.xAxis.categories.push("20141123","20141124","20141125","20141126","20141127", "20141128","20141129");
+						series_name_array.push("20141123","20141124","20141125","20141126","20141127", "20141128","20141129");
+						// options.xAxis.categories.push(20141121,20141122,20141123,20141124,20141125,20141126,20141127);
+						// series_name_array.push(20141121,20141122,20141123,20141124,20141125,20141126,20141127);
+						
+						for(attr_id in hash_obj["adv_trends"])
 						{
-							if(hash_obj[attr_id]["parent_id"]==parent_id ){
+							if(hash_obj["adv_trends"][attr_id]["parent_id"]==parent_id ){
 								child_found=1;
-								set_graph_level(parent_id);
+								// set_graph_level(parent_id);
 								var temp={data:[],
 							showInLegend:true,
-							name: hash_obj[attr_id]["name"],
+							name: hash_obj["adv_trends"][attr_id]["name"],
 							point:{events: { 'click': function(e) {makeSubGraph(this.category); } }}
                    			 	}
 								series_data.push(temp);
@@ -597,8 +730,9 @@ function make_graph_with_filters(){
 						
 						if(category_ids.length!=0)
 						{
-							set_chartseries_data_trends(category_ids,hash_obj,series_name_array);
-							make_chart(options);
+							set_chartseries_data_trends(category_ids,hash_obj,series_name_array,"");
+							console.log(options_trends);
+							make_chart(options_trends);
 						}
 						
 
@@ -621,26 +755,26 @@ function make_graph_with_filters(){
 					{
 						var a=0;var b=0;var c=0;var n=0;var avg=0;
 						var start;
-						if(days==7)
-						  	start=23;
-						else
+					
 						  	start=0;
 
-						  		for(start;start<hash_obj[attr_id][period].length;start++)
+						  		for(start;start<7;start++)
 						  				{
-						  					if(hash_obj[attr_id]["type"]=="weighted")
+						  					if(hash_obj["adv_trends"][attr_id]["type"]=="weighted")
 											{
-												hash_obj[attr_id][hash_obj[attr_id][period][start]["date"]]= {} ;
-												for(var i =1; i<=hash_obj[attr_id][period][start]["listCountPPL"].length;i++)
+												var d = hash_obj["adv_trends"][attr_id][period][start]["date"];
+												// console.log(d);
+												hash_obj["adv_trends"][attr_id][d]= {} ;
+												for(var i =1; i<=hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"].length;i++)
 											     {
-											     a+=(i*(hash_obj[attr_id][period][start]["listCountPPL"][i-1]));
-											     n+=hash_obj[attr_id][period][start]["listCountPPL"][i-1];
-
-
+											     a+=(i*(hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"][i-1]));
+											     n+=hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"][i-1];
+											     // console.log(a);
+											     hash_obj["adv_trends"][attr_id][hash_obj["adv_trends"][attr_id][period][start]["date"]]["count_of_ppl"]={};
 											     if (n!=0)
-											     	hash_obj[attr_id][hash_obj[attr_id][period][start]["date"]]["count_of_ppl"]= parseInt(a/n) ;
+											     	hash_obj["adv_trends"][attr_id][hash_obj["adv_trends"][attr_id][period][start]["date"]]["count_of_ppl"]= parseInt(a/n) ;
 											     else
-											     	hash_obj[attr_id][hash_obj[attr_id][period][start]["date"]]["count_of_ppl"]=0;
+											     	hash_obj["adv_trends"][attr_id][hash_obj["adv_trends"][attr_id][period][start]["date"]]["count_of_ppl"]=0;
 											     
 												}
 												
@@ -652,17 +786,17 @@ function make_graph_with_filters(){
 
 					function set_chartseries_data_trends(category_ids,hash_obj,series_name_array,subgraph_name)
 					{
+						console.log(category_ids);
+						console.log(series_name_array);
 						for(var j=0 ;j< series_name_array.length;j++)
 						{
 						for (var id=0; id<category_ids.length;id++)
 							{
-								if(graph_type=="normal")						
-									series_data[id]["data"].push(hash_obj[category_ids[id]]["count_of_ppl"][j]);
-								else
-									series_data[id]["data"].push(hash_obj[category_ids[id]][series_name_array[j]]["count_of_ppl"]);
+								console.log(hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]);
+							   series_data[id]["data"].push(hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]["count_of_ppl"]);
 							}
 						}
-						options.series=series_data;
+						options_trends.series=series_data;
 
 					}
 					
@@ -713,7 +847,7 @@ function make_graph_with_filters(){
 						
 						
 						
-						$('a.filter_list_input').live('mouseover',function(){
+						$('body').on('mouseover','a.filter_list_input',function(){
 							
 							if(document.getElementById(this.id).className === "filter_list_input")
 							{
@@ -729,7 +863,7 @@ function make_graph_with_filters(){
     					// alert(this.value);
 					});
 
-					$('.filter_dropdown_style').live('click',function(){
+					$('body').on('click','.filter_dropdown_style',function(){
 						var elements= this.parentNode.children;
 						// document.getElementsByClassName("filter_dropdown_list");
 						elements[1].style.visibility=elements[1].style.visibility=="visible"?"hidden":"visible";
@@ -739,7 +873,7 @@ function make_graph_with_filters(){
 
 					});
 
-					$('.filter_list_elements').live('click',function(){
+					$('body').on('click','.filter_list_elements',function(){
 
 
 					});
@@ -880,7 +1014,7 @@ function make_graph_with_filters(){
 					}
 
 					
-					$('a.back_link').live('click',function(){
+					$('body').on('click','a.back_link',function(){
 						var to_b_removed = document.getElementById("quick_links").childNodes.length - 2;
 						for(var i=0;i< to_b_removed;i++)
 						if(document.getElementById("quick_links").lastChild.innerHTML!=this.innerHTML)
@@ -893,14 +1027,14 @@ function make_graph_with_filters(){
 						
 					});
 
-					$('a.display_filters_graph').live('click',function(){
+					$('body').on('click','a.display_filters_graph',function(){
 						var current_node=this.parentNode;
 						var parent_node=current_node.parentNode;
 						parent_node.removeChild(current_node);
 						updateFilter(current_node.getElementsByTagName('a')[0].id);
 						make_graph_with_filters();						
 					})
-					$('.timeline').live('click',function(){
+					$('body').on('click','.timeline',function(){
 						elements = document.getElementsByClassName('timeline');
 						    for (var i = 0; i < elements.length; i++) {
 						        elements[i].style.backgroundColor="black";
@@ -921,7 +1055,7 @@ function make_graph_with_filters(){
 						
 					});
 
-					$('a.dashboard_heading').live('click', function(){
+					$('body').on('click', 'a.dashboard_heading',function(){
 						elements = document.getElementsByClassName('dashboard_heading');
 						    for (var i = 0; i < elements.length; i++) {
 						        elements[i].style.backgroundColor="#CCCCCC";
@@ -934,7 +1068,7 @@ function make_graph_with_filters(){
 						    dashboard_details(this.id);
 					});
 
-					$('a#dashboard_close').live('click',function(){
+					$('body').on('click','a#dashboard_close',function(){
 						if (this.innerHTML=='hide')
 						{
 						document.getElementById('dashboard').style.display="none";
@@ -948,7 +1082,7 @@ function make_graph_with_filters(){
 						}
 					});
 
-					$('a.marketing').live('click', function(){
+					$('body').on('click', 'a.marketing',function(){
 						var offers='';
 						header_navigation(this.className);
 						// console.log("in offers");
@@ -1005,7 +1139,7 @@ function make_graph_with_filters(){
 
 					}
 
-					$('#mrktng_add_offer').live('click', function(){
+					$('body').on('click', '#mrktng_add_offer',function(){
 						rows='';
 						rows+='<tr>'
 							rows+='<td class="offers_row"><input type="checkbox">&nbsp;&nbsp;Select</input></td>';
@@ -1021,13 +1155,13 @@ function make_graph_with_filters(){
 
 					});
 
-					$('a.profile').live('click', function(){
+					$('body').on('click','a.profile', function(){
 						// console.log("in profile");
 						header_navigation(this.className);
 						show_questions(response);	
 					});
 
-					$('a.followup').live('click', function(){
+					$('body').on('click', 'a.followup',function(){
 						// console.log(active_div);
 						header_navigation(this.className);
 						// console.log("in followup");
@@ -1069,7 +1203,7 @@ function make_graph_with_filters(){
 						
 					});
 
-					$('a.analysis').live('click', function(){
+					$('body').on('click','a.analysis', function(){
 						// console.log("in analysis");
 						header_navigation(this.className);
 						// console.log(active_div);

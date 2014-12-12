@@ -29,24 +29,8 @@
       <br>
       <br>
       <div class="login_actions" style="padding-right:0">
-        <button type="submit" class="btn btn-green" tabindex="3" name="loginSubmit">Click Here to Login</button>
+        <button type="submit" class="btn btn-green" tabindex="3" name="loginSubmit">Login</button>
       </div>
     </form>
      </div>
-
-    <div id="forgot-password" class="grid-8">
-      <div class="contentHeader">
-        <h2>Forgot Password?</h2>
-      </div>
-    <div class="content">
-        <a href="/recover">Click Here To Reset Password</a>
-      </div>
-  </div>
-    <div id="not-member" class="not-member"><a href="/signup.php" style="font-size: 36px; font-weight: bold; color:#960804; text-decoration: none;">Not a Member yet?<div style="font-size: 24px; margin: 10px 0 0px;">Click here to sign up!</div></a></div>
-
-<br class="clear">
-</div>
-  
-   <?php include("footer.php"); ?>
-
 </html>
