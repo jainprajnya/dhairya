@@ -31,9 +31,9 @@
 	<tr class="category_level_1_row">
 	<td class="category_level_1"><img src="images/maketing_iocn_01.png" class="category_level_1_icons"> <span class="category_level_1_text" id="marketing">MARKETING</span></td>
 	</tr>
-	<tr class="category_level_1_row">
+	<!-- <tr class="category_level_1_row">
 		<td class="category_level_1"><img src="images/profile_iocn.png" class="category_level_1_icons"> <span class="category_level_1_text" id="profile">PROFILE</span></td>
-	</tr>
+	</tr> -->
 	<tr class="category_level_1_row">
 		<td class="category_level_1"><img src="images/followup_icon_01.png" class="category_level_1_icons"> <span class="category_level_1_text" id="followup">FOLLOWUP</span></td>
 	</tr>

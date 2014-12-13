@@ -136,7 +136,7 @@ $('body').on('click','.category_level_2',function(){
 });
 
 var heading_row = '<th class="category_level_2"><span class="category_level_2_text">Dashboard</span></th>';
-	heading_row += '<th class="category_level_2" id="gen_stats"><span class="category_level_2_text" >General Statistics</span></th>';
+	// heading_row += '<th class="category_level_2" id="gen_stats"><span class="category_level_2_text" >General Statistics</span></th>';
 	heading_row+='<th class="category_level_2" id="adv_stats"><span class="category_level_2_text" >Advance Statistics</span></th>';
 	heading_row+='<th class="category_level_2" id="emp_perf"><span class="category_level_2_text" >Employee perfomance result</span></th>';
 	heading_row+='<th class="category_level_2" id="comment"><span class="category_level_2_text" >Comments</span></th>';
@@ -374,16 +374,16 @@ function dashboard_overall(dashboard_index)
 
 
 function load_general_statistics()
-{
-	
-// var filters = '<div id="gen_stats_filter"><div id=slider> <table><tr><td id="gen_stats_branch"><input></input></td><td id="gen_stats_start"><input></input><td id="gen_stats_end"><input></td></table></div>';
-var filters='<table id="basic_filters"><tr><td id="branch">Branch id<input></input></td>';
-filters+='<td id="from_date_filter"> <p>Start Date: <input type="text" class="datepicker"></p></td>';
-filters+='<td id="to_date_filter">End date<input id="end_date" class="datepicker" /></td></tr></table>';
+	{
+		
+	// var filters = '<div id="gen_stats_filter"><div id=slider> <table><tr><td id="gen_stats_branch"><input></input></td><td id="gen_stats_start"><input></input><td id="gen_stats_end"><input></td></table></div>';
+	var filters='<table id="basic_filters"><tr><td id="branch">Branch id<input></input></td>';
+	filters+='<td id="from_date_filter"> <p>Start Date: <input type="text" class="datepicker"></p></td>';
+	filters+='<td id="to_date_filter">End date<input id="end_date" class="datepicker" /></td></tr></table>';
 
-$('.main_data').html(filters);	
+	$('.main_data').html(filters);	
 
-}
+	}
 
 function load_advance_statistics(){
 	var adv_overview_div='';
@@ -395,7 +395,7 @@ function load_advance_statistics(){
 		{
 
 		var basic_filters='<table id='+adv_stats_elements[i]+"_basic_filters"+' class="basic_filters">';
-		basic_filters+='<tr><td id='+adv_stats_elements[i]+"_branch"+'>Branch id<input></input></td>';
+		basic_filters+='<tr><td id='+adv_stats_elements[i]+"_branch"+'>Branch id<select id="branch_id"></select></td>';
 		basic_filters+='<td id='+adv_stats_elements[i]+"_from_date_filter"+'><p>Start Date: <input type="text" class="datepicker"></p></td>';
 		basic_filters+='<td id='+adv_stats_elements[i]+"_to_date_filter"+'>End date<input id="end_date" class="datepicker" /></td></tr></table>';
 		if(adv_stats_elements[i]=="overview")
@@ -497,12 +497,14 @@ if (hash_obj.hasOwnProperty(graph_list[adv_trends_index]["name"]))
 				var host = 'https://bizviewz.com:8080/feedback-review';
 				var graph_c = '/company';
 				var company_id = '/1/graph/';
-				var start_date=to_date.getFullYear().toString()+(to_date.getMonth()+1).toString()+(to_date.getDate()-7).toString();
-				var end_date=to_date.getFullYear().toString()+(to_date.getMonth()+1).toString()+to_date.getDate().toString();
+				var start_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-7);
+				var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
 				var uri='';
 				filters_g='startDate='+start_date+'&endDate='+end_date;
 				params='/statistics?'+filters_g;
-
+				console.log("in load trends");
+				console.log(start_date);
+				console.log(end_date);
 				var response1= $.ajax({
 			          url: uri.concat(host,graph_c,company_id,adv_trends_graphId,params),
 			          dataType: 'jsonp',
@@ -538,31 +540,28 @@ function make_graph_with_filters(){
 
 			}
 			
-			function plot_graph(main_graph)
-			{
-				// populate_filter(main_graph["filterList"]);
-				collect_stats_populate_graph(main_graph["graphId"],main_graph["attributeList"],main_graph["filterList"],applyFilter);
+function plot_graph(main_graph)
+{				// populate_filter(main_graph["filterList"]);
+	collect_stats_populate_graph(main_graph["graphId"],main_graph["attributeList"],main_graph["filterList"],applyFilter);
+}
 
-			}
-
-			function set_graph_level(parent)
-			{
-				var container_parentid='';
-				var container_graphid='';
-				// document.getElementsByName("level_identify_div")[0].id=container_parentid.concat(graph_name,'_level_',parent);
-				// document.getElementsByName("id_identify_div")[0].id=container_graphid.concat(graph_name+"_"+graph_id);
-			}
+function set_graph_level(parent)
+{
+	var container_parentid='';
+	var container_graphid='';
+	// document.getElementsByName("level_identify_div")[0].id=container_parentid.concat(graph_name,'_level_',parent);
+	// document.getElementsByName("id_identify_div")[0].id=container_graphid.concat(graph_name+"_"+graph_id);
+}
 		    
-			function collect_stats_populate_graph(graph_id,attributeList,filterList,applyFilter)
-					{						
-						options.xAxis.categories=[];
-						set_chart_type();
-						
-						var host = 'https://bizviewz.com:8080/feedback-review/company/1/graph/';
-						var uri='';
-						graphsValues={};
-					 	var response11;
-					 	filters_g='startDate=20141010&endDate=20141122&';
+function collect_stats_populate_graph(graph_id,attributeList,filterList,applyFilter)
+{						
+	options.xAxis.categories=[];
+	set_chart_type();
+	var host = 'https://bizviewz.com:8080/feedback-review/company/1/graph/';
+	var uri='';
+	graphsValues={};
+	var response11;
+	filters_g='startDate=20141010&endDate=20141122&';
 					 	// console.log("in stats"+applyFilter);
 					 	// for(var i=0;i< applyFilter.length;i++)
 					 	// {
@@ -570,20 +569,19 @@ function make_graph_with_filters(){
 					 	// 	i++;
 					 	// }
 					
-						params='/statistics?'+filters_g+'callback=?';
-						a=uri.concat(host,graph_id,params);
-						$.ajax({
-						          url: uri.concat(host,graph_id,params),
-						          dataType: 'jsonp',
-						          type: 'GET',
-						          cache: false,
-						          jsonp: 'handle_data',
-						          crossDomain:true,
-						          async: false,
-						          
-						          success: function( pass ) {
-							        // console.log("query to  graph id "+ graph_id+" : ");
-							        // console.log(uri);
+	params='/statistics?'+filters_g+'callback=?';
+	a=uri.concat(host,graph_id,params);
+	$.ajax({	
+		url: uri.concat(host,graph_id,params),
+		dataType: 'jsonp',
+		type: 'GET',
+		cache: false,
+		jsonp: 'handle_data',
+		crossDomain:true,
+		async: false,
+		success: function( pass ) {
+			// console.log("query to  graph id "+ graph_id+" : ");
+			// console.log(uri);
 							         response11=pass;
 							         var graphsValues= '';
 							          // console.log(response11);
@@ -599,8 +597,8 @@ function make_graph_with_filters(){
 						});
 						  
 					}
-			function make_graph_obj(data,name,index)
-					{
+function make_graph_obj(data,name,index)
+	{
 
 						attributeList=graph_list[index]["attributeList"];
 						if (hash_obj.hasOwnProperty(name))
@@ -627,10 +625,10 @@ function make_graph_with_filters(){
 
 						console.log(hash_obj);
 						 				
-					}		
+	}		
 					
-					function set_data_of_series_normal(hash_obj,parent_id,days)
-					{
+function set_data_of_series_normal(hash_obj,parent_id,days)
+{
 						console.log("in series");
 						var category_ids=[];
 						options_overview.xAxis.categories=[];
@@ -668,79 +666,75 @@ function make_graph_with_filters(){
 						}
 						
 						
-					}
+}
 
-					function set_chartseries_data_normal(category_ids,hash_obj){
+function set_chartseries_data_normal(category_ids,hash_obj)
+{
+	for (var id in category_ids)
+	{
+		for(var i in series_data)
+		{
+			series_data[i]["data"].push(hash_obj["adv_overview"][category_ids[id]]["count_of_ppl"][i]);
+		}
+	}
+	options_overview.series=series_data;
+}
+
+function set_data_of_series_trends(hash_obj,parent_id,period,days)
+	{
+		var child_found=-1;
+		var category_ids=[];
+		options_trends.xAxis.categories=[];
+		options_trends.renderTo="trends_graph";
+		series_data=[];
 						
-						for (var id in category_ids)
-						{
-							
-							for(var i in series_data)
-							{
-								series_data[i]["data"].push(hash_obj["adv_overview"][category_ids[id]]["count_of_ppl"][i]);
-							}
-						}
-						options_overview.series=series_data;
-					}
-
-					function set_data_of_series_trends(hash_obj,parent_id,period,days)
-					{
-						var child_found=-1;
-						var category_ids=[];
-						options_trends.xAxis.categories=[];
-						options_trends.renderTo="trends_graph";
-						series_data=[];
-						
-						var series_name_array=[];
-						var start;
-						  		if(days==7)
-						  			 start=23;
-						  		else
-						  			start=0;
-
-						// for(start;start<hash_obj["adv_trends"][period].length;start++)
-						// {
-							// options.xAxis.categories.push(hash_obj["adv_trends"][period][start]["date"]);
-							// series_name_array.push(hash_obj["adv_trends"][period][start]["date"]);
-						// }
-
-						options_trends.xAxis.categories.push("20141123","20141124","20141125","20141126","20141127", "20141128","20141129");
-						series_name_array.push("20141123","20141124","20141125","20141126","20141127", "20141128","20141129");
-						// options.xAxis.categories.push(20141121,20141122,20141123,20141124,20141125,20141126,20141127);
-						// series_name_array.push(20141121,20141122,20141123,20141124,20141125,20141126,20141127);
-						
-						for(attr_id in hash_obj["adv_trends"])
-						{
-							if(hash_obj["adv_trends"][attr_id]["parent_id"]==parent_id ){
-								child_found=1;
+		var series_name_array=[];
+		var start;
+		var someFormattedDate;
+		var date = new Date();
+		date.setDate(date.getDate() - days );
+	  	for (var i = 0; i < days; i++) {
+		  	var dd = date.getDate();
+	  		var mm = date.getMonth()+1;
+	  		var dy = date.getDay(); 
+	    	someFormattedDate = dd + ' '+ month[mm-1] 
+			options_trends.xAxis.categories.push(someFormattedDate);
+			series_name_array.push(((date.getFullYear()*100)+mm)*100+dd);  
+	    	date.setDate(date.getDate() +1 );  
+		  }
+		  
+					
+		for(attr_id in hash_obj["adv_trends"])
+		{
+			if(hash_obj["adv_trends"][attr_id]["parent_id"]==parent_id ){
+				child_found=1;
 								// set_graph_level(parent_id);
-								var temp={data:[],
-							showInLegend:true,
-							name: hash_obj["adv_trends"][attr_id]["name"],
-							point:{events: { 'click': function(e) {makeSubGraph(this.category); } }}
-                   			 	}
-								series_data.push(temp);
-								handle_trend_graph(hash_obj,attr_id,period,days);
-								category_ids.push(parseInt(attr_id));
-										
-									}
+				var temp={data:[],
+					showInLegend:true,
+					name: hash_obj["adv_trends"][attr_id]["name"],
+					point:{events: { 'click': function(e) {makeSubGraph(this.category); } }}
+                   		}
+				series_data.push(temp);
+				handle_trend_graph(hash_obj,attr_id,period,days);
+				category_ids.push(parseInt(attr_id));						
+			}
 							  	
-						  }
+		}
 						
 						
-						if(category_ids.length!=0)
-						{
-							set_chartseries_data_trends(category_ids,hash_obj,series_name_array,"");
-							console.log(options_trends);
-							make_chart(options_trends);
-						}
+		if(category_ids.length!=0)
+		{
+			set_chartseries_data_trends(category_ids,hash_obj,series_name_array,"");
+			console.log(options_trends);
+			make_chart(options_trends);
+		}
 						
+	}
 
-					}
-
-					function handle_normal_graph(hash_obj,attr_id){
-						var a=0,b=0,c=0;
-						if(hash_obj["adv_overview"][attr_id]["type"]=="weighted")
+function handle_normal_graph(hash_obj,attr_id)
+{
+	var a=0,b=0,c=0;
+	if(hash_obj["adv_overview"][attr_id]["type"]=="weighted")
 								{
 								 a+=hash_obj["adv_overview"][attr_id]["listCountPPl"][0]+hash_obj["adv_overview"][attr_id]["listCountPPl"][1];
 								 b+=hash_obj["adv_overview"][attr_id]["listCountPPl"][2];
@@ -749,62 +743,73 @@ function make_graph_with_filters(){
 								 hash_obj["adv_overview"][attr_id]["count_of_ppl"]=[a,b,c];
 
 						  		}
-					}
 
-					function handle_trend_graph(hash_obj,attr_id,period,days)
-					{
-						var a=0;var b=0;var c=0;var n=0;var avg=0;
-						var start;
+}
+
+function handle_trend_graph(hash_obj,attr_id,period,days)
+	{
+		console.log("handle trends starts");
+		var a=0;var b=0;var c=0;var n=0;var avg=0;
+		var start;
 					
-						  	start=0;
+		start=0;
 
-						  		for(start;start<7;start++)
-						  				{
-						  					if(hash_obj["adv_trends"][attr_id]["type"]=="weighted")
-											{
-												var d = hash_obj["adv_trends"][attr_id][period][start]["date"];
-												// console.log(d);
-												hash_obj["adv_trends"][attr_id][d]= {} ;
-												for(var i =1; i<=hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"].length;i++)
-											     {
-											     a+=(i*(hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"][i-1]));
-											     n+=hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"][i-1];
-											     // console.log(a);
-											     hash_obj["adv_trends"][attr_id][hash_obj["adv_trends"][attr_id][period][start]["date"]]["count_of_ppl"]={};
-											     if (n!=0)
-											     	hash_obj["adv_trends"][attr_id][hash_obj["adv_trends"][attr_id][period][start]["date"]]["count_of_ppl"]= parseInt(a/n) ;
-											     else
-											     	hash_obj["adv_trends"][attr_id][hash_obj["adv_trends"][attr_id][period][start]["date"]]["count_of_ppl"]=0;
-											     
-												}
-												
-												
-											     a=0;n=0;
-									  		}
-									  	}
-					}
-
-					function set_chartseries_data_trends(category_ids,hash_obj,series_name_array,subgraph_name)
+		for(start;start<days;start++)
+		{
+			if(hash_obj["adv_trends"][attr_id]["type"]=="weighted")
+			{
+				if (hash_obj["adv_trends"][attr_id][period][start]!==undefined)
+				{
+					var d = hash_obj["adv_trends"][attr_id][period][start]["date"];
+					console.log(d);
+					hash_obj["adv_trends"][attr_id][d]= {} ;
+					for(var i =1; i<=hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"].length;i++)
 					{
-						console.log(category_ids);
-						console.log(series_name_array);
-						for(var j=0 ;j< series_name_array.length;j++)
-						{
-						for (var id=0; id<category_ids.length;id++)
-							{
-								console.log(hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]);
-							   series_data[id]["data"].push(hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]["count_of_ppl"]);
-							}
-						}
-						options_trends.series=series_data;
+						a+=(i*(hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"][i-1]));
+						n+=hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"][i-1];
+												     // console.log(a);
+						hash_obj["adv_trends"][attr_id][hash_obj["adv_trends"][attr_id][period][start]["date"]]["count_of_ppl"]={};
+						if (n!=0)
+							hash_obj["adv_trends"][attr_id][hash_obj["adv_trends"][attr_id][period][start]["date"]]["count_of_ppl"]= parseInt(a/n) ;
+						else
+							hash_obj["adv_trends"][attr_id][hash_obj["adv_trends"][attr_id][period][start]["date"]]["count_of_ppl"]=0;
+					}								
+													
+					a=0;n=0;
+				}
+			}
+		}
 
-					}
+		console.log("in handle trends");
+		console.log(hash_obj);
+	}
+
+function set_chartseries_data_trends(category_ids,hash_obj,series_name_array,subgraph_name)
+{
+	console.log(category_ids);
+	console.log(series_name_array);
+	for(var j=0 ;j< series_name_array.length;j++)
+	{
+		for (var id=0; id<category_ids.length;id++)
+		{
+			console.log("in charts---");
+			console.log(hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]);
+			if (hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]!==undefined)
+				series_data[id]["data"].push(hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]["count_of_ppl"]);
+			else
+				series_data[id]["data"].push(0);
+		}
+	}
+	options_trends.series=series_data;
+	console.log("chartseries");
+	console.log(options_trends.series);
+}
 					
-					function make_chart(options)
-					{
-						console.log(options);
-						chart = new Highcharts.Chart(options);
-					}
+function make_chart(options)
+{
+	console.log(options);
+	chart = new Highcharts.Chart(options);
+}
 
 					function populate_summary(options){
 						var tbl=document.getElementById("summay_table");
