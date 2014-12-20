@@ -3,6 +3,7 @@ var overview_index=-1;
 var rendered_attr_id=[];
 var series_data=[];
 var graph_type;
+var graph_list_names;
  var hash_obj={};
  var response;
  var applyFilter=[];
@@ -18,7 +19,7 @@ var graph_type;
 						 // backgroundColor: '#30D5C8'
 							},
 						title: {
-							text:''
+							text:'overview'
 						},
 					xAxis: {
 						 type: 'category',
@@ -66,7 +67,7 @@ var options_trends = {
 						 // backgroundColor: '#30D5C8'
 							},
 						title: {
-							text:''
+							text:'trends'
 						},
 					xAxis: {
 						 type: 'category',
@@ -148,26 +149,48 @@ var host = 'https://bizviewz.com:8080/feedback-review';
 				var company_id = '/1';
 				var params ='/graphs'
 				var uri='';
-				var dashboard_stats = $.ajax({
-					  url: uri.concat(host,graph_c,company_id,params),
-			          dataType: 'jsonp',
-			          type: 'GET',
-			          cache: false,
-			          // jsonp: 'handle_data',
-			          crossDomain:true,
-			          async:false,
-					  success: function(response){
-					  	graph_list=response;
-					  	d_index = find_index_of("dashboard");
-					  	// console.log(d_index);
+				// var dashboard_stats = $.ajax({
+				// 	  url: uri.concat(host,graph_c,company_id,params),
+			 //          dataType: 'jsonp',
+			 //          type: 'GET',
+			 //          beforeSend: function(xhr){xhr.setRequestHeader('sessionId', '92787ff9e38c46028601402c3fec3772');},
+			 //          cache: false,
+			 //          // jsonp: 'handle_data',
+			 //          crossDomain:true,
+			 //          async:false,
+				// 	  success: function(response){
+				// 	  	graph_list=response;
+				// 	  	d_index = find_index_of("dashboard");
+				// 	  	// console.log(d_index);
+				// 	  	console.log(graph_list);
+				// 	  	prepare_graph_list(graph_list);
+				// 	  	// load_dashboard(d_index,graph_list[d_index]["graphId"]);
+				// 	  	load_advance_statistics();
+				// 	  }
+				// });
+
+						graph_list= $GLOBALS['graphs'];
+						d_index = find_index_of("dashboard");
+						// console.log(d_index);
 					  	console.log(graph_list);
-					  	load_dashboard(d_index,graph_list[d_index]["graphId"]);
-					  }
-				});
+					  	prepare_graph_list(graph_list);
+					  	// load_dashboard(d_index,graph_list[d_index]["graphId"]);
+					  	load_advance_statistics();
 
 
 
 });
+
+function prepare_graph_list(graphs)
+{  graph_list_names = new Object();
+	console.log(graph_list.length);
+	for(var i=0;i < graph_list.length;i++)
+	{	
+		graph_list_names[graph_list[i]["name"]]={};
+		graph_list_names[graph_list[i]["name"]]=graph_list[i]["graphId"]
+	}
+	console.log(graph_list_names);
+}
 
 function find_index_of(graph_name)
 {
@@ -373,18 +396,6 @@ function dashboard_overall(dashboard_index)
 }
 
 
-function load_general_statistics()
-	{
-		
-	// var filters = '<div id="gen_stats_filter"><div id=slider> <table><tr><td id="gen_stats_branch"><input></input></td><td id="gen_stats_start"><input></input><td id="gen_stats_end"><input></td></table></div>';
-	var filters='<table id="basic_filters"><tr><td id="branch">Branch id<input></input></td>';
-	filters+='<td id="from_date_filter"> <p>Start Date: <input type="text" class="datepicker"></p></td>';
-	filters+='<td id="to_date_filter">End date<input id="end_date" class="datepicker" /></td></tr></table>';
-
-	$('.main_data').html(filters);	
-
-	}
-
 function load_advance_statistics(){
 	var adv_overview_div='';
 	var adv_trends_div='';
@@ -394,15 +405,21 @@ function load_advance_statistics(){
     for(var i=0 ;i< adv_stats_elements.length;i++)
 		{
 
-		var basic_filters='<table id='+adv_stats_elements[i]+"_basic_filters"+' class="basic_filters">';
-		basic_filters+='<tr><td id='+adv_stats_elements[i]+"_branch"+'>Branch id<select id="branch_id"></select></td>';
-		basic_filters+='<td id='+adv_stats_elements[i]+"_from_date_filter"+'><p>Start Date: <input type="text" class="datepicker"></p></td>';
-		basic_filters+='<td id='+adv_stats_elements[i]+"_to_date_filter"+'>End date<input id="end_date" class="datepicker" /></td></tr></table>';
-		if(adv_stats_elements[i]=="overview")
-			adv_overview_div = '<div id="adv_overview_filters">Overview'+basic_filters+'<table id="adv_overview_graph"><tr><td id="overview_graph"></td></tr></table></div>';
-		else
-			adv_trends_div = '<div id="adv_trends_filters">Trends'+basic_filters+'<table id="adv_trends_graph"><tr><td id="trends_graph"></td></tr></table></div>';
-
+			var basic_filters='<table id='+adv_stats_elements[i]+"_basic_filters"+' class="basic_filters">';
+			basic_filters+='<tr><td id='+adv_stats_elements[i]+"_branch"+'>Branch id<select id="branch_id"></select></td>';
+			basic_filters+='<td id='+adv_stats_elements[i]+"_from_date_filter"+'><p>Start Date: <input type="text" class="datepicker"></p></td>';
+			basic_filters+='<td id='+adv_stats_elements[i]+"_to_date_filter"+'>End date<input id="end_date" class="datepicker" /></td></tr></table>';
+			var quick_links='';
+			if(adv_stats_elements[i]=="overview")
+			{
+				quick_links='<div id="overview_quick_links"><a id="-2" class="back_link" href="index_new.php">Home</a></div>';
+				adv_overview_div = '<div id="adv_overview_filters">Overview'+basic_filters+quick_links+'<table id="adv_overview_graph"><tr><td id="overview_graph"></td></tr></table></div>';
+			}
+			else
+			{	
+				quick_links='<div id="trends_quick_links"><a id="-2" class="back_link" href="index_new.php">Home</a></div>';
+				adv_trends_div = '<div id="adv_trends_filters">Trends'+basic_filters+quick_links+'<table id="adv_trends_graph"><tr><td id="trends_graph"></td></tr></table></div>';
+			}
 		}// document.getElementById("activeDiv").className="advance_stats";
 	
 	
@@ -475,7 +492,7 @@ function load_overview(adv_overview_index,adv_overview_graphId)
 				  //       filterList=overview_graph["filterList"];
 				  //       console.log(filterList);
 				  //       graph_name=overview_graph["name"]
-				  //       set_graph_level(-1);
+				        set_graph_level("overview",-1);
 						// $("div#quick_links").append(' > <a class="back_link" id="-2" href="index_new.php" >overview</a>');
 				  //       plot_graph(response[1]);
     			}	
@@ -525,7 +542,7 @@ if (hash_obj.hasOwnProperty(graph_list[adv_trends_index]["name"]))
 				  //       filterList=overview_graph["filterList"];
 				  //       console.log(filterList);
 				  //       graph_name=overview_graph["name"]
-				  //       set_graph_level(-1);
+				        set_graph_level("trends",-1);
 						// $("div#quick_links").append(' > <a class="back_link" id="-2" href="index_new.php" >overview</a>');
 				  //       plot_graph(response[1]);
     			}	
@@ -545,11 +562,13 @@ function plot_graph(main_graph)
 	collect_stats_populate_graph(main_graph["graphId"],main_graph["attributeList"],main_graph["filterList"],applyFilter);
 }
 
-function set_graph_level(parent)
+function set_graph_level(graph_type,parent)
 {
-	var container_parentid='';
+	console.log("inside set graph" + graph_type);
+	console.log(document.getElementsByName(graph_type+"_level_identify_div"));
+	var container_parent=document.getElementsByName(graph_type+"_level_identify_div")[0].id;
 	var container_graphid='';
-	// document.getElementsByName("level_identify_div")[0].id=container_parentid.concat(graph_name,'_level_',parent);
+	document.getElementsByName(graph_type+"_level_identify_div")[0].id=container_parent.concat('_',parent);
 	// document.getElementsByName("id_identify_div")[0].id=container_graphid.concat(graph_name+"_"+graph_id);
 }
 		    
@@ -643,7 +662,7 @@ function set_data_of_series_normal(hash_obj,parent_id,days)
 							showInLegend:true,
 							name: series_name_array[i],
 							color: color_array[i],
-							point:{events: { 'click': function(e) {  makeSubGraph(this.category); } }}
+							point:{events: { 'click': function(e) { makeSubGraph("overview",this.category); } }}
                    			 	}
 							series_data.push(temp);							
 						}
@@ -712,7 +731,7 @@ function set_data_of_series_trends(hash_obj,parent_id,period,days)
 				var temp={data:[],
 					showInLegend:true,
 					name: hash_obj["adv_trends"][attr_id]["name"],
-					point:{events: { 'click': function(e) {makeSubGraph(this.category); } }}
+					point:{events: { 'click': function(e) {console.log(this.x);console.log(this.y);makeSubGraph(this.category); } }}
                    		}
 				series_data.push(temp);
 				handle_trend_graph(hash_obj,attr_id,period,days);
@@ -811,64 +830,63 @@ function make_chart(options)
 	chart = new Highcharts.Chart(options);
 }
 
-					function populate_summary(options){
-						var tbl=document.getElementById("summay_table");
-						var row='<tr><th class="cell_with_border">'+'Summmary'+'</th>';
-						for(var i in options.xAxis.categories)
-							row+='<th class="cell_with_border">'+ options.xAxis.categories[i]+'</th>';
-						row+='</tr>';
-						for(var data in options.series)
-						{
-							row+='<tr><td class="cell_with_border">'+options.series[data]["name"]+'</td>';
-							for(var i in options.series[data]["data"])
-								row+='<td>'+options.series[data]["data"][i]+'</td>';
-							row+='</tr>';
-						}
-						tbl.html=row;
+function populate_summary(options)
+{
+	var tbl=document.getElementById("summay_table");
+	var row='<tr><th class="cell_with_border">'+'Summmary'+'</th>';
+	for(var i in options.xAxis.categories)
+		row+='<th class="cell_with_border">'+ options.xAxis.categories[i]+'</th>';
+		row+='</tr>';
+		for(var data in options.series)
+		{
+			row+='<tr><td class="cell_with_border">'+options.series[data]["name"]+'</td>';
+			for(var i in options.series[data]["data"])
+				row+='<td>'+options.series[data]["data"][i]+'</td>';
+				row+='</tr>';
+		}
+		tbl.html=row;
 							
-					}
+}
 
-					function populate_filter(filterList){
-						// console.log(filterList);
-						a = [{"a" : 1}]
-						filterList = [{"type":"non-weighted","attributeString":"sex","parentId": -1,"attributeId":3,"attributeValues":[{"name":"male","value":1,"maxValue":-1},{"name":"female","value":2,"maxValue":-1}]},
-						{"type":"non-weighted","attributeString":"branch","parentId":-1,"attributeId":3,"attributeValues":[{"name":"a","value":1,"maxValue":-1},{"name":"b","value":2,"maxValue":-1},{"name":"c","value":1,"maxValue":-1}]},
-						{"type":"non-weighted","attributeString":"city","parentId":-1,"attributeId":3,"attributeValues":[{"name":"male","a1":1,"maxValue":-1},{"name":"b1","value":2,"maxValue":-1}]}];
-						var row = document.getElementById("filter_row");
-						var filters='';
+function populate_filter(filterList)
+{						// console.log(filterList);
+	a = [{"a" : 1}]
+	filterList = [{"type":"non-weighted","attributeString":"sex","parentId": -1,"attributeId":3,"attributeValues":[{"name":"male","value":1,"maxValue":-1},{"name":"female","value":2,"maxValue":-1}]},
+					{"type":"non-weighted","attributeString":"branch","parentId":-1,"attributeId":3,"attributeValues":[{"name":"a","value":1,"maxValue":-1},{"name":"b","value":2,"maxValue":-1},{"name":"c","value":1,"maxValue":-1}]},
+					{"type":"non-weighted","attributeString":"city","parentId":-1,"attributeId":3,"attributeValues":[{"name":"male","a1":1,"maxValue":-1},{"name":"b1","value":2,"maxValue":-1}]}];
+	var row = document.getElementById("filter_row");
+	var filters='';
 
-						for(var i in filterList)
-						{
-							filters+='<td><a class="filter_dropdown_style">'+filterList[i]["attributeString"]+'</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
-							for(var j in filterList[i]["attributeValues"])
-								{
-									filters+='<li class="filter_list_elements"><input type="checkbox" class="filter_list_input" name='+filterList[i]["attributeString"]+' id='+filterList[i]["attributeValues"][j]["name"]+'>&nbsp;&nbsp;'+filterList[i]["attributeValues"][j]["name"]+'</input></li>';
-								}
-							filters+='<li class="filter_list_elements" ><a style="font-size: 11px; color: blue; float: right;"> clear </a></li></ul></td>';
-							var x = row.insertCell(-1);
-							x.html=filters;
-							filters='';
-						}
+	for(var i in filterList)
+	{
+		filters+='<td><a class="filter_dropdown_style">'+filterList[i]["attributeString"]+'</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
+		for(var j in filterList[i]["attributeValues"])
+		{
+			filters+='<li class="filter_list_elements"><input type="checkbox" class="filter_list_input" name='+filterList[i]["attributeString"]+' id='+filterList[i]["attributeValues"][j]["name"]+'>&nbsp;&nbsp;'+filterList[i]["attributeValues"][j]["name"]+'</input></li>';
+		}
+		filters+='<li class="filter_list_elements" ><a style="font-size: 11px; color: blue; float: right;"> clear </a></li></ul></td>';
+		var x = row.insertCell(-1);
+		x.html=filters;
+		filters='';
+	}
 						
-						
-						
-						$('body').on('mouseover','a.filter_list_input',function(){
-							
-							if(document.getElementById(this.id).className === "filter_list_input")
-							{
-								this.style.backgroundColor = "red";
-							}
-						});
-						$('a.filter_list_input').live('mouseout',function(){
-								this.style.backgroundColor = "black";
-						});
+	$('body').on('mouseover','a.filter_list_input',function(){
+		if(document.getElementById(this.id).className === "filter_list_input")
+		{
+			this.style.backgroundColor = "red";
+		}
+	});
+	$('a.filter_list_input').live('mouseout',function(){
+		this.style.backgroundColor = "black";
+	});
 				
-					}
-					$(document).on('change', 'select', function () {
-    					// alert(this.value);
-					});
+}
 
-					$('body').on('click','.filter_dropdown_style',function(){
+$(document).on('change', 'select', function () {
+    					// alert(this.value);
+});
+
+$('body').on('click','.filter_dropdown_style',function(){
 						var elements= this.parentNode.children;
 						// document.getElementsByClassName("filter_dropdown_list");
 						elements[1].style.visibility=elements[1].style.visibility=="visible"?"hidden":"visible";
@@ -911,112 +929,104 @@ function make_chart(options)
 						}
 					}
 					
-					function makeSubGraph(whose_subgraph)
-					{
-
-						// console.log(whose_subgraph);
-						for(id in hash_obj)
-						{
-
-							if(hash_obj[id]["name"]==whose_subgraph){
-								parent_id=id;
-							}
-						}
+function makeSubGraph(graph_type,whose_subgraph)
+{
+	console.log("in make subgraph");
+	console.log(whose_subgraph);
+	for(id in hash_obj)
+	{
+		if(hash_obj[id]["name"]==whose_subgraph){
+		parent_id=id;
+		}
+	}
 						// console.log(parent_id);
-						setQuickLink(whose_subgraph);
-						if (graph_type=="normal")
-							set_data_of_series_normal(hash_obj,parent_id,"listCountPPl_7Days",hash_obj);
-						else
-							set_data_of_series_trends(hash_obj,parent_id,"listCountPPl_7Days",hash_obj);						
-					}
+	setQuickLink(graph_type,whose_subgraph);
+	if (graph_type=="overview")
+		set_data_of_series_normal(hash_obj,parent_id,"listCountPPl_7Days",hash_obj);
+	else
+		set_data_of_series_trends(hash_obj,parent_id,"listCountPPl_7Days",hash_obj);						
+}
 
 			
+function set_chart_type()
+{
+	if (graph_type=='normal')
+	{
+		options.chart.type='column'; 
+		var series_names=["POOR","AVG","GOOD"];
+	}
+	else if (graph_type=='trend')
+	{
+		options.chart.type='line'; 
+	}
+}
 
-					function set_chart_type()
-					{
-						if (graph_type=='normal')
-							{
-								options.chart.type='column'; 
-								var series_names=["POOR","AVG","GOOD"];
-							}
-						else if (graph_type=='trend')
-							{
-								options.chart.type='line'; 
-							}
-					}
+function set_chart_name()
+{
+	options.title.text='';
+}
 
-					function set_chart_name()
-						{
-							options.title.text='';
-						}
+function set_chart_xaxis(xaxis_category,parent_id,attr_id)
+{
+	var node= document.getElementById("container_graph");
+	var child = node.firstChild;
+	var id_name= child.id;
+	if(parent_id==parseInt(id_name.split("_")[2])-1)
+	{options.xAxis.categories.push(xaxis_category);rendered_attr_id.push(attr_id);}
+}	
 
-					function set_chart_xaxis(xaxis_category,parent_id,attr_id)
-					{
-						var node= document.getElementById("container_graph");
-						var child = node.firstChild;
-						var id_name= child.id;
-						if(parent_id==parseInt(id_name.split("_")[2])-1)
-						{options.xAxis.categories.push(xaxis_category);rendered_attr_id.push(attr_id);}
-					}	
-
-					function find_in_array(array,value){
-						for(var i=0;i<array.length;i++)
-						{
-							if(value==array[i])
-								return true;
-						}
-						return false;
-					}
+function find_in_array(array,value)
+{
+	for(var i=0;i<array.length;i++)
+	{
+		if(value==array[i])
+			return true;
+	}
+	return false;
+}
 
 
+function set_date(period)
+{
+	var to = new Date();
+	//var dateOffset = (24*60*60) * 7;
+	var from = new Date();
+	var ndays=-1;
+	if(period=="listCountPPl_7Days"){ ndays=7;}
+	else if(period=="listCountPPl_30Days") {ndays=30;}
+	else if(period=="listCountPPl_365Days") {ndays=365;}
+	from = new Date(from.setDate(to.getDate()-ndays));
+	var from_to = "FROM : " + from.toDateString() + "  TO : "+ to.toDateString();
+	document.getElementById("period").html= from_to;
+}
 
-					function set_date(period)
-					{
-						var to = new Date();
-						//var dateOffset = (24*60*60) * 7;
-						var from = new Date();
-						var ndays=-1;
-						if(period=="listCountPPl_7Days"){ ndays=7;}
-						else if(period=="listCountPPl_30Days") {ndays=30;}
-						else if(period=="listCountPPl_365Days") {ndays=365;}
-						from = new Date(from.setDate(to.getDate()-ndays));
-						var from_to = "FROM : " + from.toDateString() + "  TO : "+ to.toDateString();
-						document.getElementById("period").html= from_to;
-					}
+function setFilter(applyFilter)
+{						
+	var element= document.getElementById("display_filters");
+	var filters= element.getElementsByTagName('a');
+	for(var i=0;i < filters.length;i++)
+	{
+		applyFilter.push(filters[i].id,filters[i].name);
+	}						
+}
 
-					function setFilter(applyFilter)
-					{
-						
-						var element= document.getElementById("display_filters");
-						var filters= element.getElementsByTagName('a');
-						for(var i=0;i < filters.length;i++)
-						{
-							applyFilter.push(filters[i].id,filters[i].name);
+function setQuickLink(graph_type,whose_subgraph)
+{
+	var level = ((document.getElementsByName(graph_type+"_level_identify_div"))[0].id.split("_"))[2];
+	if(document.getElementById("quick_links").lastChild.id!=level && document.getElementById("quick_links").lastChild.innerHTML!=category)
+		$("div#quick_links").append(' > <a class="back_link" id='+level+'>'+whose_subgraph+'</a>');
+	else 
+		document.getElementById("quick_links").lastChild.innerHTML = whose_subgraph;
+}
 
-						}
-
-						
-					}
-
-					function setQuickLink(category)
-					{
-						var level = ((document.getElementsByName("level_identify_div")[0]).id.split("_"))[2];
-						if(document.getElementById("quick_links").lastChild.id!=level && document.getElementById("quick_links").lastChild.innerHTML!=category)
-							$("div#quick_links").append(' > <a class="back_link" id='+level+'>'+category+'</a>');
-						else 
-								document.getElementById("quick_links").lastChild.innerHTML = category;
-					}
-
-					function updateFilter(filter_name)
-					{
-						for(var i=0;i<applyFilter.length;i=i+2)
-						{
-							if(applyFilter[i]==filter_name)
-							{
-								applyFilter.splice(i,2);
-							}
-						}
-					}
+function updateFilter(filter_name)
+{
+	for(var i=0;i<applyFilter.length;i=i+2)
+	{
+		if(applyFilter[i]==filter_name)
+			applyFilter.splice(i,2);				
+	}
+}
 
 					
 					$('body').on('click','a.back_link',function(){

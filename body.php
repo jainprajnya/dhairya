@@ -10,7 +10,6 @@
 		<td class="category_level_1">
 		<img src="images/Analysis_Icon_01.png" class="category_level_1_icons"> <span class="category_level_1_text" id="analysis">ANALYSIS<span></td>
 		<td rowspan=17 colspan=5 class="main_data" id="main_data_td">
-			
 			<table id="graph_filters_table">
                             <tr id="filter_row"><td>
                                 <a class="filter_dropdown_style">  </a>
@@ -22,12 +21,14 @@
                                 </ul>
                                 </td></tr>
                         </table>
-			<div name="level_identify_div"></div>
-			<div name="id_identify_div"></div>
+			
 			<div id="container_data">
 		</div>
 		</td>
 	</tr>
+	<div id="overview_level" name="overview_level_identify_div" style="display:hidden;"></div>
+				<div id="trends_level" name="trends_level_identify_div" style="display:hidden;"></div>
+                <div id="container_graph_filter" name="filter_identify_div" style="display:hidden;"></div>
 	<tr class="category_level_1_row">
 	<td class="category_level_1"><img src="images/maketing_iocn_01.png" class="category_level_1_icons"> <span class="category_level_1_text" id="marketing">MARKETING</span></td>
 	</tr>
