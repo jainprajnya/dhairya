@@ -1,4 +1,10 @@
+var company_data=[{"id":1,"name":"Taste of India","ownerName":"xyz","ownerAge":25,"ownerSex":true,"mail":"anirudh@gmail.com","contact":"870987098092","country":1,"state":1,"city":1,"region":1,"competitiveAnalysisFlag":true,"industryType":"restaurant","subIndustryType":"south, north","branches":[{"id":1,"name":"abc2","branchManagerName":"xyz","branchManagerSex":true,"mail":"anirudh@gmail.com","contact":"124455","latitude":1,"longitude":2,"country":1,"state":1,"city":1,"region":1,"budgetCategory":1,"industryType":"restaurant","subIndustryType":"north, sount","operationalTime":"9-22"},{"id":2,"name":"abc","branchManagerName":"xyz","branchManagerSex":true,"mail":"pankaj@gmail.com","contact":"123455","latitude":1,"longitude":2,"country":1,"state":1,"city":1,"region":1,"budgetCategory":1,"industryType":"restaurant","subIndustryType":"north, south","operationalTime":"9-22"}]}];
+var graphs=[{"graphId":"f9dbc1a7-820f-40d9-98ae-53c242ee1ebd","name":"Dashboard","type":"dashboard","attributeList":[{"attributeId":60,"attributeString":"overall-experience","type":"weighted","parentId":-1,"attributeValues":[{"value":0,"maxValue":0,"name":"overall-experience"}]},{"attributeId":81,"attributeString":"NetPromoterScore","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Average"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]}],"filterList":[]},{"graphId":"sid1","name":"adv:Customer Experience","type":"overview","attributeList":[{"attributeId":6,"attributeString":"food","type":"weighted","parentId":-1,"attributeValues":[{"value":0,"maxValue":0,"name":"usercomment"},{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":2,"maxValue":5,"name":"disagree"},{"value":3,"maxValue":5,"name":"cant say"},{"value":4,"maxValue":5,"name":"agree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":11,"attributeString":"service","type":"weighted","parentId":-1,"attributeValues":[{"value":0,"maxValue":0,"name":"usercomment"},{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":2,"maxValue":5,"name":"disagree"},{"value":3,"maxValue":5,"name":"cant say"},{"value":4,"maxValue":5,"name":"agree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":7,"attributeString":"starters","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":8,"attributeString":"main-course","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":9,"attributeString":"desserts","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":10,"attributeString":"beverages","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":12,"attributeString":"cleanliness","type":"weighted","parentId":11,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"}]},{"attributeId":13,"attributeString":"timeliness","type":"weighted","parentId":11,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":14,"attributeString":"staff-courtesy","type":"weighted","parentId":11,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":17,"attributeString":"attentiveness","type":"weighted","parentId":11,"attributeValues":[{"value":5,"maxValue":5,"name":"strongly agree"}]}],"filterList":[{"attributeId":4,"attributeString":"customer_sex","type":"non-weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":0,"name":"female"},{"value":2,"maxValue":0,"name":"male"}]}]},{"graphId":"sid2","name":"adv:Trends","type":"trend","attributeList":[{"attributeId":6,"attributeString":"food","type":"weighted","parentId":-1,"attributeValues":[{"value":0,"maxValue":0,"name":"usercomment"},{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":2,"maxValue":5,"name":"disagree"},{"value":3,"maxValue":5,"name":"cant say"},{"value":4,"maxValue":5,"name":"agree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":11,"attributeString":"service","type":"weighted","parentId":-1,"attributeValues":[{"value":0,"maxValue":0,"name":"usercomment"},{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":2,"maxValue":5,"name":"disagree"},{"value":3,"maxValue":5,"name":"cant say"},{"value":4,"maxValue":5,"name":"agree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":7,"attributeString":"starters","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":8,"attributeString":"main-course","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":9,"attributeString":"desserts","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":10,"attributeString":"beverages","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":12,"attributeString":"cleanliness","type":"weighted","parentId":11,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"}]},{"attributeId":13,"attributeString":"timeliness","type":"weighted","parentId":11,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":14,"attributeString":"staff-courtesy","type":"weighted","parentId":11,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":17,"attributeString":"attentiveness","type":"weighted","parentId":11,"attributeValues":[{"value":5,"maxValue":5,"name":"strongly agree"}]}],"filterList":[{"attributeId":4,"attributeString":"customer_sex","type":"non-weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":0,"name":"female"},{"value":2,"maxValue":0,"name":"male"}]}]},{"graphId":"587cad03-a636-4961-a602-176e2d607bf0","name":"epr:Employee Performance Trend","type":"trend","attributeList":[{"attributeId":41,"attributeString":"Waiters","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":42,"attributeString":"Manager","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":43,"attributeString":"Chef","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":44,"attributeString":"Cleaners","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":45,"attributeString":"Bartender","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]}],"filterList":[]},{"graphId":"2835e6ab-fbae-434c-81b9-594849ba82d4","name":"epr:Employee Performance Result","type":"overview","attributeList":[{"attributeId":41,"attributeString":"Waiters","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":42,"attributeString":"Manager","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":43,"attributeString":"Chef","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":44,"attributeString":"Cleaners","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":45,"attributeString":"Bartender","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]}],"filterList":[]},{"graphId":"87ab4a1c-3013-4169-b97d-131c1d7548d8","name":"pre:Customer Preferences","type":"overview","attributeList":[{"attributeId":117,"attributeString":"VegFoodPreference","type":"non-weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":0,"name":"Kebab Platters"},{"value":2,"maxValue":0,"name":"Tandoori dishes"},{"value":4,"maxValue":0,"name":"State cuisines"},{"value":8,"maxValue":0,"name":"Mughlai food"},{"value":16,"maxValue":0,"name":"Continental"},{"value":32,"maxValue":0,"name":"Chaats and snacks"},{"value":64,"maxValue":0,"name":"Kulfi"},{"value":128,"maxValue":0,"name":"Nothing specific"}]},{"attributeId":118,"attributeString":"NonVegPreference","type":"non-weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":0,"name":"Kebab Platters"},{"value":2,"maxValue":0,"name":"Tandoori dishes"},{"value":4,"maxValue":0,"name":"State cuisines"},{"value":8,"maxValue":0,"name":"Mughlai food"},{"value":16,"maxValue":0,"name":"Sea Food"},{"value":32,"maxValue":0,"name":"Exotic animal cuisines"},{"value":64,"maxValue":0,"name":"Crab Cakes"},{"value":128,"maxValue":0,"name":"Nothing specific"}]},{"attributeId":119,"attributeString":"Reference","type":"non-weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":0,"name":"Friends/Families"},{"value":2,"maxValue":0,"name":"Website"},{"value":4,"maxValue":0,"name":"Facebook"},{"value":8,"maxValue":0,"name":"Food Review Site"},{"value":16,"maxValue":0,"name":"Advertising Channels"},{"value":32,"maxValue":0,"name":"Radio"},{"value":64,"maxValue":0,"name":"Nobody specific"}]}],"filterList":[{"attributeId":4,"attributeString":"customer_sex","type":"non-weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":0,"name":"female"},{"value":2,"maxValue":0,"name":"male"}]}]}];
+var dash=[{"attributeId":60,"listDailyAttributeStatisticValues":null,"listCountPPl":[0,11,4,2,1]},{"attributeId":81,"listDailyAttributeStatisticValues":null,"listCountPPl":[5,7,4,2,0]}];
+var sid1=[{"attributeId":6,"listDailyAttributeStatisticValues":null,"listCountPPl":[5,8,4,0,6]},{"attributeId":7,"listDailyAttributeStatisticValues":null,"listCountPPl":[14,0,0,0,7]},{"attributeId":8,"listDailyAttributeStatisticValues":null,"listCountPPl":[13,0,0,0,7]},{"attributeId":9,"listDailyAttributeStatisticValues":null,"listCountPPl":[13,0,0,0,5]},{"attributeId":10,"listDailyAttributeStatisticValues":null,"listCountPPl":[12,0,0,0,5]},{"attributeId":11,"listDailyAttributeStatisticValues":null,"listCountPPl":[0,12,0,6,5]},{"attributeId":12,"listDailyAttributeStatisticValues":null,"listCountPPl":[12,0,0,0,5]},{"attributeId":13,"listDailyAttributeStatisticValues":null,"listCountPPl":[1,0,11,0,6]},{"attributeId":14,"listDailyAttributeStatisticValues":null,"listCountPPl":[0,0,11,0,7]},{"attributeId":17,"listDailyAttributeStatisticValues":null,"listCountPPl":[0,0,0,0,3]}];
+var sid2=[{"attributeId":6,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[0,2,0,0,0]},{"date":20141218,"listCountPPL":[1,0,0,0,1]},{"date":20141219,"listCountPPL":[1,1,0,0,0]},{"date":20141220,"listCountPPL":[1,1,0,0,2]},{"date":20141221,"listCountPPL":[1,2,0,0,2]},{"date":20141222,"listCountPPL":[1,2,3,0,1]},{"date":20141223,"listCountPPL":[0,0,1,0,0]}],"listCountPPl":null},{"attributeId":7,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[2,0,0,0,0]},{"date":20141218,"listCountPPL":[1,0,0,0,1]},{"date":20141219,"listCountPPL":[2,0,0,0,0]},{"date":20141220,"listCountPPL":[2,0,0,0,2]},{"date":20141221,"listCountPPL":[3,0,0,0,1]},{"date":20141222,"listCountPPL":[4,0,0,0,3]}],"listCountPPl":null},{"attributeId":8,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[2,0,0,0,0]},{"date":20141218,"listCountPPL":[1,0,0,0,1]},{"date":20141219,"listCountPPL":[2,0,0,0,0]},{"date":20141220,"listCountPPL":[2,0,0,0,2]},{"date":20141221,"listCountPPL":[3,0,0,0,1]},{"date":20141222,"listCountPPL":[3,0,0,0,3]}],"listCountPPl":null},{"attributeId":9,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[2,0,0,0,0]},{"date":20141218,"listCountPPL":[1,0,0,0,1]},{"date":20141219,"listCountPPL":[2,0,0,0,0]},{"date":20141220,"listCountPPL":[2,0,0,0,2]},{"date":20141221,"listCountPPL":[2,0,0,0,1]},{"date":20141222,"listCountPPL":[4,0,0,0,1]}],"listCountPPl":null},{"attributeId":10,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[2,0,0,0,0]},{"date":20141218,"listCountPPL":[1,0,0,0,1]},{"date":20141219,"listCountPPL":[2,0,0,0,0]},{"date":20141220,"listCountPPL":[2,0,0,0,2]},{"date":20141221,"listCountPPL":[2,0,0,0,1]},{"date":20141222,"listCountPPL":[3,0,0,0,1]}],"listCountPPl":null},{"attributeId":11,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[0,2,0,0,0]},{"date":20141218,"listCountPPL":[0,1,0,0,1]},{"date":20141219,"listCountPPL":[0,2,0,0,0]},{"date":20141220,"listCountPPL":[0,2,0,0,2]},{"date":20141221,"listCountPPL":[0,2,0,2,1]},{"date":20141222,"listCountPPL":[0,3,0,3,1]},{"date":20141223,"listCountPPL":[0,0,0,1,0]}],"listCountPPl":null},{"attributeId":12,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[2,0,0,0,0]},{"date":20141218,"listCountPPL":[1,0,0,0,1]},{"date":20141219,"listCountPPL":[2,0,0,0,0]},{"date":20141220,"listCountPPL":[2,0,0,0,2]},{"date":20141221,"listCountPPL":[2,0,0,0,1]},{"date":20141222,"listCountPPL":[3,0,0,0,1]}],"listCountPPl":null},{"attributeId":13,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[0,0,2,0,0]},{"date":20141218,"listCountPPL":[0,0,1,0,1]},{"date":20141219,"listCountPPL":[0,0,2,0,0]},{"date":20141220,"listCountPPL":[0,0,2,0,2]},{"date":20141221,"listCountPPL":[0,0,2,0,2]},{"date":20141222,"listCountPPL":[1,0,2,0,1]}],"listCountPPl":null},{"attributeId":14,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[0,0,2,0,0]},{"date":20141218,"listCountPPL":[0,0,1,0,1]},{"date":20141219,"listCountPPL":[0,0,2,0,0]},{"date":20141220,"listCountPPL":[0,0,2,0,2]},{"date":20141221,"listCountPPL":[0,0,2,0,2]},{"date":20141222,"listCountPPL":[0,0,2,0,2]}],"listCountPPl":null},{"attributeId":17,"listDailyAttributeStatisticValues":[{"date":20141222,"listCountPPL":[0,0,0,0,3]}],"listCountPPl":null}];
 var chart,graph_id,graph_type,left_pane;
+var session_id='6385f2b9ec424446a920323d5768bdb1';
 var overview_index=-1;
 var rendered_attr_id=[];
 var series_data=[];
@@ -9,6 +15,7 @@ var graph_list_names;
  var applyFilter=[];
  var graph_list={};
  response_d={};
+ var company_id = '1';
  var days_of_week=["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
  var full_days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
  var active_div="statistics"
@@ -19,7 +26,7 @@ var graph_list_names;
 						 // backgroundColor: '#30D5C8'
 							},
 						title: {
-							text:'overview'
+							text:''
 						},
 					xAxis: {
 						 type: 'category',
@@ -67,7 +74,7 @@ var options_trends = {
 						 // backgroundColor: '#30D5C8'
 							},
 						title: {
-							text:'trends'
+							text:''
 						},
 					xAxis: {
 						 type: 'category',
@@ -77,12 +84,12 @@ var options_trends = {
 					yAxis: {
 						min :0,
 						title: {
-							text: 'Number of Feedbacks',
+							text: 'Avg Number of Feedbacks',
 							// align:'left'
 						}
 					},
 					tooltip: {
-                		valueSuffix: ' Number of Feedbacks'
+                		valueSuffix: 'Avg Number of Feedbacks'
            			 },
            			 plotOptions: {
 			                column: {
@@ -111,83 +118,241 @@ var options_trends = {
 var month = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
 // var dow = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat","Sun" ]
 $(document).ready(function() {
-$('body').on('focus',".datepicker", function(){
-    $(this).datepicker();
-});
-$('body').on('click','.category_level_2',function(){
-	var category_level_2_elements = document.getElementsByClassName('category_level_2');
-	for (var i = 0; i < category_level_2_elements.length; i++) {
-    	category_level_2_elements[i].style.background = "#bac3cd";
-    	category_level_2_elements[i].style.color = "black";
-	}
 
-	this.style.background = "#193c63";
-	this.style.color = "white";
-	
-	switch(this.id)
+	$('body').on('focus',".datepicker", function(){
+	    $(this).datepicker();
+	});
+
+
+
+	$('body').on('click','.category_level_2',function(){
+		var category_level_2_elements = document.getElementsByClassName('category_level_2');
+		for (var i = 0; i < category_level_2_elements.length; i++) {
+	    	category_level_2_elements[i].style.background = "#bac3cd";
+	    	category_level_2_elements[i].style.color = "black";
+		}
+
+		this.style.background = "#193c63";
+		this.style.color = "white";
+		
+		switch(this.id)
+		{
+			case "gen_stats":load_general_statistics();break;
+			case "adv_stats": load_advance_statistics();break;
+			case "emp_perf": load_employee_performance();break;
+			case "comment": load_comments();break;
+			default:load_dashboard();
+		}
+
+
+	});
+
+	$('body').on('click','a.dynamic_filter',function(){
+		console.log("in click filter");
+	var graph_type= this.id.split("-")[0];
+	var filter_of=this.id.split("-")[1];
+	var selected = this.id.split("-")[2];
+	console.log(graph_type+"-"+filter_of);
+	var filter_element= document.getElementsByName(graph_type+"_"+filter_of);
+	console.log(filter_element);
+	console.log(selected);
+	for(var i=0; i< filter_element.length;i++)
 	{
-		case "gen_stats":load_general_statistics();break;
-		case "adv_stats": load_advance_statistics();break;
-		case "emp_perf": load_employee_performance();break;
-		case "comment": load_comments();break;
-		default:load_dashboard();
+		if (selected=="all")
+			{filter_element[i].checked=true;}
+		if (selected=="clear")
+			{filter_element[i].checked=false;}
 	}
-
-
 });
 
-var heading_row = '<th class="category_level_2"><span class="category_level_2_text">Dashboard</span></th>';
-	// heading_row += '<th class="category_level_2" id="gen_stats"><span class="category_level_2_text" >General Statistics</span></th>';
-	heading_row+='<th class="category_level_2" id="adv_stats"><span class="category_level_2_text" >Advance Statistics</span></th>';
-	heading_row+='<th class="category_level_2" id="emp_perf"><span class="category_level_2_text" >Employee perfomance result</span></th>';
-	heading_row+='<th class="category_level_2" id="comment"><span class="category_level_2_text" >Comments</span></th>';
-	// console.log("in here");
-$("tr#table_heading").append(heading_row);
+	$('body').on('click','a.back_link',function(){
+						console.log("in back link click");
+						console.log(this.id);
+						var graph_type= (this.id).split("_")[0];
+						var parent_node=document.getElementById(graph_type+"_quick_links");
+						var to_b_removed = document.getElementById(graph_type+"_quick_links").childNodes;
+						console.log(to_b_removed);
+						for(var i=0;i< to_b_removed.length;i++)
+						{
+							var temp = to_b_removed[i].id;
 
-var host = 'https://bizviewz.com:8080/feedback-review';
-				var graph_c = '/company';
-				var company_id = '/1';
-				var params ='/graphs'
-				var uri='';
-				// var dashboard_stats = $.ajax({
-				// 	  url: uri.concat(host,graph_c,company_id,params),
-			 //          dataType: 'jsonp',
-			 //          type: 'GET',
-			 //          beforeSend: function(xhr){xhr.setRequestHeader('sessionId', '92787ff9e38c46028601402c3fec3772');},
-			 //          cache: false,
-			 //          // jsonp: 'handle_data',
-			 //          crossDomain:true,
-			 //          async:false,
-				// 	  success: function(response){
-				// 	  	graph_list=response;
-				// 	  	d_index = find_index_of("dashboard");
-				// 	  	// console.log(d_index);
-				// 	  	console.log(graph_list);
-				// 	  	prepare_graph_list(graph_list);
-				// 	  	// load_dashboard(d_index,graph_list[d_index]["graphId"]);
-				// 	  	load_advance_statistics();
-				// 	  }
-				// });
+							if(temp!==undefined && parseInt((temp.split("_"))[2]) > parseInt((this.id).split("_")[2]))
+							 {
+							 	parent_node.removeChild(to_b_removed[i]);
+							 }
+						}
+						console.log((this.id).split("_")[2]);
 
-						graph_list= $GLOBALS['graphs'];
+						if (parseInt((this.id).split("_")[2]) == -2)
+							parent_id=-1;
+						else
+							parent_id=parseInt((this.id).split("_")[2]);
+						console.log("----"+this.innerHTML);
+
+						makeSubGraph(graph_type,(this.id).split("_")[1],parent_id);
+						
+					});
+
+	$('body').on('click','.filter_dropdown_style',function(){
+						var elements= this.parentNode.children;
+						// document.getElementsByClassName("filter_dropdown_list");
+						elements[1].style.visibility=elements[1].style.visibility=="visible"?"hidden":"visible";
+						for (var i = 0; i < elements[1].children.length; i++) {
+						        elements[1].children[i].style.visibility=elements[1].children[i].style.visibility=="visible"?"hidden":"visible";
+						    }
+
+					});
+
+	$('body').on('click','.filter_list_input',function (){
+						addFilter(this.id,this.name);
+						make_graph_with_filters();
+					});
+
+
+  // $('body').on('click','#login',function(){
+
+  	var uname=document.getElementById("username");
+  	var pword=document.getElementById("password");
+  	console.log("when clicked login");
+  	// var temp= { username: "bizviewz@outlook.com", password: "bizviewz" };
+  	// console.log(temp);
+  	var login_url = 'https://bizviewz.com:8080/feedback-review/login';
+//   	var send_login = $.ajax({
+//   		url: 'https://www.bizviewz.com:8080/feedback-review/login',
+// 				          type: 'POST',
+// 				          // dataType: 'jsonp',
+				          
+// 				          dataType : "application/json",
+// 				          contentType:'application/x-www-form-urlencoded',
+// 				          data: {username: "bizviewz@outlook.com", password: "bizviewz"},
+// 				          // cache: false,
+// 				          jsonp: 'handle_data',
+// 				          crossDomain:true,
+// 				          async:false,
+// 				          // beforeSend: function(xhr){xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');},
+// // 						  complete: function(resp){
+// //        				 		session_id=resp.getResponseHeader('sessionId');
+// // console.log(session_id);    					}
+//   					});
+
+var client = new XMLHttpRequest();
+  client.open("POST", "https://bizviewz.com:8080/feedback-review/login",false);
+  client.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+   var temp = "username=bizviewz@outlook.com&password=bizviewz";
+  var a=client.send(temp);
+client.onload = function() {
+}
+
+client.onreadystatechange = function(){
+   if(client.readyState == 4){
+      
+   }
+ }
+
+
+ set_session_id(client.getResponseHeader('sessionId'));
+ set_company_id(JSON.parse(client.responseText));
+
+ // client.close();
+
+
+	var heading_row = '<th class="category_level_2"><span class="category_level_2_text">Dashboard</span></th>';
+		// heading_row += '<th class="category_level_2" id="gen_stats"><span class="category_level_2_text" >General Statistics</span></th>';
+		heading_row+='<th class="category_level_2" id="adv_stats"><span class="category_level_2_text" >Advance Statistics</span></th>';
+		heading_row+='<th class="category_level_2" id="emp_perf"><span class="category_level_2_text" >Employee perfomance result</span></th>';
+		heading_row+='<th class="category_level_2" id="comment"><span class="category_level_2_text" >Comments</span></th>';
+		// console.log("in here");
+	$("tr#table_heading").append(heading_row);
+
+	// var host = 'https://www.bizviewz.com:8080/feedback-review';
+	// 				var graph_c = '/company/';
+					
+	// 				 var params ='/graphs';
+
+	// 				var uri='';
+	// 				console.log(uri.concat(host,graph_c,company_id,params));
+	// 				console.log(typeof uri);
+	// 				var dashboard_stats = $.ajax({
+	// 					  url: uri.concat(host,graph_c,company_id,params),
+	// 					  headers: {'sessionid': session_id},
+	// 			          // dataType: 'jsonp',
+	// 			          contentType: 'application/javascript;charset=UTF-8',
+	// 			          type: 'GET',
+	// 		          cache: false,
+	// 		          // jsonp: 'handle_data',
+	// 		          crossDomain:true,
+	// 		          async:false,
+	// 				  success: function(response){
+	// 				  	graph_list=response;
+	// 				  	// d_index = find_index_of("dashboard");
+	// 				  	console.log(response);
+	// 				  	// console.log(graph_list);
+	// 				  	// prepare_graph_list(graph_list);
+	// 				  	// load_dashboard(d_index,graph_list[d_index]["graphId"]);
+	// 				  	// load_advance_statistics();
+	// 				  },
+	// 				  error:function(a,b,c){
+	// 				  	alert(a);
+	// 				  }
+
+	// 			});
+
+					
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://bizviewz.com:8080/feedback-review/company/"+company_id+"/graphs",false);
+  xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
+  xhr.setRequestHeader('sessionId', session_id);
+   xhr.onreadystatechange = function() {
+//   if (xhr.readyState == 4) {
+//   	console.log("inside ---<><><><><<>");
+// console.log(xhr.responseText);
+// if(xhr.status  == 200) 
+//                   console.log(xhr.responseText); 
+//               else
+//                  console.log("err"+xhr.responseText); 
+//   }
+}
+  xhr.send();
+  graph_list= JSON.parse(xhr.responseText);
+
+	// 					graph_list= graphs;
 						d_index = find_index_of("dashboard");
-						// console.log(d_index);
+						console.log(d_index);
 					  	console.log(graph_list);
 					  	prepare_graph_list(graph_list);
-					  	// load_dashboard(d_index,graph_list[d_index]["graphId"]);
-					  	load_advance_statistics();
+					  	    
 
+					  	load_dashboard(d_index,graph_list[d_index]["graphId"]);
+					  	// load_advance_statistics();
+					  	populateDefaultDates("overview");
+	populateDefaultDates("trends");
 
 
 });
+
+
+
+function set_session_id(id)
+{
+	session_id=id;
+}
+
+function set_company_id(response_hash)
+{
+	company_id=response_hash.companyId;
+	if(company_id==-1)
+		{company_id=1;}
+
+}
 
 function prepare_graph_list(graphs)
 {  graph_list_names = new Object();
+	console.log("in prepare list");
 	console.log(graph_list.length);
 	for(var i=0;i < graph_list.length;i++)
 	{	
 		graph_list_names[graph_list[i]["name"]]={};
-		graph_list_names[graph_list[i]["name"]]=graph_list[i]["graphId"]
+		graph_list_names[graph_list[i]["name"]]=graph_list[i]["graphId"];
 	}
 	console.log(graph_list_names);
 }
@@ -269,15 +434,14 @@ function load_current_day_dashboard(dashboard_index,dashboard_graphID,from_date)
   	var someFormattedDate = yy+mm+dd ;
   	// var someFormattedDate='20141120';
 				var host = 'https://bizviewz.com:8080/feedback-review';
-				var graph_c = '/company';
-				var company_id = '/1/graph/';
+				var path = '/feedback-review/company'+company_id+'/graph/';
 				
 				var uri='';
 				filters_g='startDate='+someFormattedDate+'&endDate='+someFormattedDate;
 				params='/statistics?'+filters_g;
 
 				var dashboard_stats = $.ajax({
-					  url: uri.concat(host,graph_c,company_id,dashboard_graphID,params),
+					  url: uri.concat(host,path,dashboard_graphID,params),
 			          dataType: 'jsonp',
 			          type: 'GET',
 			          cache: false,
@@ -306,9 +470,9 @@ function load_one_year_data_dashboard(dashboard_index,dashboard_graphID)
 	// var from_date = to_date.setDate(to_date.getDate() - 365);
   	// var someFormattedDate = yy+mm+dd ;
   				var someFormattedDate='20141120';
-				var host = 'https://bizviewz.com:8080/feedback-review';
-				var graph_c = '/company';
-				var company_id = '/1/graph/';
+				var host = 'https://bizviewz.com:8080';
+				var path = '/feedback-review/company'+company_id+'/graph/';
+			
 				var start_date=(to_date.getFullYear()-1).toString()+(to_date.getMonth()+1).toString()+to_date.getDate().toString();
 				var end_date=to_date.getFullYear().toString()+(to_date.getMonth()+1).toString()+to_date.getDate().toString();
 				var uri='';
@@ -316,7 +480,7 @@ function load_one_year_data_dashboard(dashboard_index,dashboard_graphID)
 				params='/statistics?'+filters_g;
 
 				var dashboard_stats = $.ajax({
-					  url: uri.concat(host,graph_c,company_id,dashboard_graphID,params),
+					  url: uri.concat(host,path,dashboard_graphID,params),
 			          dataType: 'jsonp',
 			          type: 'GET',
 			          cache: false,
@@ -402,39 +566,69 @@ function load_advance_statistics(){
 	var overview_basic_filters;
 	var trends_basic_filters;
     var adv_stats_elements =["overview","trends"];
+    console.log("in adv stats load");
     for(var i=0 ;i< adv_stats_elements.length;i++)
 		{
 
 			var basic_filters='<table id='+adv_stats_elements[i]+"_basic_filters"+' class="basic_filters">';
-			basic_filters+='<tr><td id='+adv_stats_elements[i]+"_branch"+'>Branch id<select id="branch_id"></select></td>';
-			basic_filters+='<td id='+adv_stats_elements[i]+"_from_date_filter"+'><p>Start Date: <input type="text" class="datepicker"></p></td>';
-			basic_filters+='<td id='+adv_stats_elements[i]+"_to_date_filter"+'>End date<input id="end_date" class="datepicker" /></td></tr></table>';
+			basic_filters+='<tr>';
+			var b_filters='<td id='+adv_stats_elements[i]+"_branch"+'><a class="filter_dropdown_style">Select branch</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
+			branchesList=company_data[0]["branches"];
+			console.log(branchesList);
+			for(var j=0; j<branchesList.length;j++)
+			{
+				console.log(branchesList[i]["name"]);
+				
+				b_filters+='<li class="filter_list_elements"><input type="checkbox" class="filter_list_input" name='+adv_stats_elements[i]+"_branches"+' id='+branchesList[j]["name"]+'>&nbsp;&nbsp;'+branchesList[j]["name"]+'</input></li>';
+			}
+
+			b_filters+='<li class="filter_list_elements" ><a class="dynamic_filter" style="font-size: 11px; color: blue; float: right; margin-right: 2px; padding-top: 3px;" id='+adv_stats_elements[i]+"-"+"branches"+"-clear"+'> clear </a>';
+			b_filters+='<a class="dynamic_filter" style="font-size: 11px; color: blue; float: left; margin-left: 2px;padding-top: 3px;" id='+adv_stats_elements[i]+"-"+"branches"+"-all"+'> all </a></li></ul></td>';
+
+			basic_filters+=b_filters;
+			 // var b_filters='';
+			basic_filters+='<td class="startDate" id='+adv_stats_elements[i]+"_from_date_filter"+'>Start Date: <input type="text" id="start_date" class="datepicker startDate"></p></td>';
+			basic_filters+='<td class="endDate" id='+adv_stats_elements[i]+"_to_date_filter"+'>End date<input id="end_date" class="datepicker endDate" /></td>';
+			basic_filters+='<td id='+adv_stats_elements[i]+"filter_button"+' rowspan=2><button class="filter_button">Filter</button></td></tr>'
 			var quick_links='';
+			    
 			if(adv_stats_elements[i]=="overview")
 			{
-				quick_links='<div id="overview_quick_links"><a id="-2" class="back_link" href="index_new.php">Home</a></div>';
-				adv_overview_div = '<div id="adv_overview_filters">Overview'+basic_filters+quick_links+'<table id="adv_overview_graph"><tr><td id="overview_graph"></td></tr></table></div>';
+				quick_links='<div id="overview_quick_links"><a id="overview_overview_-2" class="back_link">Overview</a></div>';
+				quick_links+='<div id="overview_container_graph_child" name="overview_level_identify_div" style="display:hidden;"></div>';
+             	quick_links+='<div id="overview_container_graph_id" name="overview_id_identify_div" style="display:hidden;"></div>';
+                quick_links+='<div id="overview_container_graph_filter" name="overview_filter_identify_div" style="display:hidden;"></div>'
+				custom_filters='<tr id="overview_filter_row"></tr></table>';
+				adv_overview_div = '<div id="adv_overview_filters">Customer Experience'+basic_filters+custom_filters+quick_links+'<table id="adv_overview_graph"><tr><td id="overview_graph"></td></tr></table></div>';
 			}
 			else
 			{	
-				quick_links='<div id="trends_quick_links"><a id="-2" class="back_link" href="index_new.php">Home</a></div>';
-				adv_trends_div = '<div id="adv_trends_filters">Trends'+basic_filters+quick_links+'<table id="adv_trends_graph"><tr><td id="trends_graph"></td></tr></table></div>';
+				quick_links='<div id="trends_quick_links"><a id="trends_trends_-2" class="back_link">Trends</a></div>';
+				quick_links+='<div id="trends_container_graph_child" name="trends_level_identify_div" style="display:hidden;"></div>';
+             	quick_links+='<div id="trends_container_graph_id" name="trends_id_identify_div" style="display:hidden;"></div>';
+                quick_links+='<div id="trends_container_graph_filter" name="trends_filter_identify_div" style="display:hidden;"></div>'
+				custom_filters='<tr id="trends_filter_row"></tr></table>';
+				adv_trends_div = '<div id="adv_trends_filters">Trends'+basic_filters+custom_filters+quick_links+'<table id="adv_trends_graph"><tr><td id="trends_graph"></td></tr></table></div>';
 			}
 		}// document.getElementById("activeDiv").className="advance_stats";
 	
 	
 
 	var adv_stats_div = adv_overview_div + adv_trends_div;
-	adv_overview_index = find_index_of("general_overview");
-	adv_trends_index = find_index_of("general_trend");
+	adv_overview_index = find_index_of("adv:Customer Experience");
+	adv_trends_index = find_index_of("adv:Trends");
+	
+
+	// set_branch_filter("overview",company_data["branches"]);
 	$('.main_data').html(adv_stats_div);
+
+	set_filter("overview",graph_list[adv_overview_index]["filterList"]);
+	set_filter("trends",graph_list[adv_trends_index]["filterList"]);
+
 	load_overview(adv_overview_index,graph_list[adv_overview_index]["graphId"]);
 	load_trends(adv_trends_index,graph_list[adv_trends_index]["graphId"]);
 	
-				$('body').on('click','a.filter_list_input',function (){
-								addFilter(this.id,this.name);
-								make_graph_with_filters();
-					});
+				
 
 				$('body').on('click','.label',function (){
 
@@ -446,6 +640,8 @@ function load_advance_statistics(){
 						collect_stats_populate_graph(this.id,response[params_index]["attributeList"],response[params_index]["filterList"],applyFilter);
 
 				});
+
+	
 
 }
 
@@ -472,31 +668,39 @@ function load_overview(adv_overview_index,adv_overview_graphId)
 				filters_g='startDate='+start_date+'&endDate='+end_date;
 				params='/statistics?'+filters_g;
 
-				var response1= $.ajax({
-			          url: uri.concat(host,graph_c,company_id,adv_overview_graphId,params),
-			          dataType: 'jsonp',
-			          type: 'GET',
-			          cache: false,
-			          crossDomain:true,
-			          async:false,
-			          success: function( response_g ) {
-						overview_data=response_g;
-					    // renderLayout(response);
-					    console.log(overview_data);
-					    make_graph_obj(overview_data,"adv_overview",adv_overview_index);
-					    set_data_of_series_normal(hash_obj,-1,null);
-				        // overview_graph = response[1];
-				  //       graph_id=overview_graph["graphId"];
-				  //       graph_type=overview_graph["type"];
-				  //       attributeList= overview_graph["attributeList"];
-				  //       filterList=overview_graph["filterList"];
-				  //       console.log(filterList);
-				  //       graph_name=overview_graph["name"]
-				        set_graph_level("overview",-1);
-						// $("div#quick_links").append(' > <a class="back_link" id="-2" href="index_new.php" >overview</a>');
-				  //       plot_graph(response[1]);
-    			}	
-			});
+			// 	var response1= $.ajax({
+			//           url: uri.concat(host,graph_c,company_id,adv_overview_graphId,params),
+			//           dataType: 'jsonp',
+			//           type: 'GET',
+			//           cache: false,
+			//           crossDomain:true,
+			//           async:false,
+			//           success: function( response_g ) {
+			// 			overview_data=response_g;
+			// 		    // renderLayout(response);
+			// 		    console.log(overview_data);
+			// 		    make_graph_obj(overview_data,"adv_overview",adv_overview_index);
+			// 		    set_data_of_series_normal(hash_obj,-1,null);
+			// 	        // overview_graph = response[1];
+			// 	  //       graph_id=overview_graph["graphId"];
+			// 	  //       graph_type=overview_graph["type"];
+			// 	  //       attributeList= overview_graph["attributeList"];
+			// 	  //       filterList=overview_graph["filterList"];
+			// 	  //       console.log(filterList);
+			// 	  //       graph_name=overview_graph["name"]
+			// 	        set_graph_level("overview",-1);
+			// 			// $("div#quick_links").append(' > <a class="back_link" id="-2" href="index_new.php" >overview</a>');
+			// 	  //       plot_graph(response[1]);
+   //  			}	
+			// });
+
+// overview_data=sid1;
+// 					    // renderLayout(response);
+// 					    console.log(overview_data);
+// 					    make_graph_obj(overview_data,"adv_overview",adv_overview_index);
+// 					    set_data_of_series_normal(hash_obj,-1,null);
+// 					    				        set_graph_level("overview",-1);
+
 }
 
 function load_trends(adv_trends_index,adv_trends_graphId)
@@ -522,31 +726,41 @@ if (hash_obj.hasOwnProperty(graph_list[adv_trends_index]["name"]))
 				console.log("in load trends");
 				console.log(start_date);
 				console.log(end_date);
-				var response1= $.ajax({
-			          url: uri.concat(host,graph_c,company_id,adv_trends_graphId,params),
-			          dataType: 'jsonp',
-			          type: 'GET',
-			          cache: false,
-			          crossDomain:true,
-			          async:false,
-			          success: function( response_g ) {
-						trends_data=response_g;
+			// 	var response1= $.ajax({
+			//           url: uri.concat(host,graph_c,company_id,adv_trends_graphId,params),
+			//           dataType: 'jsonp',
+			//           type: 'GET',
+			//           cache: false,
+			//           crossDomain:true,
+			//           async:false,
+			//           success: function( response_g ) {
+			// 			trends_data=response_g;
+			// 		    // renderLayout(response);
+			// 		    console.log(trends_data);
+			// 		    make_graph_obj(trends_data,"adv_trends",adv_trends_index);
+			// 			set_data_of_series_trends(hash_obj,-1,"listDailyAttributeStatisticValues",7);
+			// 	        // overview_graph = response[1];
+			// 	  //       graph_id=overview_graph["graphId"];
+			// 	  //       graph_type=overview_graph["type"];
+			// 	  //       attributeList= overview_graph["attributeList"];
+			// 	  //       filterList=overview_graph["filterList"];
+			// 	  //       console.log(filterList);
+			// 	  //       graph_name=overview_graph["name"]
+			// 	        set_graph_level("trends",-1);
+			// 			// $("div#quick_links").append(' > <a class="back_link" id="-2" href="index_new.php" >overview</a>');
+			// 	  //       plot_graph(response[1]);
+   //  			}	
+			// });
+
+trends_data=sid2;
 					    // renderLayout(response);
+					    console.log("in trends query");
+					    console.log(trends_data);
 					    console.log(trends_data);
 					    make_graph_obj(trends_data,"adv_trends",adv_trends_index);
-						set_data_of_series_trends(hash_obj,-1,"listDailyAttributeStatisticValues",7);
-				        // overview_graph = response[1];
-				  //       graph_id=overview_graph["graphId"];
-				  //       graph_type=overview_graph["type"];
-				  //       attributeList= overview_graph["attributeList"];
-				  //       filterList=overview_graph["filterList"];
-				  //       console.log(filterList);
-				  //       graph_name=overview_graph["name"]
-				        set_graph_level("trends",-1);
-						// $("div#quick_links").append(' > <a class="back_link" id="-2" href="index_new.php" >overview</a>');
-				  //       plot_graph(response[1]);
-    			}	
-			});
+						set_data_of_series_trends(hash_obj,-1,"listDailyAttributeStatisticValues",30);
+										        set_graph_level("trends",-1);
+
 }
 function make_graph_with_filters(){
 				applyFilter=[];
@@ -575,7 +789,7 @@ function set_graph_level(graph_type,parent)
 function collect_stats_populate_graph(graph_id,attributeList,filterList,applyFilter)
 {						
 	options.xAxis.categories=[];
-	set_chart_type();
+	// set_chart_type();
 	var host = 'https://bizviewz.com:8080/feedback-review/company/1/graph/';
 	var uri='';
 	graphsValues={};
@@ -626,6 +840,8 @@ function make_graph_obj(data,name,index)
 							// hash_obj= new Object()
 							hash_obj[name]={};
 						console.log(hash_obj);
+						hash_obj[name]["filterList"]={}
+						hash_obj[name]["filterList"]=graph_list[index]["filterList"];
 						for(var i=0;i< attributeList.length;i++)
 						{						  
 						var attr_id=attributeList[i]["attributeId"];
@@ -687,6 +903,8 @@ function set_data_of_series_normal(hash_obj,parent_id,days)
 						
 }
 
+					
+
 function set_chartseries_data_normal(category_ids,hash_obj)
 {
 	for (var id in category_ids)
@@ -701,6 +919,7 @@ function set_chartseries_data_normal(category_ids,hash_obj)
 
 function set_data_of_series_trends(hash_obj,parent_id,period,days)
 	{
+		console.log("in set data of series trends");
 		var child_found=-1;
 		var category_ids=[];
 		options_trends.xAxis.categories=[];
@@ -731,9 +950,10 @@ function set_data_of_series_trends(hash_obj,parent_id,period,days)
 				var temp={data:[],
 					showInLegend:true,
 					name: hash_obj["adv_trends"][attr_id]["name"],
-					point:{events: { 'click': function(e) {console.log(this.x);console.log(this.y);makeSubGraph(this.category); } }}
+					point:{events: { 'click': function(e) {console.log("when clicked trends");console.log(this.series.name);makeSubGraph("trends",this.series.name); } }}
                    		}
 				series_data.push(temp);
+				console.log(attr_id);
 				handle_trend_graph(hash_obj,attr_id,period,days);
 				category_ids.push(parseInt(attr_id));						
 			}
@@ -752,13 +972,16 @@ function set_data_of_series_trends(hash_obj,parent_id,period,days)
 
 function handle_normal_graph(hash_obj,attr_id)
 {
+	console.log("in handle");
 	var a=0,b=0,c=0;
 	if(hash_obj["adv_overview"][attr_id]["type"]=="weighted")
 								{
-								 a+=hash_obj["adv_overview"][attr_id]["listCountPPl"][0]+hash_obj["adv_overview"][attr_id]["listCountPPl"][1];
-								 b+=hash_obj["adv_overview"][attr_id]["listCountPPl"][2];
-								 c+=hash_obj["adv_overview"][attr_id]["listCountPPl"][3]+hash_obj["adv_overview"][attr_id]["listCountPPl"][4];
-
+										if(hash_obj["adv_overview"][attr_id]["listCountPPl"]!=null)
+										{
+										 a+=hash_obj["adv_overview"][attr_id]["listCountPPl"][0]+hash_obj["adv_overview"][attr_id]["listCountPPl"][1];
+										 b+=hash_obj["adv_overview"][attr_id]["listCountPPl"][2];
+										 c+=hash_obj["adv_overview"][attr_id]["listCountPPl"][3]+hash_obj["adv_overview"][attr_id]["listCountPPl"][4];
+										}
 								 hash_obj["adv_overview"][attr_id]["count_of_ppl"]=[a,b,c];
 
 						  		}
@@ -784,9 +1007,11 @@ function handle_trend_graph(hash_obj,attr_id,period,days)
 					hash_obj["adv_trends"][attr_id][d]= {} ;
 					for(var i =1; i<=hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"].length;i++)
 					{
-						a+=(i*(hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"][i-1]));
-						n+=hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"][i-1];
-												     // console.log(a);
+						if (hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"]!== null)
+						{
+							a+=(i*(hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"][i-1]));
+							n+=hash_obj["adv_trends"][attr_id][period][start]["listCountPPL"][i-1];
+						}						     // console.log(a);
 						hash_obj["adv_trends"][attr_id][hash_obj["adv_trends"][attr_id][period][start]["date"]]["count_of_ppl"]={};
 						if (n!=0)
 							hash_obj["adv_trends"][attr_id][hash_obj["adv_trends"][attr_id][period][start]["date"]]["count_of_ppl"]= parseInt(a/n) ;
@@ -805,14 +1030,14 @@ function handle_trend_graph(hash_obj,attr_id,period,days)
 
 function set_chartseries_data_trends(category_ids,hash_obj,series_name_array,subgraph_name)
 {
-	console.log(category_ids);
+	console.log("in set data trends");
 	console.log(series_name_array);
 	for(var j=0 ;j< series_name_array.length;j++)
 	{
 		for (var id=0; id<category_ids.length;id++)
 		{
-			console.log("in charts---");
-			console.log(hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]);
+			// console.log("in charts---");
+			// console.log(hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]);
 			if (hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]!==undefined)
 				series_data[id]["data"].push(hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]["count_of_ppl"]);
 			else
@@ -820,7 +1045,7 @@ function set_chartseries_data_trends(category_ids,hash_obj,series_name_array,sub
 		}
 	}
 	options_trends.series=series_data;
-	console.log("chartseries");
+	console.log(options_trends);
 	console.log(options_trends.series);
 }
 					
@@ -847,6 +1072,23 @@ function populate_summary(options)
 		tbl.html=row;
 							
 }
+
+function populateDefaultDates(graph_type) {
+	console.log("inpopulate fileter !!!!!!!!!!!!");
+    var to_date = new Date();
+    var start_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-7);
+	var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
+	
+	// var tble=document.getElementById(graph_type+"_basic_filters");
+	// console.log(tble);
+	// var td = tble.getElementById(graph_type+"_from_date_filter");
+	// // var td = tr.getElementById(graph_type+'_from_date_filter')
+	// console.log(td);
+	// $('#'+graph_type+'_from_date_filter').firstChild.val($.datepicker.formatDate('yy-mm-dd', start_date));
+ //    $('.endDate').val($.datepicker.formatDate('yy-mm-dd', end_date));
+
+}
+
 
 function populate_filter(filterList)
 {						// console.log(filterList);
@@ -886,15 +1128,6 @@ $(document).on('change', 'select', function () {
     					// alert(this.value);
 });
 
-$('body').on('click','.filter_dropdown_style',function(){
-						var elements= this.parentNode.children;
-						// document.getElementsByClassName("filter_dropdown_list");
-						elements[1].style.visibility=elements[1].style.visibility=="visible"?"hidden":"visible";
-						for (var i = 0; i < elements[1].children.length; i++) {
-						        elements[1].children[i].style.visibility=elements[1].children[i].style.visibility=="visible"?"hidden":"visible";
-						    }
-
-					});
 
 					$('body').on('click','.filter_list_elements',function(){
 
@@ -914,7 +1147,7 @@ $('body').on('click','.filter_dropdown_style',function(){
 
 					}
 
-					function addFilter(name,value)
+					function addFilter(id,name)
 					{
 						var element = document.getElementById(value);
 						if(typeof (element) != undefined && element != null && typeof (element) != 'undefined')
@@ -933,18 +1166,22 @@ function makeSubGraph(graph_type,whose_subgraph)
 {
 	console.log("in make subgraph");
 	console.log(whose_subgraph);
-	for(id in hash_obj)
+	var current_id;
+	for(id in hash_obj["adv_"+graph_type])
 	{
-		if(hash_obj[id]["name"]==whose_subgraph){
+		// console.log(hash_obj["adv_"+graph_type][id]["name"]);
+		if(hash_obj["adv_"+graph_type][id]["name"]==whose_subgraph){
 		parent_id=id;
+		current_id=hash_obj["adv_"+graph_type][id]["parent_id"];
 		}
 	}
-						// console.log(parent_id);
-	setQuickLink(graph_type,whose_subgraph);
+						 console.log(parent_id);
+
+	setQuickLink(graph_type,whose_subgraph,current_id);
 	if (graph_type=="overview")
-		set_data_of_series_normal(hash_obj,parent_id,"listCountPPl_7Days",hash_obj);
+		set_data_of_series_normal(hash_obj,parent_id,"listCountPPl_7Days");
 	else
-		set_data_of_series_trends(hash_obj,parent_id,"listCountPPl_7Days",hash_obj);						
+		set_data_of_series_trends(hash_obj,parent_id,"listDailyAttributeStatisticValues",30);						
 }
 
 			
@@ -1010,15 +1247,66 @@ function setFilter(applyFilter)
 	}						
 }
 
-function setQuickLink(graph_type,whose_subgraph)
+function setQuickLink(graph_type,whose_subgraph,parent_id)
 {
-	var level = ((document.getElementsByName(graph_type+"_level_identify_div"))[0].id.split("_"))[2];
-	if(document.getElementById("quick_links").lastChild.id!=level && document.getElementById("quick_links").lastChild.innerHTML!=category)
-		$("div#quick_links").append(' > <a class="back_link" id='+level+'>'+whose_subgraph+'</a>');
-	else 
-		document.getElementById("quick_links").lastChild.innerHTML = whose_subgraph;
+	console.log("in quick links");
+	console.log(parent_id);
+	var active_graph_level=document.getElementById(graph_type+"_quick_links").lastChild;
+	console.log(active_graph_level);
+	if(parseInt(active_graph_level.id.split("_")[2]) < parent_id)
+		$("div#"+graph_type+"_quick_links").append('<a class="back_link" id='+graph_type+"_"+whose_subgraph+"_"+parent_id+'>'+" > "+whose_subgraph+'</a>');
+	else if (parseInt(active_graph_level.id.split("_")[2])==parent_id)
+	{
+
+		document.getElementById(graph_type+"_quick_links").lastChild.innerHTML = " > "+whose_subgraph;
+	}
+	else
+		console.log("wrong click");
 }
 
+function set_filter(graph_type,filterList)
+{
+console.log("in set filetr");
+var row = document.getElementById(graph_type+"_filter_row");
+console.log(filterList);
+  var filters='';
+
+						for(var i in filterList)
+						{
+							filters+='<td><a class="filter_dropdown_style">'+filterList[i]["attributeString"]+'</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
+							for(var j in filterList[i]["attributeValues"])
+								{
+									filters+='<li class="filter_list_elements"><input type="checkbox" class="filter_list_input" name='+graph_type+"_"+filterList[i]["attributeString"]+' id='+filterList[i]["attributeValues"][j]["name"]+'>&nbsp;&nbsp;'+filterList[i]["attributeValues"][j]["name"]+'</input></li>';
+								}
+							filters+='<li class="filter_list_elements" ><a class="dynamic_filter" style="font-size: 11px; color: blue; float: right; margin-right: 2px; padding-top: 3px;" id='+graph_type+"-"+filterList[i]["attributeString"]+"-clear"+'> clear </a>';
+							filters+='<a class="dynamic_filter" style="font-size: 11px; color: blue; float: left; margin-left: 2px;padding-top: 3px;" id='+graph_type+"-"+filterList[i]["attributeString"]+"-all"+'> all </a></li></ul></td>';
+							var x = row.insertCell(-1);
+							x.innerHTML=filters;
+							filters='';
+						}
+
+}
+
+function set_branch_filter(graph_type, branchesList)
+{
+var row = document.getElementById("overview_basic_filters");
+console.log("ins et brnach");
+console.log(row);
+var filters='';
+filters+='<ul class="filter_dropdown_list" style="visibility: hidden;"> ';
+for(var i in branchesList)
+{
+	
+	filters+='<li class="filter_list_elements"><input type="checkbox" class="filter_list_input" name='+graph_type+"_"+branchesList[i]["name"]+' id='+branchesList[i]["name"]+'>&nbsp;&nbsp;'+filterList[i]["attributeValues"][j]["name"]+'</input></li>';
+}
+
+filters+='<li class="filter_list_elements" ><a class="dynamic_filter" style="font-size: 11px; color: blue; float: right; margin-right: 2px; padding-top: 3px;" id='+graph_type+"-"+"branches"+"-clear"+'> clear </a>';
+filters+='<a class="dynamic_filter" style="font-size: 11px; color: blue; float: left; margin-left: 2px;padding-top: 3px;" id='+graph_type+"-"+"branches"+"-all"+'> all </a></li></ul>';
+// row.innerHTML(filters);
+
+
+
+}
 function updateFilter(filter_name)
 {
 	for(var i=0;i<applyFilter.length;i=i+2)
@@ -1028,19 +1316,9 @@ function updateFilter(filter_name)
 	}
 }
 
+
 					
-					$('body').on('click','a.back_link',function(){
-						var to_b_removed = document.getElementById("quick_links").childNodes.length - 2;
-						for(var i=0;i< to_b_removed;i++)
-						if(document.getElementById("quick_links").lastChild.innerHTML!=this.innerHTML)
-						{
-							var node=document.getElementById("quick_links").lastChild;
-							var parent_node=document.getElementById("quick_links");
-							parent_node.removeChild(node);
-						}
-						makeSubGraph(this.innerHTML);
-						
-					});
+					
 
 					$('body').on('click','a.display_filters_graph',function(){
 						var current_node=this.parentNode;

@@ -11,7 +11,7 @@
 <script type="text/javascript" src="javascript/html5.js"></script>
 <![endif]-->
 </head>
-
+<?php header('Access-Control-Allow-Origin: *'); ?>
 <?php include("header.php"); ?>
 
 
@@ -20,12 +20,12 @@
     <div class="content">
     <form action="index.php" method="post" accept-charset="utf-8">
       <label>Username</label>
-        <input name="username" type="text" placeholder="Email Address" value="">
+        <input id="username" type="text" placeholder="Email Address" value="">
         <br>
         <br>
 
       <label>Password</label>
-      <input name="password" type="password" placeholder="Password" value="">
+      <input id="password" type="password" placeholder="Password" value="">
       <br>
       <br>
       <div class="login_actions" style="padding-right:0">

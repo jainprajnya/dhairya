@@ -1,15 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head> 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
-
+<meta http-equiv="Content-Type" content="application/x-www-form-urlencoded; charset=utf-8"/> 
+<meta http-equiv="Access-Control-Allow-Origin" content="*" />
 <title>Using Highcharts with PHP and MySQL</title>
 <link href="css/header_footer.css" rel="stylesheet" type="text/css">
 <link href="css/main.css" rel="stylesheet" type="text/css">
  
 <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.2.js"></script>
 <script type="text/javascript" src="css/bootstrap/js/bootstrap.min.js"></script>
 <!-- <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,700' rel='stylesheet' type='text/css'> -->
 <!-- <link href='http://fonts.googleapis.com/css?family=Oswald:300,700' rel='stylesheet' type='text/css'> -->
@@ -18,10 +17,10 @@
 <link href="css/layout.css" rel="stylesheet" type="text/css"> -->
 <link href='http://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
 <!-- <script src="jquery/jquery-1.11.1.js"></script> -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   
-  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<script type="text/javascript" src="https://code.highcharts.com/highcharts.js" ></script>
+  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script type="text/javascript" src="http://code.highcharts.com/highcharts.js" ></script>
 <script type="text/javascript" src="js/function.js" ></script>
 <link rel="stylesheet" type="text/css" href="css/jquery.datepick.css"> 
 <script type="text/javascript" src="js/jquery_timepicker.js"></script> 

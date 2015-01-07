@@ -26,9 +26,9 @@
 		</div>
 		</td>
 	</tr>
-	<div id="overview_level" name="overview_level_identify_div" style="display:hidden;"></div>
+	<!-- <div id="overview_level" name="overview_level_identify_div" style="display:hidden;"></div>
 				<div id="trends_level" name="trends_level_identify_div" style="display:hidden;"></div>
-                <div id="container_graph_filter" name="filter_identify_div" style="display:hidden;"></div>
+                <div id="container_graph_filter" name="filter_identify_div" style="display:hidden;"></div> -->
 	<tr class="category_level_1_row">
 	<td class="category_level_1"><img src="images/maketing_iocn_01.png" class="category_level_1_icons"> <span class="category_level_1_text" id="marketing">MARKETING</span></td>
 	</tr>

@@ -16,9 +16,9 @@
 </td> -->
 	<?php } else { ?>
 	<li class="wlecome"><a href="home.php" class="level1"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</span></a></li>
-	<li class="wlecome"><a href="about_us.php" class="level1"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About Us</span></a></li>
+	<li class="wlecome"><a href="about-us.php" class="level1"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About Us</span></a></li>
 	
-	<li class="wlecome"><a href="contact_us.php" class="level1 tooltip-viewport-bottom"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</span></a></li>
+	<li class="wlecome"><a href="contact-us.php" class="level1 tooltip-viewport-bottom"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</span></a></li>
 	
 	<li class="welcome"><a href="login.php" class="level1"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sign In</span></a></li></ul>
   <?php } ?>
