@@ -7,12 +7,27 @@ a,
 a label {
     cursor: pointer;
 }
+
+.comments_less{
+width: 180px;
+height: 40px;
+background-color: white;
+margin-right: 200px;
+font-size: 14px;
+float: right;
+border-radius: 5px;
+border: 1px solid;
+}
 #adv_overview_filters{
   margin-left: 70px;
   margin-top: 20px;
 
 }
-
+.main_graph_plot
+{
+  height: 500px;
+  width: 500px;
+}
 #overview_branch{
   height: 20px;
 }

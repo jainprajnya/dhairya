@@ -10,26 +10,30 @@
 <!--[if lte IE 8]>
 <script type="text/javascript" src="javascript/html5.js"></script>
 <![endif]-->
+<script src="http://code.jquery.com/jquery-1.11.2.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<!-- <script type="text/javascript" src="js/function.js" ></script> -->
 </head>
-<?php header('Access-Control-Allow-Origin: *'); ?>
 <?php include("header.php"); ?>
 
 
  <div id="login" class="container">
     <div class="contentHeader"><h1>Login</h1></div>
     <div class="content">
-    <form action="index.php" method="post" accept-charset="utf-8">
+    <form Method="post" Action="index.php">
       <label>Username</label>
-        <input id="username" type="text" placeholder="Email Address" value="">
+        <input id="username" type="text" name="username" placeholder="Email Address" value="">
         <br>
         <br>
 
       <label>Password</label>
-      <input id="password" type="password" placeholder="Password" value="">
+      <input id="password" type="password"  name="password" placeholder="Password" value="">
       <br>
       <br>
       <div class="login_actions" style="padding-right:0">
-        <button type="submit" class="btn btn-green" tabindex="3" name="loginSubmit">Login</button>
+        <button id="login_button" type="Submit" class="btn btn-green" tabindex="3" name="loginSubmit">Login</button>
       </div>
     </form>
      </div>
