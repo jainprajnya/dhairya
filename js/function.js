@@ -487,8 +487,8 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 						 	if ( attr_present && (hash_obj[dashboard_element][attr_id]["listCountPPl"]) !== null )						  
 							{
 						var neutral = hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][2];
-							var negative=hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][3]+hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][4];
-							var positive=hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][0]+hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][1];
+							var positive=hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][3]+hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][4];
+							var negative=hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][0]+hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][1];
 							var total=neutral+negative+positive;
 							var feedbacks_total=total
 							console.log(total);
@@ -501,8 +501,8 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 									console.log("in if");
 									day_nps+= '<td><table id="dash_day_nps"> <tr class= "col1col2"><th> Promoters</th> <th>Detractor</th><th>Passive</th></tr>';
 									day_nps+= '<tr><td><img class="dashboard_icons" src="images/Promoters_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Detractors_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Passives_Icon.png"></img></td></tr>';
-									day_nps+='<tr><td>'+(positive/total)+' %</td><td>'+(negative/total)+' %</td><td>'+(neutral/total)+' %</td></tr></table></td>';
-									table_heading+='<th style="font-size: 25px;">'+attributeList[i]["attributeString"]+": "+Math.abs((positive-negative)/total)+' %</th>';
+									day_nps+='<tr><td>'+((positive/total)*100)+' %</td><td>'+((negative/total)*100)+' %</td><td>'+((neutral/total)*100)+' %</td></tr></table></td>';
+									table_heading+='<th style="font-size: 25px;">'+attributeList[i]["attributeString"]+": "+Math.abs((positive-negative)*100/total)+' %</th>';
 
 								}
 
@@ -513,14 +513,15 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 									
 									day_nps+= '<td><table id="dash_day_nps"> <tr class= "col1col2"><th> Positive</th> <th>Negative</th><th>Neutral</th></tr>';
 									day_nps+= '<tr><td><img class="dashboard_icons" src="images/Positive_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Negative_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Neutral_Icon.png"></img></td></tr>';
-									day_nps+='<tr><td>'+(positive/total)+' %</td><td>'+(negative/total)+' %</td><td>'+(neutral/total)+' %</td></tr></table></td>';
-									table_heading+='<th style="font-size: 25px;">No. Of Feedbacks: '+feedbacks_total+'</th>';
+									day_nps+='<tr><td>'+((positive/total)*100)+' %</td><td>'+((negative/total)*100)+' %</td><td>'+((neutral/total)*100)+' %</td></tr></table></td>';
+									table_heading+='<th style="font-size: 25px;">Number of Feedbacks: '+feedbacks_total+'</th>';
 									
 									var temp_avg_rating=hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"];
 									for(var temp=0;temp<5;temp++)
 									{
 										avg_rating+=(temp+1)*temp_avg_rating[temp];
 									}
+									avg_rating=(avg_rating/total);
 								}
 
 							}
@@ -537,7 +538,7 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 							if(attributeList[i]["attributeString"].trim().toLowerCase().indexOf("overall_experience")>-1)
 								{
 									nofeedbacks_bool=1;
-									table_heading+='<th style="font-size: 25px;">No. Of Feedbacks: 0</th>';
+									table_heading+='<th style="font-size: 25px;">Number of Feedbacks: 0</th>';
 								}
 
 						   }						
@@ -555,7 +556,7 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 						{
 							console.log("in avg rating if");
 							table_heading+='<th style="font-size: 25px;">Average Rating</th>';
-							day_nps+='<td style="height:120px; text-align:center; font-size:50px;">'+(avg_rating/5)+'</td>';
+							day_nps+='<td style="height:120px; text-align:center; font-size:50px;">'+avg_rating+'</td>';
 						}
 
 						table_heading+='</tr>'
@@ -603,7 +604,7 @@ function load_advance_statistics(){
 			}
 			else
 			{
-				load_trends(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),30);
+				load_trends(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),7);
 			}
 		}
 
@@ -646,7 +647,7 @@ function set_current_elements(graph_name,graph_type)
 			 // var b_filters='';
 			basic_filters+='<td class="startDate" id='+graph_name+"_from_date_filter"+'>Start Date: <input type="text" id='+graph_name+"_start_date"+' class="datepicker startDate"></p></td>';
 			basic_filters+='<td class="endDate" id='+graph_name+"_to_date_filter"+'>End Date: <input id='+graph_name+"_end_date"+' class="datepicker endDate" /></td>';
-			basic_filters+='<td id='+graph_name+"filter_button"+' rowspan=2><button class="filter_button">Filter</button></td></tr>'
+			basic_filters+='<td id='+graph_name+"filter_button"+' rowspan=2><button class="filter_button">Apply</button></td></tr>'
 			var quick_links='';
 
 
@@ -864,7 +865,7 @@ function set_data_of_series_normal(hash_obj,parent_id,days,graph_name)
 						var category_ids=[];
 						options_overview.xAxis.categories=[];
 						series_data=[];
-						var series_name_array=["POOR","AVG","GOOD"];
+						var series_name_array=["1,2","3","4,5"];
 						// var color_array=[];
 						var color_array=['#FF7400','#FFCE00','#00B233']
 						var child_found=-1;
@@ -1156,7 +1157,7 @@ var adv_overview_div='';
 			}
 			else
 			{
-				load_trends(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),30);
+				load_trends(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),7);
 			}
 		}
 
