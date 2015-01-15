@@ -10,7 +10,8 @@ var graph_list_names;
  var applyFilter=[];
  var graph_list={};
  response_d={};
- var company_id = '1';
+ var branch_id_global='';
+ var company_id = '';
  var days_of_week=["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
  var full_days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
  var active_div="statistics"
@@ -287,7 +288,7 @@ var client = new XMLHttpRequest();
   }
   company_data = JSON.parse(xhr.responseText);
   console.log(company_data);
-  branch_id=company_data["branches"][0]["id"];
+  branch_id_global=branch_id=company_data["branches"][0]["id"];
 
 	d_index = find_index_of("Dashboard");
 	console.log("dashboard index is"+d_index);
@@ -357,7 +358,7 @@ function load_dashboard(dashboard_index,dashboard_graphID,branch_id){
 					delete hash_obj["Dashboard_current"];
 					
 					date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
-	                load_current_day_dashboard(dashboard_index,dashboard_graphID,date,date,branch_id);
+	                load_current_day_dashboard(dashboard_index,dashboard_graphID,date,date,branch_id_global);
 	            }
 	  }).each(function() {
 	  var opt = $(this).data().uiSlider.options;
@@ -389,14 +390,14 @@ function load_dashboard(dashboard_index,dashboard_graphID,branch_id){
 	  var start_date_overall=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-365);
 	  var start_date_today=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-7);
 	var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
-  load_current_day_dashboard(dashboard_index,dashboard_graphID,start_date_today,end_date,branch_id);
+  load_current_day_dashboard(dashboard_index,dashboard_graphID,end_date,end_date,branch_id);
   load_one_year_data_dashboard(dashboard_index,dashboard_graphID,start_date_overall,end_date,branch_id);
 }
 
 function load_current_day_dashboard(dashboard_index,dashboard_graphID,from_date,to_date,branch_id)
 {
 	console.log("in dash");
-	console.log(hash_obj);
+	console.log(branch_id);
 	if (hash_obj.hasOwnProperty(graph_list[dashboard_index]["name"]+"_current"))
 	{   
 		dashboard_render(dashboard_index,graph_list[dashboard_index]["name"]+"_current");
@@ -426,7 +427,7 @@ function load_current_day_dashboard(dashboard_index,dashboard_graphID,from_date,
   }
   current_day_data= JSON.parse(xhr.responseText);
   // console.log("in load_current_day_dashboard current day");
-  console.log(hash_obj);
+  console.log(current_day_data);
 	make_graph_obj(current_day_data,graph_list[dashboard_index]["name"]+"_current",dashboard_index);
 	console.log(hash_obj);
 	dashboard_render(dashboard_index,graph_list[dashboard_index]["name"]+"_current");
@@ -643,7 +644,7 @@ function set_current_elements(graph_name,graph_type)
 			var overall_filters='';
  			var basic_filters='<table id='+graph_name+"_basic_filters"+' class="basic_filters">';
 			basic_filters+='<tr>';
-			var b_filters='<td id='+graph_name+"_branch"+'><a class="filter_dropdown_style">Select branch</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
+			var b_filters='<td id='+graph_name+"_branch"+'><a class="filter_dropdown_style">Branch</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
 			branchesList=company_data["branches"];
 			console.log(branchesList);
 			var a=(graph_name.split(":"))[1];
@@ -880,7 +881,7 @@ function set_data_of_series_normal(hash_obj,parent_id,days,graph_name)
 						series_data=[];
 						var series_name_array=["1,2","3","4,5"];
 						// var color_array=[];
-						var color_array=['#FF7400','#FFCE00','#00B233']
+						var color_array=['#BC2E2E','#FFCE00','#00B233']
 						var child_found=-1;
 						for(var i=0;i<series_name_array.length;i++)
 						{
@@ -1347,7 +1348,8 @@ console.log(filterList);
 
 						for(var i in filterList)
 						{
-							filters+='<td><a class="filter_dropdown_style">'+filterList[i]["attributeString"]+'</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
+							var temp=filterList[i]["attributeString"].split("_");
+							filters+='<td><a class="filter_dropdown_style">'+(temp[temp.length - 1])+'</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
 							for(var j in filterList[i]["attributeValues"])
 								{
 									filters+='<li class="filter_list_elements"><input type="checkbox" class="filter_list_input" name='+graph_name+"_"+filterList[i]["attributeString"].replace(/\s+/g, '_')+' id='+filterList[i]["attributeValues"][j]["name"]+'>&nbsp;&nbsp;'+filterList[i]["attributeValues"][j]["name"]+'</input></li>';
