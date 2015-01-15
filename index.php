@@ -47,8 +47,6 @@
 
 <?php include("header.php"); ?>
 <?php include("body.php");?>
-<div id="username" style="visibility:hidden;"><?php echo $_POST['username']; ?></div>
-<div id="password" style="visibility:hidden;"><?php echo $_POST['password']; ?></div>
 <?php include("footer.php"); ?>
 </div>
 </body>

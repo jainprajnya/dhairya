@@ -4,7 +4,7 @@
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
 
-<title>Using Highcharts with PHP and MySQL</title>
+<title>Bizviewz Loading</title>
 <link href="css/header_footer.css" rel="stylesheet" type="text/css">
 <link href="css/main.css" rel="stylesheet" type="text/css">
 <link href='http://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>

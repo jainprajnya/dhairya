@@ -1,4 +1,4 @@
 <?php ?>
 <div id="footer-toolbar-div">
-<p> Copyright © 2014 Bizviewz </p>	
+<p style="padding:0px;margin:0px;">  Copyright © 2014 Bizviewz </p>	
 </div>

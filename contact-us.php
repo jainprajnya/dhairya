@@ -3,7 +3,7 @@
 <head> 
 <meta http-equiv="Content-Type" content="application/x-www-form-urlencoded; charset=utf-8"/> 
 <meta http-equiv="Access-Control-Allow-Origin" content="*" />
-<title>Using Highcharts with PHP and MySQL</title>
+<title>Bizviewz Loading</title>
 <link href="css/header_footer.css" rel="stylesheet" type="text/css">
 <link href="css/extra.css" rel="stylesheet" type="text/css">
 </head>
@@ -12,8 +12,8 @@
 
 <?php include("header.php"); ?>
 <div id="contact-us">
-	<p> Contact</p>
-<form>
+	
+<!-- <form>
 	<label>Name</label>
         <input id="name" type="text" value="">
         <br>
@@ -41,7 +41,13 @@
         <button type="submit" class="btn btn-green" tabindex="3" name="loginSubmit">Submit</button>
          <button type="submit" class="btn btn-green" tabindex="3" name="loginSubmit">Cancel</button>
       </div>
-    </form>
+    </form> -->
+
+	Reach us at bizviewz@outlook.com
+ <br>
+ <br>
+Contact us at 9900195062 
+
 </div>
 <?php include("footer.php"); ?>
 </div>

@@ -1,8 +1,3 @@
-var company_data=[{"id":1,"name":"Taste of India","ownerName":"xyz","ownerAge":25,"ownerSex":true,"mail":"anirudh@gmail.com","contact":"870987098092","country":1,"state":1,"city":1,"region":1,"competitiveAnalysisFlag":true,"industryType":"restaurant","subIndustryType":"south, north","branches":[{"id":1,"name":"abc2","branchManagerName":"xyz","branchManagerSex":true,"mail":"anirudh@gmail.com","contact":"124455","latitude":1,"longitude":2,"country":1,"state":1,"city":1,"region":1,"budgetCategory":1,"industryType":"restaurant","subIndustryType":"north, sount","operationalTime":"9-22"},{"id":2,"name":"abc","branchManagerName":"xyz","branchManagerSex":true,"mail":"pankaj@gmail.com","contact":"123455","latitude":1,"longitude":2,"country":1,"state":1,"city":1,"region":1,"budgetCategory":1,"industryType":"restaurant","subIndustryType":"north, south","operationalTime":"9-22"}]}];
-// var graphs=[{"graphId":"f9dbc1a7-820f-40d9-98ae-53c242ee1ebd","name":"Dashboard","type":"dashboard","attributeList":[{"attributeId":60,"attributeString":"overall-experience","type":"weighted","parentId":-1,"attributeValues":[{"value":0,"maxValue":0,"name":"overall-experience"}]},{"attributeId":81,"attributeString":"NetPromoterScore","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Average"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]}],"filterList":[]},{"graphId":"sid1","name":"adv:Customer Experience","type":"overview","attributeList":[{"attributeId":6,"attributeString":"food","type":"weighted","parentId":-1,"attributeValues":[{"value":0,"maxValue":0,"name":"usercomment"},{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":2,"maxValue":5,"name":"disagree"},{"value":3,"maxValue":5,"name":"cant say"},{"value":4,"maxValue":5,"name":"agree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":11,"attributeString":"service","type":"weighted","parentId":-1,"attributeValues":[{"value":0,"maxValue":0,"name":"usercomment"},{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":2,"maxValue":5,"name":"disagree"},{"value":3,"maxValue":5,"name":"cant say"},{"value":4,"maxValue":5,"name":"agree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":7,"attributeString":"starters","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":8,"attributeString":"main-course","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":9,"attributeString":"desserts","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":10,"attributeString":"beverages","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":12,"attributeString":"cleanliness","type":"weighted","parentId":11,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"}]},{"attributeId":13,"attributeString":"timeliness","type":"weighted","parentId":11,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":14,"attributeString":"staff-courtesy","type":"weighted","parentId":11,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":17,"attributeString":"attentiveness","type":"weighted","parentId":11,"attributeValues":[{"value":5,"maxValue":5,"name":"strongly agree"}]}],"filterList":[{"attributeId":4,"attributeString":"customer_sex","type":"non-weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":0,"name":"female"},{"value":2,"maxValue":0,"name":"male"}]}]},{"graphId":"sid2","name":"adv:Trends","type":"trend","attributeList":[{"attributeId":6,"attributeString":"food","type":"weighted","parentId":-1,"attributeValues":[{"value":0,"maxValue":0,"name":"usercomment"},{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":2,"maxValue":5,"name":"disagree"},{"value":3,"maxValue":5,"name":"cant say"},{"value":4,"maxValue":5,"name":"agree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":11,"attributeString":"service","type":"weighted","parentId":-1,"attributeValues":[{"value":0,"maxValue":0,"name":"usercomment"},{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":2,"maxValue":5,"name":"disagree"},{"value":3,"maxValue":5,"name":"cant say"},{"value":4,"maxValue":5,"name":"agree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":7,"attributeString":"starters","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":8,"attributeString":"main-course","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":9,"attributeString":"desserts","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":10,"attributeString":"beverages","type":"weighted","parentId":6,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":12,"attributeString":"cleanliness","type":"weighted","parentId":11,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"}]},{"attributeId":13,"attributeString":"timeliness","type":"weighted","parentId":11,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":14,"attributeString":"staff-courtesy","type":"weighted","parentId":11,"attributeValues":[{"value":1,"maxValue":5,"name":"strongly disagree"},{"value":5,"maxValue":5,"name":"strongly agree"}]},{"attributeId":17,"attributeString":"attentiveness","type":"weighted","parentId":11,"attributeValues":[{"value":5,"maxValue":5,"name":"strongly agree"}]}],"filterList":[{"attributeId":4,"attributeString":"customer_sex","type":"non-weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":0,"name":"female"},{"value":2,"maxValue":0,"name":"male"}]}]},{"graphId":"587cad03-a636-4961-a602-176e2d607bf0","name":"epr:Employee Performance Trend","type":"trend","attributeList":[{"attributeId":41,"attributeString":"Waiters","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":42,"attributeString":"Manager","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":43,"attributeString":"Chef","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":44,"attributeString":"Cleaners","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":45,"attributeString":"Bartender","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]}],"filterList":[]},{"graphId":"2835e6ab-fbae-434c-81b9-594849ba82d4","name":"epr:Employee Performance Result","type":"overview","attributeList":[{"attributeId":41,"attributeString":"Waiters","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":42,"attributeString":"Manager","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":43,"attributeString":"Chef","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":44,"attributeString":"Cleaners","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]},{"attributeId":45,"attributeString":"Bartender","type":"weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":5,"name":"Very Bad"},{"value":2,"maxValue":5,"name":"Bad"},{"value":3,"maxValue":5,"name":"Can't Say"},{"value":4,"maxValue":5,"name":"Good"},{"value":5,"maxValue":5,"name":"Very Good"}]}],"filterList":[]},{"graphId":"87ab4a1c-3013-4169-b97d-131c1d7548d8","name":"pre:Customer Preferences","type":"overview","attributeList":[{"attributeId":117,"attributeString":"VegFoodPreference","type":"non-weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":0,"name":"Kebab Platters"},{"value":2,"maxValue":0,"name":"Tandoori dishes"},{"value":4,"maxValue":0,"name":"State cuisines"},{"value":8,"maxValue":0,"name":"Mughlai food"},{"value":16,"maxValue":0,"name":"Continental"},{"value":32,"maxValue":0,"name":"Chaats and snacks"},{"value":64,"maxValue":0,"name":"Kulfi"},{"value":128,"maxValue":0,"name":"Nothing specific"}]},{"attributeId":118,"attributeString":"NonVegPreference","type":"non-weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":0,"name":"Kebab Platters"},{"value":2,"maxValue":0,"name":"Tandoori dishes"},{"value":4,"maxValue":0,"name":"State cuisines"},{"value":8,"maxValue":0,"name":"Mughlai food"},{"value":16,"maxValue":0,"name":"Sea Food"},{"value":32,"maxValue":0,"name":"Exotic animal cuisines"},{"value":64,"maxValue":0,"name":"Crab Cakes"},{"value":128,"maxValue":0,"name":"Nothing specific"}]},{"attributeId":119,"attributeString":"Reference","type":"non-weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":0,"name":"Friends/Families"},{"value":2,"maxValue":0,"name":"Website"},{"value":4,"maxValue":0,"name":"Facebook"},{"value":8,"maxValue":0,"name":"Food Review Site"},{"value":16,"maxValue":0,"name":"Advertising Channels"},{"value":32,"maxValue":0,"name":"Radio"},{"value":64,"maxValue":0,"name":"Nobody specific"}]}],"filterList":[{"attributeId":4,"attributeString":"customer_sex","type":"non-weighted","parentId":-1,"attributeValues":[{"value":1,"maxValue":0,"name":"female"},{"value":2,"maxValue":0,"name":"male"}]}]}];
-var dash=[{"attributeId":60,"listDailyAttributeStatisticValues":null,"listCountPPl":[0,11,4,2,1]},{"attributeId":81,"listDailyAttributeStatisticValues":null,"listCountPPl":[5,7,4,2,0]}];
-var sid1=[{"attributeId":6,"listDailyAttributeStatisticValues":null,"listCountPPl":[5,8,4,0,6]},{"attributeId":7,"listDailyAttributeStatisticValues":null,"listCountPPl":[14,0,0,0,7]},{"attributeId":8,"listDailyAttributeStatisticValues":null,"listCountPPl":[13,0,0,0,7]},{"attributeId":9,"listDailyAttributeStatisticValues":null,"listCountPPl":[13,0,0,0,5]},{"attributeId":10,"listDailyAttributeStatisticValues":null,"listCountPPl":[12,0,0,0,5]},{"attributeId":11,"listDailyAttributeStatisticValues":null,"listCountPPl":[0,12,0,6,5]},{"attributeId":12,"listDailyAttributeStatisticValues":null,"listCountPPl":[12,0,0,0,5]},{"attributeId":13,"listDailyAttributeStatisticValues":null,"listCountPPl":[1,0,11,0,6]},{"attributeId":14,"listDailyAttributeStatisticValues":null,"listCountPPl":[0,0,11,0,7]},{"attributeId":17,"listDailyAttributeStatisticValues":null,"listCountPPl":[0,0,0,0,3]}];
-var sid2=[{"attributeId":6,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[0,2,0,0,0]},{"date":20141218,"listCountPPL":[1,0,0,0,1]},{"date":20141219,"listCountPPL":[1,1,0,0,0]},{"date":20141220,"listCountPPL":[1,1,0,0,2]},{"date":20141221,"listCountPPL":[1,2,0,0,2]},{"date":20141222,"listCountPPL":[1,2,3,0,1]},{"date":20141223,"listCountPPL":[0,0,1,0,0]}],"listCountPPl":null},{"attributeId":7,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[2,0,0,0,0]},{"date":20141218,"listCountPPL":[1,0,0,0,1]},{"date":20141219,"listCountPPL":[2,0,0,0,0]},{"date":20141220,"listCountPPL":[2,0,0,0,2]},{"date":20141221,"listCountPPL":[3,0,0,0,1]},{"date":20141222,"listCountPPL":[4,0,0,0,3]}],"listCountPPl":null},{"attributeId":8,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[2,0,0,0,0]},{"date":20141218,"listCountPPL":[1,0,0,0,1]},{"date":20141219,"listCountPPL":[2,0,0,0,0]},{"date":20141220,"listCountPPL":[2,0,0,0,2]},{"date":20141221,"listCountPPL":[3,0,0,0,1]},{"date":20141222,"listCountPPL":[3,0,0,0,3]}],"listCountPPl":null},{"attributeId":9,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[2,0,0,0,0]},{"date":20141218,"listCountPPL":[1,0,0,0,1]},{"date":20141219,"listCountPPL":[2,0,0,0,0]},{"date":20141220,"listCountPPL":[2,0,0,0,2]},{"date":20141221,"listCountPPL":[2,0,0,0,1]},{"date":20141222,"listCountPPL":[4,0,0,0,1]}],"listCountPPl":null},{"attributeId":10,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[2,0,0,0,0]},{"date":20141218,"listCountPPL":[1,0,0,0,1]},{"date":20141219,"listCountPPL":[2,0,0,0,0]},{"date":20141220,"listCountPPL":[2,0,0,0,2]},{"date":20141221,"listCountPPL":[2,0,0,0,1]},{"date":20141222,"listCountPPL":[3,0,0,0,1]}],"listCountPPl":null},{"attributeId":11,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[0,2,0,0,0]},{"date":20141218,"listCountPPL":[0,1,0,0,1]},{"date":20141219,"listCountPPL":[0,2,0,0,0]},{"date":20141220,"listCountPPL":[0,2,0,0,2]},{"date":20141221,"listCountPPL":[0,2,0,2,1]},{"date":20141222,"listCountPPL":[0,3,0,3,1]},{"date":20141223,"listCountPPL":[0,0,0,1,0]}],"listCountPPl":null},{"attributeId":12,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[2,0,0,0,0]},{"date":20141218,"listCountPPL":[1,0,0,0,1]},{"date":20141219,"listCountPPL":[2,0,0,0,0]},{"date":20141220,"listCountPPL":[2,0,0,0,2]},{"date":20141221,"listCountPPL":[2,0,0,0,1]},{"date":20141222,"listCountPPL":[3,0,0,0,1]}],"listCountPPl":null},{"attributeId":13,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[0,0,2,0,0]},{"date":20141218,"listCountPPL":[0,0,1,0,1]},{"date":20141219,"listCountPPL":[0,0,2,0,0]},{"date":20141220,"listCountPPL":[0,0,2,0,2]},{"date":20141221,"listCountPPL":[0,0,2,0,2]},{"date":20141222,"listCountPPL":[1,0,2,0,1]}],"listCountPPl":null},{"attributeId":14,"listDailyAttributeStatisticValues":[{"date":20141217,"listCountPPL":[0,0,2,0,0]},{"date":20141218,"listCountPPL":[0,0,1,0,1]},{"date":20141219,"listCountPPL":[0,0,2,0,0]},{"date":20141220,"listCountPPL":[0,0,2,0,2]},{"date":20141221,"listCountPPL":[0,0,2,0,2]},{"date":20141222,"listCountPPL":[0,0,2,0,2]}],"listCountPPl":null},{"attributeId":17,"listDailyAttributeStatisticValues":[{"date":20141222,"listCountPPL":[0,0,0,0,3]}],"listCountPPl":null}];
 var chart,graph_id,graph_type,left_pane;
 var session_id='';
 var overview_index=-1;
@@ -36,6 +31,7 @@ var graph_list_names;
 					},
 					yAxis: {
 						min :0,
+						tickInterval: 1,
 						title: {
 							text: 'Number of Feedbacks',
 							// align:'left'
@@ -71,7 +67,7 @@ var graph_list_names;
 var options_trends = {
 					chart: {
 						type: 'line',
-						renderTo:'trends_graph',
+						renderTo:'',
 						 // backgroundColor: '#30D5C8'
 							},
 						title: {
@@ -84,6 +80,7 @@ var options_trends = {
 					},
 					yAxis: {
 						min :0,
+						tickInterval: 1,
 						title: {
 							text: 'Avg Number of Feedbacks',
 							// align:'left'
@@ -144,7 +141,9 @@ $( ".datepicker startDate" ).datepicker({
 			case "adv_stats": load_advance_statistics();break;
 			case "emp_perf": load_employee_performance();break;
 			case "comment": load_comments();break;
-			default:load_dashboard();
+			default:{d_index = find_index_of("Dashboard");
+						console.log("dashboard index is"+d_index);
+					  	load_dashboard(d_index,graph_list[d_index]["graphId"]);}
 		}
 
 
@@ -152,11 +151,12 @@ $( ".datepicker startDate" ).datepicker({
 
 	$('body').on('click','a.dynamic_filter',function(){
 		console.log("in click filter");
-	var graph_type= this.id.split("-")[0];
-	var filter_of=this.id.split("-")[1];
-	var selected = this.id.split("-")[2];
-	console.log(graph_type+"-"+filter_of);
-	var filter_element= document.getElementsByName(graph_type+"_"+filter_of);
+		var dyn_filter = this.id.split("_");
+	var selected = dyn_filter[dyn_filter.length-1];
+	console.log(dyn_filter);
+	var temp=dyn_filter.slice(0,dyn_filter.length-1).join("_");
+	console.log(temp);
+	var filter_element= document.getElementsByName(temp);
 	console.log(filter_element);
 	console.log(selected);
 	for(var i=0; i< filter_element.length;i++)
@@ -199,8 +199,11 @@ $( ".datepicker startDate" ).datepicker({
 	$('body').on('click','.filter_dropdown_style',function(){
 						var elements= this.parentNode.children;
 						// document.getElementsByClassName("filter_dropdown_list");
+						console.log("in click");
+						console.log(elements);
 						elements[1].style.visibility=elements[1].style.visibility=="visible"?"hidden":"visible";
 						for (var i = 0; i < elements[1].children.length; i++) {
+							console.log(elements[1].children[i]);
 						        elements[1].children[i].style.visibility=elements[1].children[i].style.visibility=="visible"?"hidden":"visible";
 						    }
 
@@ -213,11 +216,12 @@ $( ".datepicker startDate" ).datepicker({
 
 
    // $('body').on('submit','#login',function(){
-		console.log("when clicked login");
+	console.log("when clicked login");
   	var uname=(document.getElementById("username")).innerHTML;
   	var pword=(document.getElementById("password")).innerHTML;
   	console.log(uname);
   	console.log(pword);
+
   	var login_url = 'https://bizviewz.com:8080/feedback-review/login';
 
 
@@ -225,7 +229,15 @@ var client = new XMLHttpRequest();
   client.open("POST", "https://bizviewz.com:8080/feedback-review/login",false);
   client.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
    var temp = "username="+uname+"&password="+pword;
+   client.onreadystatechange=function()
+  {
+  if (client.readyState==4 && client.status==401)
+    {
+    window.location.href = "login.php";
+    }
+  }
   client.send(temp);
+ 
 
  set_session_id(client.getResponseHeader('sessionId'));
  set_company_id(JSON.parse(client.responseText));
@@ -246,13 +258,30 @@ var client = new XMLHttpRequest();
   xhr.send();
   graph_list= JSON.parse(xhr.responseText);
 
+  xhr.open("GET", "https://bizviewz.com:8080/feedback-review/company/"+company_id,false);
+  xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
+  xhr.setRequestHeader('sessionId', session_id);
+  xhr.send();
+  xhr.onreadystatechange=function()
+  {
+  if (xhr.readyState==4 && xhr.status==401)
+    {
+    window.location.href = "login.php";
+    }
+  }
+  company_data = JSON.parse(xhr.responseText);
+  console.log(company_data);
+  branch_id=company_data["branches"][0]["id"];
+	 console.log(branch_id);	
+	  console.log("finis -----");
+
 						// graph_list= graphs;
 						d_index = find_index_of("Dashboard");
 						console.log("dashboard index is"+d_index);
 					  	prepare_graph_list(graph_list);
 					  	load_dashboard(d_index,graph_list[d_index]["graphId"]);
 					  	// load_advance_statistics();
-					  	
+				  	
 
 // });
 });
@@ -298,10 +327,11 @@ function find_index_of(graph_name)
 }
 
 function load_dashboard(dashboard_index,dashboard_graphID){
+	document.getElementById("adjustment_div").style.height="55%";
    var todays_date = new Date();
 	var todays_day = full_days[todays_date.getDay()];
 	var current_div = '<div id="activeDiv" className='+dashboard_graphID+'></div>';
-	var dashboard_slider = '<div id="dashboard_slider"><div id=slider> <table><tr><td id="slider_day">'+todays_day+'</td><td id="slider_row"><div id="slider_line"></div></td></table></div></div>';
+	var dashboard_slider = '<div id="dashboard_slider"><div id=slider> <table><tr><td id="slider_day" class="dashboard_heading">'+todays_day+'</td><td id="slider_row"><div id="slider_line"></div></td></table></div></div>';
 	var slider_values = '<div id='+graph_list[dashboard_index]["name"]+"_current"+'></div>';
 	var overall_values = '<div id='+graph_list[dashboard_index]["name"]+"_overall"+'>Overall</div>';
 	var dashboard = current_div + '<div id="dashboard_elements">' + dashboard_slider + slider_values + overall_values + '</div>';
@@ -318,7 +348,7 @@ function load_dashboard(dashboard_index,dashboard_graphID){
 	      			var date = new Date();
 					date.setDate(date.getDate() - day_diff);
 					delete hash_obj["dashboard_current"];
-	                load_current_day_dashboard(dashboard_index,dashboard_graphID,date);
+	                load_current_day_dashboard(dashboard_index,dashboard_graphID,date,date);
 	            }
 	  }).each(function() {
 	  var opt = $(this).data().uiSlider.options;
@@ -377,6 +407,13 @@ function load_current_day_dashboard(dashboard_index,dashboard_graphID,from_date,
   xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
   xhr.setRequestHeader('sessionId', session_id);
   xhr.send();
+   xhr.onreadystatechange=function()
+  {
+  if (xhr.readyState==4 && xhr.status==401)
+    {
+    window.location.href = "login.php";
+    }
+  }
   current_day_data= JSON.parse(xhr.responseText);
   // console.log("in load_current_day_dashboard current day");
 	make_graph_obj(current_day_data,graph_list[dashboard_index]["name"]+"_current",dashboard_index);
@@ -403,76 +440,124 @@ function load_one_year_data_dashboard(dashboard_index,dashboard_graphID)
 				var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
 				var uri='';
 				filters_g='startDate='+start_date+'&endDate='+end_date;
-				params='/statistics?branch=1&'+filters_g;
+				params='/statistics?branch='+branch_id+'&'+filters_g;
 
 	var xhr = new XMLHttpRequest();
   xhr.open("GET", uri.concat(host,path,dashboard_graphID,params),false);
   xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
   xhr.setRequestHeader('sessionId', session_id);
   xhr.send();
+   xhr.onreadystatechange=function()
+  {
+  if (xhr.readyState==4 && xhr.status==401)
+    {
+    window.location.href = "login.php";
+    }
+  }
   current_day_data= JSON.parse(xhr.responseText);
   // console.log("in load_one_year_data_dashboard");
 	make_graph_obj(current_day_data,graph_list[dashboard_index]["name"]+"_overall",dashboard_index);
-	dashboard_render(dashboard_index,graph_list[dashboard_index]["name"]+"_overall");
+	dashboard_render(dashboard_index,graph_list[dashboard_index]["name"]+"_overall","Overall");
 
 }
 
-function dashboard_render(dashboard_index,dashboard_element)
+function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 {
 	// console.log("in dashboard render");
 	// console.log(dashboard_index+":"+dashboard_element);
 	// console.log(hash_obj);
 	var nps_bool = 0;
 	var avgRating_bool = 0;
-	var rows='<table id='+dashboard_element+"_values"+' class="dashboard_inside_tables">';
+	var nofeedbacks_bool = 0;
+	var dashboard_heading='';
+	var avg_rating=0;
+
+	if(dash_element_name!=null)
+	{
+		dashboard_heading='<div class="dashboard_heading">'+dash_element_name+'</div>';
+	}
+	var rows=dashboard_heading+'<table id='+dashboard_element+"_values"+' class="dashboard_inside_tables">';
 					  	var table_heading='<tr>';
 					  	// var row2='<tr>';
 					  	var attributeList=graph_list[dashboard_index]["attributeList"];
 					  	var day_nps='';
 					  	for(var i=0;i< attributeList.length;i++)
 						{
-							if (attributeList[i]["attributeString"].trim().toLowerCase().indexOf("netpromoterscore")>-1)
-							{
-								nps_bool=1;
-							}
-							if (attributeList[i]["attributeString"].trim().toLowerCase().indexOf("averagerating")>-1)
-							{
-								avgRating_bool=1;
-							}
-
-							table_heading+='<th style="font-size: 25px;">'+attributeList[i]["attributeString"]+'</th>';
+							
 							var attr_id=attributeList[i]["attributeId"];
 							attr_present = (hash_obj[dashboard_element][attr_id]).hasOwnProperty("listCountPPl");
-						 if ( attr_present && (hash_obj[dashboard_element][attr_id]["listCountPPl"]) !== null )						  
+						 	if ( attr_present && (hash_obj[dashboard_element][attr_id]["listCountPPl"]) !== null )						  
 							{
-								console.log("in if");
-							
-							
-							var neutral = hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][2];
-							var negative=hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][3]+hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][4]
-							var positive=hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][0]+hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][1]
-							
-							day_nps+= '<td><table id="dash_day_nps"> <tr class= "col1col2"><th> Promoters</th> <th>Detractor</th><th>Passive</th></tr>';
-							day_nps+= '<tr><td><img class="dashboard_icons" src="images/Promoters_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Detractors_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Passives_Icon.png"></img></td></tr>';
-							day_nps+='<tr><td>'+positive+'</td><td>'+negative+'</td><td>'+neutral+'</td></tr></table></td>';
+						var neutral = hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][2];
+							var negative=hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][3]+hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][4];
+							var positive=hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][0]+hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"][1];
+							var total=neutral+negative+positive;
+							var feedbacks_total=total
+							console.log(total);
+							if(total==0 ) {neutral=0;positive=0;negative=0;total=1;}
+					
+								var rating_temp=hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"];
+								if(attributeList[i]["attributeString"].trim().toLowerCase().indexOf("netpromoterscore")>-1)
+								{	
+									nps_bool=1;
+									console.log("in if");
+									day_nps+= '<td><table id="dash_day_nps"> <tr class= "col1col2"><th> Promoters</th> <th>Detractor</th><th>Passive</th></tr>';
+									day_nps+= '<tr><td><img class="dashboard_icons" src="images/Promoters_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Detractors_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Passives_Icon.png"></img></td></tr>';
+									day_nps+='<tr><td>'+(positive/total)+' %</td><td>'+(negative/total)+' %</td><td>'+(neutral/total)+' %</td></tr></table></td>';
+									table_heading+='<th style="font-size: 25px;">'+attributeList[i]["attributeString"]+": "+Math.abs((positive-negative)/total)+' %</th>';
+
+								}
+
+								if(attributeList[i]["attributeString"].trim().toLowerCase().indexOf("overall_experience")>-1)
+								{	
+									nofeedbacks_bool=1;
+									console.log("in if1");
+									
+									day_nps+= '<td><table id="dash_day_nps"> <tr class= "col1col2"><th> Promoters</th> <th>Detractor</th><th>Passive</th></tr>';
+									day_nps+= '<tr><td><img class="dashboard_icons" src="images/Positive_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Negative_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Neutral_Icon.png"></img></td></tr>';
+									day_nps+='<tr><td>'+(positive/total)+' %</td><td>'+(negative/total)+' %</td><td>'+(neutral/total)+' %</td></tr></table></td>';
+									table_heading+='<th style="font-size: 25px;">No. Of Feedbacks: '+feedbacks_total+'</th>';
+									
+									var temp_avg_rating=hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"];
+									for(var temp=0;temp<5;temp++)
+									{
+										avg_rating+=(temp+1)*temp_avg_rating[temp];
+									}
+								}
+
 							}
 						  else
 						   {
 						   	console.log("in else");
 						   	day_nps+='<td style="height:120px; text-align:center;"> No Data </td>';
+						   	
+						   	if(attributeList[i]["attributeString"].trim().toLowerCase().indexOf("netpromoterscore")>-1)
+								{
+									nps_bool=1;
+									table_heading+='<th style="font-size: 25px;">'+attributeList[i]["attributeString"]+' 0 %</th>';
+								}
+							if(attributeList[i]["attributeString"].trim().toLowerCase().indexOf("overall_experience")>-1)
+								{
+									nofeedbacks_bool=1;
+									table_heading+='<th style="font-size: 25px;">No. Of Feedbacks: 0</th>';
+								}
+
 						   }						
+						}
+
+						
+
+						if(nps_bool==0)
+						{
+							table_heading+='<th style="font-size: 25px;">Net Promoter Score: 0%</th>';
+							day_nps+='<td style="height:120px; text-align:center;"> No Data </td>';
 						}
 
 						if(avgRating_bool==0)
 						{
+							console.log("in avg rating if");
 							table_heading+='<th style="font-size: 25px;">Average Rating</th>';
-							day_nps+='<td style="height:120px; text-align:center;"> No Data </td>';
-						}
-
-						if(nps_bool==0)
-						{
-							table_heading+='<th style="font-size: 25px;">NPS</th>';
-							day_nps+='<td style="height:120px; text-align:center;"> No Data </td>';
+							day_nps+='<td style="height:120px; text-align:center; font-size:50px;">'+(avg_rating/5)+'</td>';
 						}
 
 						table_heading+='</tr>'
@@ -483,11 +568,14 @@ function dashboard_render(dashboard_index,dashboard_element)
 
 
 function load_advance_statistics(){
+	document.getElementById("adjustment_div").style.height="85%";
 	var adv_overview_div='';
 	var adv_trends_div='';
 	var overview_basic_filters;
 	var trends_basic_filters;
-    var adv_stats_elements =[{"name":"adv:Customer Experience", "type":"overview"},{"name":"adv:Trends", "type":"trends"},{"name":"pre:Customer Preference Result", "type":"overview"}];
+     var adv_stats_elements =[{"name":"adv:Customer Experience", "type":"overview"},{"name":"adv:Trends", "type":"trends"},{"name":"pre:Customer Preference Result", "type":"overview"}];
+     // var adv_stats_elements =[{"name":"adv:Customer Experience", "type":"overview"},{"name":"adv:Trends", "type":"trends"}];
+
     console.log("in adv stats load");
     var advance_stats_div='';
     for(var i=0 ;i< adv_stats_elements.length;i++)
@@ -517,7 +605,7 @@ function load_advance_statistics(){
 			}
 			else
 			{
-				load_trends(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'));
+				load_trends(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),30);
 			}
 		}
 
@@ -544,32 +632,33 @@ function set_current_elements(graph_name,graph_type)
  			var basic_filters='<table id='+graph_name+"_basic_filters"+' class="basic_filters">';
 			basic_filters+='<tr>';
 			var b_filters='<td id='+graph_name+"_branch"+'><a class="filter_dropdown_style">Select branch</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
-			branchesList=company_data[0]["branches"];
+			branchesList=company_data["branches"];
 			console.log(branchesList);
+			var a=(graph_name.split(":"))[1];
+			console.log("--------------" + a);
 			for(var j=0; j<branchesList.length;j++)
 			{
 				
-				b_filters+='<li class="filter_list_elements"><input type="checkbox" class="filter_list_input" name='+graph_name+"_branches"+' id='+branchesList[j]["name"]+'>&nbsp;&nbsp;'+branchesList[j]["name"]+'</input></li>';
+				b_filters+='<li class="filter_list_elements"><input type="checkbox" class="filter_list_input" name='+graph_name+"-branches"+' id='+branchesList[j]["name"]+'>&nbsp;&nbsp;'+branchesList[j]["name"]+'</input></li>';
 			}
-
-			b_filters+='<li class="filter_list_elements" ><a class="dynamic_filter" style="font-size: 11px; color: blue; float: right; margin-right: 2px; padding-top: 3px;" id='+graph_name+"-"+"branches"+"-clear"+'> clear </a>';
-			b_filters+='<a class="dynamic_filter" style="font-size: 11px; color: blue; float: left; margin-left: 2px;padding-top: 3px;" id='+graph_name+"-"+"branches"+"-all"+'> all </a></li></ul></td>';
+			b_filters+='<li class="filter_list_elements last_row" ><a class="dynamic_filter" style="font-size: 11px; color: blue; float: right; margin-right: 2px; padding-top: 3px;" id='+graph_name+"-"+"branches"+"_clear"+'> clear </a>';
+			b_filters+='<a class="dynamic_filter" style="font-size: 11px; color: blue; float: left; margin-left: 2px;padding-top: 3px;" id='+graph_name+"-"+"branches"+"_all"+'> all </a></li></ul></td>';
 
 			basic_filters+=b_filters;
 			 // var b_filters='';
 			basic_filters+='<td class="startDate" id='+graph_name+"_from_date_filter"+'>Start Date: <input type="text" id='+graph_name+"_start_date"+' class="datepicker startDate"></p></td>';
-			basic_filters+='<td class="endDate" id='+graph_name+"_to_date_filter"+'>End date<input id='+graph_name+"_end_date"+' class="datepicker endDate" /></td>';
+			basic_filters+='<td class="endDate" id='+graph_name+"_to_date_filter"+'>End Date: <input id='+graph_name+"_end_date"+' class="datepicker endDate" /></td>';
 			basic_filters+='<td id='+graph_name+"filter_button"+' rowspan=2><button class="filter_button">Filter</button></td></tr>'
 			var quick_links='';
 
 
-			quick_links='<div id=' + graph_name+"_quick_links"+'><a id='+graph_name+"_overview_-2" + ' class="back_link">'+graph_type+'</a></div>';
+			quick_links='<div id=' + graph_name+"_quick_links"+'><a id='+graph_name+"_"+graph_type+"_-2" + ' class="back_link">'+"Home"+'</a></div>';
 			quick_links+='<div id='+graph_name+"_container_graph_child"+' name='+graph_name+"_level_identify_div"+' style="display:hidden;"></div>';
             quick_links+='<div id='+graph_name+"_container_graph_id"+' name='+graph_name+"_id_identify_div"+' style="display:hidden;"></div>';
             quick_links+='<div id='+graph_name+"_container_graph_filter"+' name='+graph_name+"_filter_identify_div"+' style="display:hidden;"></div>'
 			custom_filters='<tr id='+graph_name+"_filter_row"+'></tr></table>';
-			
-			overall_filters = '<div id='+graph_name+"_filters"+ '>'+graph_name+basic_filters+custom_filters+quick_links+'<div class="comments_less" id='+graph_name+"_comments"+'>View other Comments<img src="images/comments_icon.png" style="height:20px; width:20px;margin-left:5px;" /></div><table id='+graph_name+"_graph"+'><tr><td id='+graph_name+"_graph"+' class="main_graph_plot"></td></tr></table></div>';
+			var comments='<div class="comments_less" id='+graph_name+"_comments"+'>View other Comments<img src="images/comments_icon.png" style="height:20px; width:20px;margin-left:5px;" /></div>';
+			overall_filters = '<div id='+graph_name+"_filters"+ '><div class="stats_main_div">'+(graph_name.split(":"))[1]+'</div>'+basic_filters+custom_filters+comments+quick_links+'<table class="main_graph_plot"><tr><td id='+graph_name+"_graph"+'></td></tr></table></div>';
 	
 
 	
@@ -582,7 +671,8 @@ function load_overview(adv_overview_index,adv_overview_graphId,adv_overview_name
 console.log("in load_overview");
 	if (hash_obj.hasOwnProperty(adv_overview_name))
 	{   
-		 set_data_of_series_normal(hash_obj,-1,null);
+		console.log("in if load_overview");
+		 set_data_of_series_normal(hash_obj[adv_overview_name],-1,null,adv_overview_name);
 		return;
 	}
 
@@ -595,14 +685,22 @@ console.log("in load_overview");
 				var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
 				var uri='';
 				filters_g='startDate='+start_date+'&endDate='+end_date;
-				var params='/statistics?branch=1&'+filters_g;
+				var params='/statistics?branch='+branch_id+'&'+filters_g;
 
 
 	var xhr = new XMLHttpRequest();
 	  xhr.open("GET", uri.concat(host,path,adv_overview_graphId,params),false);
 	  xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
 	  xhr.setRequestHeader('sessionId', session_id);
+	   xhr.onreadystatechange=function()
+	  {
+	  if (xhr.readyState==4 && xhr.status==401)
+	    {
+	    window.location.href = "login.php";
+	    }
+	  }
 	  xhr.send();
+
 	  overview_data= JSON.parse(xhr.responseText);
 	  
 
@@ -613,12 +711,12 @@ console.log("in load_overview");
 
 }
 
-function load_trends(adv_trends_index,adv_trends_graphId,adv_trends_name)
+function load_trends(adv_trends_index,adv_trends_graphId,adv_trends_name,days)
 {
 	  console.log("in load_trends");
 if (hash_obj.hasOwnProperty(adv_trends_name))
 	{   
-		set_data_of_series_trends(hash_obj,-1,"listDailyAttributeStatisticValues",30);
+		set_data_of_series_trends(hash_obj[adv_trends_name],-1,"listDailyAttributeStatisticValues",days,adv_trends_name);
 		return;
 	}
 
@@ -628,17 +726,25 @@ if (hash_obj.hasOwnProperty(adv_trends_name))
   				var someFormattedDate='20141120';
 				var host = 'https://bizviewz.com:8080';
 				var path = '/feedback-review/company/'+company_id+'/graph/';
-				var start_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-7);
+				var start_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-days);
 				var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
 				var uri='';
 				filters_g='startDate='+start_date+'&endDate='+end_date;
-				params='/statistics?branch=1&'+filters_g;
+				params='/statistics?branch='+branch_id+'&'+filters_g;
 			
 
 var xhr = new XMLHttpRequest();
-  xhr.open("GET", uri.concat(host,path,adv_trends_graphId),params,false);
+console.log(uri.concat(host,path,adv_trends_graphId));
+  xhr.open("GET", uri.concat(host,path,adv_trends_graphId,params),false);
   xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
   xhr.setRequestHeader('sessionId', session_id);
+   xhr.onreadystatechange=function()
+  {
+  if (xhr.readyState==4 && xhr.status==401)
+    {
+    window.location.href = "login.php";
+    }
+  }
   xhr.send();
   trends_data= JSON.parse(xhr.responseText);
 
@@ -647,7 +753,7 @@ var xhr = new XMLHttpRequest();
 					    console.log(trends_data);
 				
 					    make_graph_obj(trends_data,adv_trends_name,adv_trends_index);
-						set_data_of_series_trends(hash_obj[adv_trends_name],-1,"listDailyAttributeStatisticValues",30,adv_trends_name);
+						set_data_of_series_trends(hash_obj[adv_trends_name],-1,"listDailyAttributeStatisticValues",days,adv_trends_name);
 						set_graph_level(adv_trends_name,-1);
 
 }
@@ -771,7 +877,7 @@ function set_data_of_series_normal(hash_obj,parent_id,days,graph_name)
 							showInLegend:true,
 							name: series_name_array[i],
 							color: color_array[i],
-							point:{events: { 'click': function(e) { makeSubGraph(graph_name,this.category); } }}
+							point:{events: { 'click': function(e) { makeSubGraph(graph_name,"overview",this.category); } }}
                    			 	}
 							series_data.push(temp);							
 						}
@@ -844,7 +950,7 @@ function set_data_of_series_trends(hash_obj,parent_id,period,days,graph_name)
 				var temp={data:[],
 					showInLegend:true,
 					name: hash_obj[attr_id]["name"],
-					point:{events: { 'click': function(e) {console.log("when clicked trends");console.log(this.series.name);makeSubGraph(graph_name,this.series.name); } }}
+					point:{events: { 'click': function(e) {console.log("when clicked trends");console.log(this.series.name);makeSubGraph(graph_name,"trends",this.series.name); } }}
                    		}
 				series_data.push(temp);
 				console.log(attr_id);
@@ -859,6 +965,7 @@ function set_data_of_series_trends(hash_obj,parent_id,period,days,graph_name)
 		{
 			set_chartseries_data_trends(category_ids,hash_obj,series_name_array,"");
 			console.log(options_trends);
+			options_trends.chart.renderTo=graph_name+"_graph";
 			make_chart(options_trends);
 		}
 						
@@ -894,7 +1001,8 @@ function handle_trend_graph(hash_obj,attr_id,period,days)
 		{
 			if(hash_obj[attr_id]["type"]=="weighted")
 			{
-				if (hash_obj[attr_id][period][start]!==undefined)
+				console.log(hash_obj[attr_id][period]);
+				if (hash_obj[attr_id][period]!=null && hash_obj[attr_id][period][start]!==undefined)
 				{
 					var d = hash_obj[attr_id][period][start]["date"];
 					console.log(d);
@@ -932,8 +1040,8 @@ function set_chartseries_data_trends(category_ids,hash_obj,series_name_array,sub
 		{
 			// console.log("in charts---");
 			// console.log(hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]);
-			if (hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]!==undefined)
-				series_data[id]["data"].push(hash_obj["adv_trends"][category_ids[id]][series_name_array[j]]["count_of_ppl"]);
+			if (hash_obj[category_ids[id]][series_name_array[j]]!==undefined)
+				series_data[id]["data"].push(hash_obj[category_ids[id]][series_name_array[j]]["count_of_ppl"]);
 			else
 				series_data[id]["data"].push(0);
 		}
@@ -1021,6 +1129,7 @@ function populate_filter(filterList)
 
 function load_employee_performance()
 {
+	document.getElementById("adjustment_div").style.height="77%";
 var adv_overview_div='';
 	var adv_trends_div='';
 	var overview_basic_filters;
@@ -1030,18 +1139,33 @@ var adv_overview_div='';
     var advance_stats_div='';
     for(var i=0 ;i< adv_stats_elements.length;i++)
 		{
-			var temp= set_current_elements(adv_stats_elements[i]["name"],adv_stats_elements[i]["type"]);
+			var graph_name_temp= adv_stats_elements[i]["name"];
+			graph_name_temp=graph_name_temp.replace(/\s+/g, '-');
+			var temp = set_current_elements(graph_name_temp,adv_stats_elements[i]["type"]);
 			advance_stats_div+=temp;
 			    
 		}// document.getElementById("activeDiv").className="advance_stats";
 	$('.main_data').html(advance_stats_div);
 	
-for(var i=0 ;i< adv_stats_elements.length;i++)
+	for(var i=0 ;i<adv_stats_elements.length ;i++)
 		{
-			var temp= find_index_of(adv_stats_elements[i]["name"]);
-			set_filter(adv_stats_elements[i]["type"],graph_list[temp]["filterList"]);
-			load_overview(temp,graph_list[temp]["graphId"]);
-			    
+			console.log("while seeting fileter");
+
+			var temp = find_index_of(adv_stats_elements[i]["name"]);
+			var graph_name_temp= adv_stats_elements[i]["name"];
+
+			graph_name_temp=graph_name_temp.replace(/\s+/g, '-');
+			console.log(adv_stats_elements[i]["name"]+temp);
+			set_filter(graph_name_temp,graph_list[temp]["filterList"]);
+			populateDefaultDates(graph_name_temp,adv_stats_elements[i]["type"]);
+			if (adv_stats_elements[i]["type"]=="overview")
+			{
+				load_overview(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'));		    
+			}
+			else
+			{
+				load_trends(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),30);
+			}
 		}
 
 
@@ -1097,26 +1221,27 @@ $(document).on('change', 'select', function () {
 						}
 					}
 					
-function makeSubGraph(graph_type,whose_subgraph)
+function makeSubGraph(graph_name,graph_type,whose_subgraph)
 {
 	console.log("in make subgraph");
 	console.log(whose_subgraph);
 	var current_id;
-	for(id in hash_obj["adv_"+graph_type])
+	for(id in hash_obj[graph_name])
 	{
-		// console.log(hash_obj["adv_"+graph_type][id]["name"]);
-		if(hash_obj["adv_"+graph_type][id]["name"]==whose_subgraph){
+		 
+		if(hash_obj[graph_name][id]["name"]==whose_subgraph){
+			console.log("got something");
 		parent_id=id;
-		current_id=hash_obj["adv_"+graph_type][id]["parent_id"];
+		current_id=hash_obj[graph_name][id]["parent_id"];
 		}
 	}
 						 console.log(parent_id);
 
-	setQuickLink(graph_type,whose_subgraph,current_id);
+	setQuickLink(graph_name,whose_subgraph,current_id);
 	if (graph_type=="overview")
-		set_data_of_series_normal(hash_obj,parent_id,"listCountPPl_7Days");
+		set_data_of_series_normal(hash_obj[graph_name],parent_id,"listCountPPl_7Days",graph_name);
 	else
-		set_data_of_series_trends(hash_obj,parent_id,"listDailyAttributeStatisticValues",30);						
+		set_data_of_series_trends(hash_obj[graph_name],parent_id,"listDailyAttributeStatisticValues",30,graph_name);						
 }
 
 			
@@ -1182,18 +1307,25 @@ function setFilter(applyFilter)
 	}						
 }
 
-function setQuickLink(graph_type,whose_subgraph,parent_id)
+function setQuickLink(graph_name,whose_subgraph,parent_id)
 {
 	console.log("in quick links");
 	console.log(parent_id);
-	var active_graph_level=document.getElementById(graph_type+"_quick_links").lastChild;
+	var active_graph_level=document.getElementById(graph_name+"_quick_links").lastChild;
 	console.log(active_graph_level);
-	if(parseInt(active_graph_level.id.split("_")[2]) < parent_id)
-		$("div#"+graph_type+"_quick_links").append('<a class="back_link" id='+graph_type+"_"+whose_subgraph+"_"+parent_id+'>'+" > "+whose_subgraph+'</a>');
-	else if (parseInt(active_graph_level.id.split("_")[2])==parent_id)
+
+	var active_div=active_graph_level.id.split("_");
+	console.log(parseInt(active_div[active_div.length-1]));
+	if(parseInt(active_div[active_div.length-1]) < parent_id)
+	{
+		 $(document.getElementById(graph_name+"_quick_links")).append('<a class="back_link" id='+graph_name+"_"+whose_subgraph+"_"+parent_id+'>'+" > "+whose_subgraph+'</a>');
+		 // document.getElementById(graph_name+"_quick_links").append('<a>Home</a>');
+
+	}
+	else if (parseInt(active_div[active_div.length-1])==parent_id)
 	{
 
-		document.getElementById(graph_type+"_quick_links").lastChild.innerHTML = " > "+whose_subgraph;
+		document.getElementById(graph_name+"_quick_links").lastChild.innerHTML = " > "+whose_subgraph;
 	}
 	else
 		console.log("wrong click");
@@ -1211,10 +1343,10 @@ console.log(filterList);
 							filters+='<td><a class="filter_dropdown_style">'+filterList[i]["attributeString"]+'</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
 							for(var j in filterList[i]["attributeValues"])
 								{
-									filters+='<li class="filter_list_elements"><input type="checkbox" class="filter_list_input" name='+graph_name+"_"+filterList[i]["attributeString"]+' id='+filterList[i]["attributeValues"][j]["name"]+'>&nbsp;&nbsp;'+filterList[i]["attributeValues"][j]["name"]+'</input></li>';
+									filters+='<li class="filter_list_elements"><input type="checkbox" class="filter_list_input" name='+graph_name+"_"+filterList[i]["attributeString"].replace(/\s+/g, '_')+' id='+filterList[i]["attributeValues"][j]["name"]+'>&nbsp;&nbsp;'+filterList[i]["attributeValues"][j]["name"]+'</input></li>';
 								}
-							filters+='<li class="filter_list_elements" ><a class="dynamic_filter" style="font-size: 11px; color: blue; float: right; margin-right: 2px; padding-top: 3px;" id='+graph_name+"-"+filterList[i]["attributeString"]+"-clear"+'> clear </a>';
-							filters+='<a class="dynamic_filter" style="font-size: 11px; color: blue; float: left; margin-left: 2px;padding-top: 3px;" id='+graph_name+"-"+filterList[i]["attributeString"]+"-all"+'> all </a></li></ul></td>';
+							filters+='<li class="filter_list_elements last_row" ><a class="dynamic_filter" style="font-size: 11px; color: blue; float: right; margin-right: 2px; padding-top: 3px;" id='+graph_name+"_"+filterList[i]["attributeString"].replace(/\s+/g, '_')+"_clear"+'> clear </a>';
+							filters+='<a class="dynamic_filter" style="font-size: 11px; color: blue; float: left; margin-left: 2px;padding-top: 3px;" id='+graph_name+"_"+filterList[i]["attributeString"].replace(/\s+/g, '_')+"_all"+'> all </a></li></ul></td>';
 							var x = row.insertCell(-1);
 							x.innerHTML=filters;
 							filters='';

@@ -40,11 +40,11 @@
 #footer-toolbar-div{
  height: 10px;
   padding-bottom: 1px;
-  background-color: white;
+  background-color: rgb(186, 195, 205);
  
   font-family: 'Roboto', sans-serif;
-    color:#9ea6b3;
-/*height: 50px;*/
+    color:white;
+height: 20px;
 
 }
 

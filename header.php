@@ -6,11 +6,13 @@
 <td>
 	<ul class="header_toolbar" >
 	<?php if(isset($_POST['username'])) { ?>
+	<div id="username" style="visibility:hidden;height:0px;"><?php echo $_POST['username']; ?></div>
+	<div id="password" style="visibility:hidden;height:0px;"><?php echo $_POST['password']; ?></div>
 	<li class="welcome">Hello ! <?php echo $_POST['username'] ?></li>	
-	<li class="wlecome"><a href="#" class="level1 tooltip-viewport-bottom"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setting</span></a></li>
+	<li class="wlecome"><a href="#" class="level1 tooltip-viewport-bottom"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setting</span></a></li>
 	
-	<li class="welcome"><a href="login.php" class="level1"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;signout</span></a></li></ul>
-	    <a id="company_contact"  style="float: right;"> contact +919000000011 </a>
+	<li class="welcome"><a href="login.php" class="level1"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signout</span></a></li></ul>
+	    <a id="company_contact"  style="float: right;"> For Support Call at +919900195062 </a>
 	     <!-- <tr><td>
   <p id="company_contact"  style="float: right;"> contact +919000000011 </p>
 </td> -->

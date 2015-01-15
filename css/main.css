@@ -2,12 +2,36 @@ html, body {
     margin: 0;
     padding: 0;
      font-family: 'Roboto', sans-serif;
+      
 }
 a,
 a label {
     cursor: pointer;
 }
 
+
+td.main_data{
+ height: 500px;
+  overflow: scroll; 
+ 
+}
+#container{
+
+ 
+}
+.back_link{
+  margin-left: 20px;
+}
+.stats_main_div
+{
+margin-left: 20px;
+font-size: 20px;
+margin-top: 30px;
+font-weight: 1100;
+}
+th:hover {cursor: hand; cursor: pointer; }
+td:hover {cursor: hand; cursor: pointer;}
+.category_level_2:hover{background-color: #193c63;color: white;}
 .comments_less{
 width: 180px;
 height: 40px;
@@ -26,10 +50,15 @@ border: 1px solid;
 .main_graph_plot
 {
   height: 500px;
-  width: 500px;
+  width: 80%;
+  margin-left: 20px;
 }
 #overview_branch{
   height: 20px;
+}
+
+.last_row{
+  padding-top: 20px;
 }
 
 #adv_trends_filters{
@@ -42,9 +71,10 @@ ul.filter_dropdown_list{
 margin-left: 5px;
 padding: 0;
 border: 1px solid #ccc;
+/*min-height: 120px;*/
 max-height: 120px;
 overflow-y: auto;
-width: 140px;
+width: 180px;
 z-index: 15;
 margin-top: 1px;
 
@@ -54,8 +84,9 @@ margin-left: 5px;
 padding: 0;
 border: 1px solid #ccc;
 max-height: 120px;
+/*min-height: 120px;*/
 overflow-y: auto;
-width: 140px;
+width: 170px;
 z-index: 15;
 }
 
@@ -68,7 +99,7 @@ border-radius: 4px;
 color: #666;
 cursor: pointer;
 font-size: 12px;
-width: 140px;
+width: 170px;
 margin-left: 5px;
 
 }
@@ -202,6 +233,14 @@ height: 32px;
   font-size: 30px;
   font-family: 'Roboto', sans-serif;
 }
+.dashboard_heading
+{
+  width: 450px;
+  font-size: 30px;
+  font-family: 'Roboto', sans-serif;
+  margin-left: 20px;
+  margin-top: 50px;
+}
 #slider_row
 {
   /*margin-right: 40px;*/
@@ -211,7 +250,7 @@ height: 32px;
 }
 #login{
   height: 500px;
-   background-color : #f0f0f0;
+   background-color : rgba(240, 240, 240, 0.77);
    color: black;
    font-family: 'Roboto', sans-serif;
    text-align: center;
@@ -230,11 +269,13 @@ height: 32px;
 }
 
 table#skeleton{
+  
     background-color: #f0f0f0;
     padding-top: 10px;
-    height:800px;
+    height:500px;
     width: 100%;
     border: none;
+    overflow: scroll;
 }
 
 #table_heading{
