@@ -44,10 +44,8 @@ var graph_list_names;
 			                column: {
 			                	pointPadding: 0.2,
 			                    borderWidth: 0,
-			                    pointWidth: 15,
-			                    dataLabels: {
-			                        enabled: true
-			                 		   }
+			                    pointWidth: 15
+			                   
 			                },
                     series: {
                     	allowPointSelect: true,
@@ -80,9 +78,10 @@ var options_trends = {
 					},
 					yAxis: {
 						min :0,
+						max :5,
 						tickInterval: 1,
 						title: {
-							text: 'Avg Number of Feedbacks',
+							text: 'Rating',
 							// align:'left'
 						}
 					},
@@ -180,18 +179,23 @@ $( ".datepicker startDate" ).datepicker({
 						var to_b_removed = this.parentNode.childNodes;
 						console.log(to_b_removed);
 						console.log(parent_node.lastChild);
-						for(var i=0;i< to_b_removed.length;i++)
+						// for(var i=0;i< to_b_removed.length;i++)
+						// {
+						// 	var temp = to_b_removed[i].id;
+						// 	var temp2=temp.split("_");
+						// 	var temp3=(this.id).split("_");
+						// 	console.log("---**---");
+						// 	console.log(to_b_removed[i]);
+						// 	console.log(parseInt(temp2[temp2.length - 1])+"  **  "+parseInt(temp3[temp3.length-1]));
+						// 	if(temp!==undefined && parseInt(temp2[temp2.length - 1]) > parseInt(temp3[temp3.length-1]))
+						// 	 {
+						// 	 	parent_node.removeChild(to_b_removed[i]);
+						// 	 }
+						// }
+
+						while(parent_node.lastChild.id!=this.id)
 						{
-							var temp = to_b_removed[i].id;
-							var temp2=temp.split("_");
-							var temp3=(this.id).split("_");
-							console.log("---**---");
-							console.log(to_b_removed[i]);
-							console.log(parseInt(temp2[temp2.length - 1])+"  **  "+parseInt(temp3[temp3.length-1]));
-							if(temp!==undefined && parseInt(temp2[temp2.length - 1]) > parseInt(temp3[temp3.length-1]))
-							 {
-							 	parent_node.removeChild(to_b_removed[i]);
-							 }
+							parent_node.removeChild(parent_node.lastChild);
 						}
 						console.log((this.id).split("_")[2]);
 
@@ -255,7 +259,7 @@ var client = new XMLHttpRequest();
  set_company_id(JSON.parse(client.responseText));
   		
 
-	var heading_row = '<th class="category_level_2"><span class="category_level_2_text">Dashboard</span></th>';
+	var heading_row = '<th class="category_level_2" style="color: white;background: rgb(25, 60, 99);"><span class="category_level_2_text">Dashboard</span></th>';
 		// heading_row += '<th class="category_level_2" id="gen_stats"><span class="category_level_2_text" >General Statistics</span></th>';
 		heading_row+='<th class="category_level_2" id="adv_stats"><span class="category_level_2_text" >Feedback Results</span></th>';
 		heading_row+='<th class="category_level_2" id="emp_perf"><span class="category_level_2_text" >Employee perfomance result</span></th>';
@@ -289,6 +293,7 @@ var client = new XMLHttpRequest();
 	console.log("dashboard index is"+d_index);
 	prepare_graph_list(graph_list);
 	load_dashboard(d_index,graph_list[d_index]["graphId"],branch_id);
+
 	
 });
 
@@ -344,11 +349,15 @@ function load_dashboard(dashboard_index,dashboard_graphID,branch_id){
 	      max: 7,
 	      step: 1,
 	      slide: function( event, ui ) {
-	      			day_diff= 6 - ui.value;
-	      			var date = new Date();
-					date.setDate(date.getDate() - day_diff);
-					delete hash_obj["dashboard_current"];
-	                load_current_day_dashboard(dashboard_index,dashboard_graphID,date,date);
+	      			day_diff= 7 - ui.value;
+	      			console.log(ui.value);
+	      			var to_date = new Date();
+					to_date.setDate(to_date.getDate() - day_diff);
+					console.log(to_date);
+					delete hash_obj["Dashboard_current"];
+					
+					date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
+	                load_current_day_dashboard(dashboard_index,dashboard_graphID,date,date,branch_id);
 	            }
 	  }).each(function() {
 	  var opt = $(this).data().uiSlider.options;
@@ -377,26 +386,29 @@ function load_dashboard(dashboard_index,dashboard_graphID,branch_id){
 	  // console.log("while starting");
 	  // console.log(hash_obj);
 	  var to_date = new Date();
-	  var start_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-365);
+	  var start_date_overall=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-365);
+	  var start_date_today=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-7);
 	var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
-  load_current_day_dashboard(dashboard_index,dashboard_graphID,start_date,end_date,branch_id);
-  load_one_year_data_dashboard(dashboard_index,dashboard_graphID,branch_id);
+  load_current_day_dashboard(dashboard_index,dashboard_graphID,start_date_today,end_date,branch_id);
+  load_one_year_data_dashboard(dashboard_index,dashboard_graphID,start_date_overall,end_date,branch_id);
 }
 
-function load_current_day_dashboard(dashboard_index,dashboard_graphID,from_date,to_date)
+function load_current_day_dashboard(dashboard_index,dashboard_graphID,from_date,to_date,branch_id)
 {
+	console.log("in dash");
+	console.log(hash_obj);
 	if (hash_obj.hasOwnProperty(graph_list[dashboard_index]["name"]+"_current"))
 	{   
 		dashboard_render(dashboard_index,graph_list[dashboard_index]["name"]+"_current");
 		return;
 	}
-	var to_date = new Date();
-	var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
+	// var to_date = new Date();
+	// var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
 	var host = 'https://bizviewz.com:8080';
 	var path = '/feedback-review/company/'+company_id+'/graph/';
 				
 	var uri='';
-	filters_g='startDate='+end_date+'&endDate='+end_date;
+	filters_g='startDate='+from_date+'&endDate='+to_date;
 	params='/statistics?'+'branch='+branch_id+'&'+filters_g;
 
 
@@ -414,12 +426,14 @@ function load_current_day_dashboard(dashboard_index,dashboard_graphID,from_date,
   }
   current_day_data= JSON.parse(xhr.responseText);
   // console.log("in load_current_day_dashboard current day");
+  console.log(hash_obj);
 	make_graph_obj(current_day_data,graph_list[dashboard_index]["name"]+"_current",dashboard_index);
+	console.log(hash_obj);
 	dashboard_render(dashboard_index,graph_list[dashboard_index]["name"]+"_current");
 
 }
 
-function load_one_year_data_dashboard(dashboard_index,dashboard_graphID,branch_id)
+function load_one_year_data_dashboard(dashboard_index,dashboard_graphID,from_date,to_date,branch_id)
 {	
  if (hash_obj.hasOwnProperty(graph_list[dashboard_index]["name"]+"_overall"))
 	{   
@@ -427,17 +441,16 @@ function load_one_year_data_dashboard(dashboard_index,dashboard_graphID,branch_i
 		return;
 	}
 
-	var to_date = new Date();
 	// var from_date = to_date.setDate(to_date.getDate() - 365);
   	// var someFormattedDate = yy+mm+dd ;
   				var someFormattedDate='20141120';
 				var host = 'https://bizviewz.com:8080';
 				var path = '/feedback-review/company/'+company_id+'/graph/';
 			
-				var start_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-7);
-				var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
+				// var start_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-7);
+				// var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
 				var uri='';
-				filters_g='startDate='+start_date+'&endDate='+end_date;
+				filters_g='startDate='+from_date+'&endDate='+to_date;
 				params='/statistics?branch='+branch_id+'&'+filters_g;
 
 	var xhr = new XMLHttpRequest();
@@ -556,7 +569,7 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 						{
 							console.log("in avg rating if");
 							table_heading+='<th style="font-size: 25px;">Average Rating</th>';
-							day_nps+='<td style="height:120px; text-align:center; font-size:50px;">'+avg_rating+'</td>';
+							day_nps+='<td style="height:120px; text-align:center; font-size:50px;">'+avg_rating.toFixed(1)+'</td>';
 						}
 
 						table_heading+='</tr>'
@@ -651,13 +664,13 @@ function set_current_elements(graph_name,graph_type)
 			var quick_links='';
 
 
-			quick_links='<div class='+graph_type+' id=' + graph_name+"_quick_links"+'><a id='+graph_name+"_"+graph_type+"_-2" + ' class="back_link">'+"Home"+'</a></div>';
+			quick_links='<div class='+graph_type+' id=' + graph_name+"_quick_links"+'><a id='+graph_name+"_"+graph_type+"_-2" + ' class="back_link" style="margin-left: 20px;">'+"Home"+'</a></div>';
 			quick_links+='<div id='+graph_name+"_container_graph_child"+' name='+graph_name+"_level_identify_div"+' style="display:hidden;"></div>';
             quick_links+='<div id='+graph_name+"_container_graph_id"+' name='+graph_name+"_id_identify_div"+' style="display:hidden;"></div>';
             quick_links+='<div id='+graph_name+"_container_graph_filter"+' name='+graph_name+"_filter_identify_div"+' style="display:hidden;"></div>'
 			custom_filters='<tr id='+graph_name+"_filter_row"+'></tr></table>';
-			var comments='<div class="comments_less" id='+graph_name+"_comments"+'>View other Comments<img src="images/comments_icon.png" style="height:20px; width:20px;margin-left:5px;" /></div>';
-			overall_filters = '<div id='+graph_name+"_filters"+ '><div class="stats_main_div">'+(graph_name.split(":"))[1]+'</div>'+basic_filters+custom_filters+comments+quick_links+'<table class="main_graph_plot"><tr><td id='+graph_name+"_graph"+'></td></tr></table></div>';
+			var comments='<div class="comments_less" id='+graph_name+"_comments"+'>View Customer Comments<img src="images/comments_icon.png" style="height:20px; width:20px;margin-left:5px;" /></div>';
+			overall_filters = '<div id='+graph_name+"_filters"+ '><div class="stats_main_div">'+((graph_name.split(":"))[1]).replace(/\-/g, ' ')+'</div>'+basic_filters+custom_filters+comments+quick_links+'<table class="main_graph_plot"><tr><td id='+graph_name+"_graph"+'></td></tr></table></div>';
 	
 
 	
@@ -932,8 +945,8 @@ function set_data_of_series_trends(hash_obj,parent_id,period,days,graph_name)
 		var start;
 		var someFormattedDate;
 		var date = new Date();
-		date.setDate(date.getDate() - days );
-	  	for (var i = 0; i < days; i++) {
+		date.setDate(date.getDate() - days + 1 );
+	  	for (var i = 1; i <= days; i++) {
 		  	var dd = date.getDate();
 	  		var mm = date.getMonth()+1;
 	  		var dy = date.getDay(); 
@@ -1312,14 +1325,14 @@ function setQuickLink(graph_name,whose_subgraph,parent_id)
 	console.log(parseInt(active_div[active_div.length-1]));
 	if(parseInt(active_div[active_div.length-1]) < parent_id)
 	{
-		 $(document.getElementById(graph_name+"_quick_links")).append('<a class="back_link" id='+graph_name+"_"+whose_subgraph+"_"+parent_id+'>'+" > "+whose_subgraph+'</a>');
+		 $(document.getElementById(graph_name+"_quick_links")).append('<a class="back_link" id='+graph_name+"_"+whose_subgraph+"_"+parent_id+'>'+"-> "+whose_subgraph+'</a>');
 		 // document.getElementById(graph_name+"_quick_links").append('<a>Home</a>');
 
 	}
 	else if (parseInt(active_div[active_div.length-1])==parent_id)
 	{
 
-		document.getElementById(graph_name+"_quick_links").lastChild.innerHTML = " > "+whose_subgraph;
+		document.getElementById(graph_name+"_quick_links").lastChild.innerHTML = "-> "+whose_subgraph;
 	}
 	else
 		console.log("wrong click");
