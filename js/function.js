@@ -1234,7 +1234,7 @@ function makeSubGraph(graph_name,graph_type,whose_subgraph)
 	if (graph_type=="overview")
 		set_data_of_series_normal(hash_obj[graph_name],parent_id,"listCountPPl_7Days",graph_name);
 	else
-		set_data_of_series_trends(hash_obj[graph_name],parent_id,"listDailyAttributeStatisticValues",30,graph_name);						
+		set_data_of_series_trends(hash_obj[graph_name],parent_id,"listDailyAttributeStatisticValues",7,graph_name);						
 }
 
 			
