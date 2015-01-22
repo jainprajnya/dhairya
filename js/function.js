@@ -63,6 +63,54 @@ var graph_list_names;
 
 				}
 
+var options_nonweighted = {
+					chart: {
+						type: 'column',
+						// renderTo:'overview_graph',
+						 renderTo:'',
+						 // backgroundColor: '#30D5C8'
+							},
+						title: {
+							text:''
+						},
+					xAxis: {
+						 type: 'category',
+						categories: []
+					
+					},
+					yAxis: {
+						min :0,
+						tickInterval: 5,
+						title: {
+							text: 'Number of people',
+							// align:'left'
+						}
+					},
+					tooltip: {
+                		valueSuffix: ' Number of people'
+           			 },
+           			 plotOptions: {
+			                column: {
+			                	pointPadding: 0.2,
+			                    borderWidth: 0,
+			                    pointWidth: 15
+			                   
+			                },
+                    series: {
+                    	allowPointSelect: true,
+                    	
+                pointWidth: 25,
+                pointPadding: 0,
+			                cursor: 'pointer'			                  
+                
+           				 }
+
+           				},
+			
+				series: []
+
+				}
+
 var options_trends = {
 					chart: {
 						type: 'line',
@@ -180,6 +228,17 @@ $( ".datepicker startDate" ).datepicker({
 						var to_b_removed = this.parentNode.childNodes;
 						console.log(to_b_removed);
 						console.log(parent_node.lastChild);
+						while(parent_node.lastChild.id!=this.id)
+						{
+							parent_node.removeChild(parent_node.lastChild);
+						}
+
+						if(graph_type=="nonweighted")
+						{
+							set_data_of_series_nonweighted(hash_obj[graph_name],-1,graph_name,null);
+							return;
+						}
+						
 						// for(var i=0;i< to_b_removed.length;i++)
 						// {
 						// 	var temp = to_b_removed[i].id;
@@ -194,10 +253,10 @@ $( ".datepicker startDate" ).datepicker({
 						// 	 }
 						// }
 
-						while(parent_node.lastChild.id!=this.id)
-						{
-							parent_node.removeChild(parent_node.lastChild);
-						}
+						// while(parent_node.lastChild.id!=this.id)
+						// {
+						// 	parent_node.removeChild(parent_node.lastChild);
+						// }
 						console.log((this.id).split("_")[2]);
 
 						if (parseInt((this.id).split("_")[2]) == -2)
@@ -226,8 +285,11 @@ $( ".datepicker startDate" ).datepicker({
 
 					});
 
-	$('body').on('click','.filter_list_input',function (){
-						addFilter(this.id,this.name);
+	$('body').on('click','.filter_button',function (){
+						var graph_name=this.parentNode.split("_")[0];
+						
+
+
 						make_graph_with_filters();
 					});
 
@@ -438,7 +500,7 @@ function load_one_year_data_dashboard(dashboard_index,dashboard_graphID,from_dat
 {	
  if (hash_obj.hasOwnProperty(graph_list[dashboard_index]["name"]+"_overall"))
 	{   
-		dashboard_render(dashboard_index,graph_list[dashboard_index]["name"]+"_overall");
+		dashboard_render(dashboard_index,graph_list[dashboard_index]["name"]+"_overall","Overall");
 		return;
 	}
 
@@ -515,8 +577,8 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 									console.log("in if");
 									day_nps+= '<td><table id="dash_day_nps"> <tr class= "col1col2"><th> Promoters</th> <th>Detractor</th><th>Passive</th></tr>';
 									day_nps+= '<tr><td><img class="dashboard_icons" src="images/Promoters_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Detractors_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Passives_Icon.png"></img></td></tr>';
-									day_nps+='<tr><td>'+((positive/total)*100)+' %</td><td>'+((negative/total)*100)+' %</td><td>'+((neutral/total)*100)+' %</td></tr></table></td>';
-									table_heading+='<th style="font-size: 25px;">'+attributeList[i]["attributeString"]+": "+Math.abs((positive-negative)*100/total)+' %</th>';
+									day_nps+='<tr><td>'+((positive/total)*100).toFixed(1)+' %</td><td>'+((negative/total)*100).toFixed(1)+' %</td><td>'+((neutral/total)*100).toFixed(1)+' %</td></tr></table></td>';
+									table_heading+='<th style="font-size: 25px;">'+attributeList[i]["attributeString"]+": "+Math.abs((positive-negative)*100/total).toFixed(1)+' %</th>';
 
 								}
 
@@ -527,7 +589,7 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 									
 									day_nps+= '<td><table id="dash_day_nps"> <tr class= "col1col2"><th> Positive</th> <th>Negative</th><th>Neutral</th></tr>';
 									day_nps+= '<tr><td><img class="dashboard_icons" src="images/Positive_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Negative_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Neutral_Icon.png"></img></td></tr>';
-									day_nps+='<tr><td>'+((positive/total)*100)+' %</td><td>'+((negative/total)*100)+' %</td><td>'+((neutral/total)*100)+' %</td></tr></table></td>';
+									day_nps+='<tr><td>'+((positive/total)*100).toFixed(1)+' %</td><td>'+((negative/total)*100).toFixed(1)+' %</td><td>'+((neutral/total)*100).toFixed(1)+' %</td></tr></table></td>';
 									table_heading+='<th style="font-size: 25px;">Number of Feedbacks: '+feedbacks_total+'</th>';
 									
 									var temp_avg_rating=hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"];
@@ -586,7 +648,7 @@ function load_advance_statistics(){
 	var adv_trends_div='';
 	var overview_basic_filters;
 	var trends_basic_filters;
-     var adv_stats_elements =[{"name":"adv:Customer Experience", "type":"overview"},{"name":"adv:Trends", "type":"trends"},{"name":"pre:Customer Preference Result", "type":"overview"}];
+     var adv_stats_elements =[{"name":"adv:Customer Experience", "type":"overview"},{"name":"adv:Trends", "type":"trends"},{"name":"pre:Customer Preference Result", "type":"nonweighted"}];
      // var adv_stats_elements =[{"name":"adv:Customer Experience", "type":"overview"},{"name":"adv:Trends", "type":"trends"}];
 
     console.log("in adv stats load");
@@ -616,9 +678,13 @@ function load_advance_statistics(){
 			{
 				load_overview(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'));		    
 			}
-			else
+			else if (adv_stats_elements[i]["type"]=="trends")
 			{
 				load_trends(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),7);
+			}
+			else
+			{
+				load_nonweighted(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'))
 			}
 		}
 
@@ -661,7 +727,7 @@ function set_current_elements(graph_name,graph_type)
 			 // var b_filters='';
 			basic_filters+='<td class="startDate" id='+graph_name+"_from_date_filter"+'>Start Date: <input type="text" id='+graph_name+"_start_date"+' class="datepicker startDate"></p></td>';
 			basic_filters+='<td class="endDate" id='+graph_name+"_to_date_filter"+'>End Date: <input id='+graph_name+"_end_date"+' class="datepicker endDate" /></td>';
-			basic_filters+='<td id='+graph_name+"filter_button"+' rowspan=2><button class="filter_button">Apply</button></td></tr>'
+			basic_filters+='<td id="filter_button" rowspan=2><button class='+graph_name+"_filter_button"+'>Apply</button></td></tr>'
 			var quick_links='';
 
 
@@ -770,6 +836,181 @@ console.log(uri.concat(host,path,adv_trends_graphId));
 						set_graph_level(adv_trends_name,-1);
 
 }
+
+function load_nonweighted(adv_nonweighted_index,adv_nonweighted_graphId,adv_nonweighted_name,from_date,to_date)
+{
+	var to_date = new Date();
+  	var someFormattedDate='20141120';
+	var host = 'https://bizviewz.com:8080';
+	var path = '/feedback-review/company/'+company_id+'/graph/';
+	var start_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-7);
+	var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
+	var uri='';
+	filters_g='startDate='+start_date+'&endDate='+end_date;
+	var params='/statistics?branch='+branch_id+'&'+filters_g;
+	var attribue_api_nonweighted=uri.concat(host,path,adv_nonweighted_graphId);
+
+
+	if (hash_obj.hasOwnProperty(adv_nonweighted_name))
+	{   
+		console.log("in if adv_nonweighted_name");
+		 set_data_of_series_nonweighted(hash_obj[adv_nonweighted_name],-1,adv_nonweighted_name,attribue_api_nonweighted);
+		return;
+	}
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", uri.concat(host,path,adv_nonweighted_graphId,params),false);
+	xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
+	xhr.setRequestHeader('sessionId', session_id);
+	xhr.onreadystatechange=function()
+	{
+	  if (xhr.readyState==4 && xhr.status==401)
+	    {
+	    window.location.href = "login.php";
+	    }
+	}
+	xhr.send();
+
+	nonweighted_data= JSON.parse(xhr.responseText);
+	console.log(nonweighted_data);
+
+	make_graph_obj(nonweighted_data,adv_nonweighted_name,adv_nonweighted_index);
+ 	console.log(attribue_api_nonweighted);
+
+ 		xhr = new XMLHttpRequest();
+		xhr.open("GET", attribue_api_nonweighted,false);
+		xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
+		xhr.setRequestHeader('sessionId', session_id);
+		xhr.onreadystatechange=function()
+		{
+		  if (xhr.readyState==4 && xhr.status==401)
+		    {
+		    window.location.href = "login.php";
+		    }
+		}
+		xhr.send();
+
+		nonweighted_data= JSON.parse(xhr.responseText);
+		console.log(nonweighted_data);
+		hash_obj[adv_nonweighted_name]["attributeList"]=nonweighted_data["attributeList"]
+	for (id in nonweighted_data["attributeList"])
+		{
+			var temp_id=nonweighted_data["attributeList"][id]["attributeId"];
+			hash_obj[adv_nonweighted_name][temp_id]["attributeValues"]={};
+			hash_obj[adv_nonweighted_name][temp_id]["attributeValues"]=nonweighted_data["attributeList"][id]["attributeValues"];
+		}
+
+	set_data_of_series_nonweighted(hash_obj[adv_nonweighted_name],-1,adv_nonweighted_name,attribue_api_nonweighted);
+	set_graph_level(adv_nonweighted_name,-1);
+}
+
+function set_data_of_series_nonweighted(hash_obj_nonweighted,parent_id,graph_name,attribue_api_nonweighted){
+
+	console.log("in setseries nonweighted");
+	console.log(hash_obj_nonweighted);
+	console.log(hash_obj);
+	var category_ids=[];
+	var attr_id;
+	options_nonweighted.xAxis.categories=[];
+	series_data=[];
+	var series_name_array=["nonweighted"];
+	  console.log(series_name_array);
+	var child_found=-1;
+	for(var i=0;i<series_name_array.length;i++)
+	{
+		var temp= {	
+					data:[],
+					showInLegend:false,
+					
+					point:{events: { 'click': function(e) { 
+						setQuickLink(graph_name,this.category,-1);
+						options_nonweighted.xAxis.categories=[];
+
+						for (i in hash_obj[graph_name]["attributeList"])
+						{
+							console.log("yes found match"+nonweighted_data["attributeList"][i]);
+							if(this.category==nonweighted_data["attributeList"][i]["attributeString"])
+							{
+								attr_id=hash_obj[graph_name]["attributeList"][i]["attributeId"]
+								for(j in hash_obj[graph_name]["attributeList"][i]["attributeValues"])
+								{
+									options_nonweighted.xAxis.categories.push(hash_obj[graph_name]["attributeList"][i]["attributeValues"][j]["name"]);
+									category_ids.push(parseInt(hash_obj[graph_name]["attributeList"][i]["attributeValues"][j]["value"])); 
+								}
+
+							}
+
+						}
+
+						console.log(options_nonweighted.xAxis.categories);
+						console.log(series_data);
+						if(options_nonweighted.xAxis.categories.length!=0)
+						{
+							series_data=[];
+							for(var k=0;k<series_name_array.length;k++)
+							{
+								var temp= {	
+										data:[],
+										showInLegend:false
+											};
+							}
+							series_data.push(temp);
+							for (var id in options_nonweighted.xAxis.categories)
+							{		
+									for(var i in series_data)
+								{
+									console.log(hash_obj[graph_name][attr_id]["listCountPPl"][id]);
+									series_data[i]["data"].push(hash_obj[graph_name][attr_id]["listCountPPl"][id]);
+									 
+								}
+							}
+
+							console.log(series_data);
+
+							options_nonweighted.series=series_data;
+							console.log(options_nonweighted);
+							options_nonweighted.chart.renderTo=graph_name+"_graph";
+							make_chart(options_nonweighted);
+						}
+
+
+
+					 } }}
+                  }
+		series_data.push(temp);							
+	}
+
+	for(attr_id in hash_obj_nonweighted)
+	{						
+		if(hash_obj_nonweighted[attr_id]["parent_id"]==parent_id )
+		{
+			child_found=1;
+	// 							// set_graph_level(parent_id);								
+	 		// handle_normal_graph(hash_obj,attr_id);
+	 		options_nonweighted.xAxis.categories.push(hash_obj_nonweighted[attr_id]["name"]);
+	 		category_ids.push(parseInt(attr_id));  	
+	 	}
+	}
+	console.log(options_nonweighted.xAxis.categories);
+	console.log(category_ids);
+	if(category_ids.length!=0)
+	{
+		for (var id in category_ids)
+		{		
+				for(var i in series_data)
+			{
+				// console.log(hash_obj[category_ids[id]]["count_of_ppl"][i]);
+				series_data[i]["data"].push(eval(hash_obj_nonweighted[category_ids[id]]["listCountPPl"].join('+')));
+			}
+		}
+		options_nonweighted.series=series_data;
+		options_nonweighted.chart.renderTo=graph_name+"_graph";
+		console.log(options_nonweighted);
+		make_chart(options_nonweighted);
+	}
+
+}
+
 function make_graph_with_filters(){
 				applyFilter=[];
 				var param=(document.getElementsByName("id_identify_div")[0].id).split("_")[1];								
@@ -845,6 +1086,8 @@ function make_graph_obj(data,name,index)
 					console.log(data);
 
 						attributeList=graph_list[index]["attributeList"];
+						
+						
 						if (hash_obj.hasOwnProperty(name))
 							{console.log("second time for "+name); return;}
 						else
@@ -853,6 +1096,9 @@ function make_graph_obj(data,name,index)
 						console.log(hash_obj);
 						hash_obj[name]["filterList"]={}
 						hash_obj[name]["filterList"]=graph_list[index]["filterList"];
+						hash_obj[name]["attributeList"]={};
+						if(data.hasOwnProperty("attributeList"))
+							hash_obj[name]["attributeList"]=attributeList;
 						for(var i=0;i< attributeList.length;i++)
 						{						  
 						var attr_id=attributeList[i]["attributeId"];
@@ -1227,7 +1473,17 @@ $(document).on('change', 'select', function () {
 							$('div#display_filters').append(filter);
 						}
 					}
-					
+		
+function makeSubGraphNonWeighted(graph_name,graph_type,whose_subgraph){
+	console.log("in make subgraph");
+	console.log(whose_subgraph);
+	var current_id;
+	
+
+	setQuickLink(graph_name,whose_subgraph,current_id);
+	set_data_of_series_(hash_obj[graph_name],parent_id,"listCountPPl_7Days",graph_name);
+
+}			
 function makeSubGraph(graph_name,graph_type,whose_subgraph)
 {
 	console.log("in make subgraph");
@@ -1247,8 +1503,11 @@ function makeSubGraph(graph_name,graph_type,whose_subgraph)
 	setQuickLink(graph_name,whose_subgraph,current_id);
 	if (graph_type=="overview")
 		set_data_of_series_normal(hash_obj[graph_name],parent_id,"listCountPPl_7Days",graph_name);
+	else if (graph_type=="trends")
+		set_data_of_series_trends(hash_obj[graph_name],parent_id,"listDailyAttributeStatisticValues",7,graph_name);	
 	else
-		set_data_of_series_trends(hash_obj[graph_name],parent_id,"listDailyAttributeStatisticValues",7,graph_name);						
+		set_data_of_series_nonweighted(hash_obj[graph_name],-1,null,graph_name,null);
+
 }
 
 			
@@ -1345,14 +1604,17 @@ console.log("in set filetr");
 var row = document.getElementById(graph_name+"_filter_row");
 console.log(filterList);
   var filters='';
-
+if(filterList==null)
+{
+	return;
+}
 						for(var i in filterList)
 						{
 							var temp=filterList[i]["attributeString"].split("_");
 							filters+='<td><a class="filter_dropdown_style">'+(temp[temp.length - 1])+'</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
 							for(var j in filterList[i]["attributeValues"])
 								{
-									filters+='<li class="filter_list_elements"><input type="checkbox" class="filter_list_input" name='+graph_name+"_"+filterList[i]["attributeString"].replace(/\s+/g, '_')+' id='+filterList[i]["attributeValues"][j]["name"]+'>&nbsp;&nbsp;'+filterList[i]["attributeValues"][j]["name"]+'</input></li>';
+									filters+='<li class="filter_list_elements"><input type="checkbox" class="filter_list_input" name='+graph_name+"_"+filterList[i]["attributeString"].replace(/\s+/g, '_')+' id='+filterList[i]["attributeValues"][j]["value"]+',>&nbsp;&nbsp;'+filterList[i]["attributeValues"][j]["name"]+'</input></li>';
 								}
 							filters+='<li class="filter_list_elements last_row" ><a class="dynamic_filter" style="font-size: 11px; color: blue; float: right; margin-right: 2px; padding-top: 3px;" id='+graph_name+"_"+filterList[i]["attributeString"].replace(/\s+/g, '_')+"_clear"+'> clear </a>';
 							filters+='<a class="dynamic_filter" style="font-size: 11px; color: blue; float: left; margin-left: 2px;padding-top: 3px;" id='+graph_name+"_"+filterList[i]["attributeString"].replace(/\s+/g, '_')+"_all"+'> all </a></li></ul></td>';

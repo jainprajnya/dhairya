@@ -3,7 +3,7 @@
 <head> 
 	<meta http-equiv="Content-Type" content="application/x-www-form-urlencoded; charset=utf-8"/> 
 	<meta http-equiv="Access-Control-Allow-Origin" content="*" />
-	<title>BiZvIeWz</title>
+	<title>BizViewz</title>
 	<link href="css/header_footer.css" rel="stylesheet" type="text/css">
 	<link href="css/main.css" rel="stylesheet" type="text/css">
 	 

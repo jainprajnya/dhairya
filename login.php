@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width">
-<title>BiZViEwZ</title>
+<title>BizViewz</title>
 <link href="css/header_footer.css" rel="stylesheet" type="text/css">
 <link href="css/main.css" rel="stylesheet" type="text/css">
 <!--[if lte IE 8]>
