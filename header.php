@@ -1,7 +1,7 @@
 <?php ?>
 <div id="header-toolbar-div">
 <table id="header-toolbar-table"><tr><td>
-<a href="home.php" style="float: left; margin-top: 5px; margin-left: 16px;top: 40px; font-size: 30px;font-family: 'Roboto', sans-serif;">BizViewz</a>
+<a style="float: left; margin-top: 5px; margin-left: 16px;top: 40px; font-size: 30px;font-family: 'Roboto', sans-serif;">BizViewz</a>
 </td>
 <td>
 	<ul class="header_toolbar" >
@@ -12,7 +12,7 @@
 	<li class="wlecome"><a href="#" class="level1 tooltip-viewport-bottom"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setting</span></a></li>
 	
 	<li class="welcome"><a href="login.php" class="level1"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signout</span></a></li></ul>
-	    <a id="company_contact"  style="float: right;"> For Support Call at +919900195062 </a>
+	    <a id="company_contact"  style="float: right;"> Call us at +919900195062 </a>
 	     <!-- <tr><td>
   <p id="company_contact"  style="float: right;"> contact +919000000011 </p>
 </td> -->

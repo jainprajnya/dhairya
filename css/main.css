@@ -9,7 +9,14 @@ a label {
     cursor: pointer;
 }
 
-
+table#dash_day_nps{
+   /*border-style: solid;
+    border-color: #ff0000 #0000ff;*/
+}
+th.dashboard_heading{
+  font-size: 20px;
+  color: #193c63;
+}
 td.main_data{
  height: 500px;
   overflow: scroll; 
@@ -244,6 +251,7 @@ height: 32px;
 #slider_row
 {
   /*margin-right: 40px;*/
+  padding-top: 15px;
   padding-right: 40px;
   text-align: right;
   float: right;
@@ -315,7 +323,7 @@ table#skeleton{
 .category_level_2_text{
 height: 22px;
 width: 116px;
-border-bottom:  #bac3cd solid 2px;
+/*border-bottom:  #bac3cd solid 2px;*/
 /*background-color: #bac3cd;*/
 
 }
@@ -372,7 +380,9 @@ border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+   
 padding: 5px;
+
 width:425px;
 text-align: center;
 
