@@ -7,7 +7,7 @@
 <title>Bizviewz Loading</title>
 <link href="css/header_footer.css" rel="stylesheet" type="text/css">
 <link href="css/main.css" rel="stylesheet" type="text/css">
-<link href='http://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
 <script type="text/javascript" src="js/highcharts.js" ></script>
 

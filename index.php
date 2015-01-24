@@ -15,7 +15,7 @@
 
 	<!-- <link href="css/base.css" rel="stylesheet" type="text/css">
 	<link href="css/layout.css" rel="stylesheet" type="text/css"> -->
-	<link href='http://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 	<!-- <script src="jquery/jquery-1.11.1.js"></script> -->
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 	  
