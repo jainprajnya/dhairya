@@ -28,13 +28,16 @@ td.main_data{
 }
 .back_link{
   margin-left: 2px;
+  color:#193c63;
+  font-size: 20px;
 }
 .stats_main_div
 {
 margin-left: 20px;
-font-size: 20px;
+font-size: 30px;
 margin-top: 30px;
 font-weight: 1100;
+
 }
 th.category_level_2:hover {cursor: hand; cursor: pointer; }
 /*td.category_level_2:hover {cursor: hand; cursor: pointer;}*/
@@ -380,7 +383,7 @@ border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-   
+
 padding: 5px;
 
 width:425px;
