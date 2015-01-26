@@ -258,14 +258,14 @@ table.basic_filters td{
 ul.filter_dropdown_list{
     position: absolute;
   /*float: right;*/
-margin-left: 5px;
+margin-left: 77px;
 padding: 0;
 border: 1px solid #ccc;
 /*min-height: 120px;*/
 max-height: 120px;
 overflow-y: auto;
 background-color:  #f0f0f0;
-width: 120px;
+width: 130px;
 z-index: 15;
 
 
@@ -330,7 +330,7 @@ li.filter_list_name:after{
     content: "";
     display: block;
     position: absolute;
-    
+
     width: 0;
     height: 0;
     border: 5px solid transparent;
@@ -338,6 +338,11 @@ li.filter_list_name:after{
     top: 20px;
     right: 9px;
     float: right;
+}
+
+.dummy_div{
+  width: 0px;
+  height: 0px;
 }
 
 /* ==========================================================
