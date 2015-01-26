@@ -421,7 +421,7 @@ $(document).ready(function() {
 		var heading_row = '<th class="category_level_2" style="color: white;background: rgb(25, 60, 99);"><span class="category_level_2_text">Dashboard</span></th>';
 			// heading_row += '<th class="category_level_2" id="gen_stats"><span class="category_level_2_text" >General Statistics</span></th>';
 		heading_row+='<th class="category_level_2" id="adv_stats"><span class="category_level_2_text" >Feedback Results</span></th>';
-		heading_row+='<th class="category_level_2" id="emp_perf"><span class="category_level_2_text" >Employee Perfomance result</span></th>';
+		heading_row+='<th class="category_level_2" id="emp_perf"><span class="category_level_2_text" >Employee Perfomance Result</span></th>';
 		heading_row+='<th class="category_level_2" id="comment"><span class="category_level_2_text" >Comments</span></th>';
 			// console.log("in here");
 		$("tr#table_heading").append(heading_row);
