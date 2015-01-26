@@ -317,8 +317,8 @@ $(document).ready(function() {
 							console.log("not the owner")
 							branches_f=branch_id;
 						}
-						console.log(branch_id);
-						console.log(branches_f);
+						// console.log(branch_id);
+						// console.log(branches_f);
 						console.log(document.getElementById(graph_name+"_start_date"))
 				        var to_date=$(document.getElementById(graph_name+"_start_date")).datepicker("getDate");
 				        if(to_date==null)
@@ -334,11 +334,11 @@ $(document).ready(function() {
 				        else
 				        	end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate()
 
-				        console.log(end_date);
+				  //       console.log(end_date);
 					
 						
-						console.log(start_date);
-						console.log(end_date);
+						// console.log(start_date);
+						// console.log(end_date);
 						if(start_date>end_date)
 							{
 								alert("End date must be greater than start date");
@@ -348,8 +348,7 @@ $(document).ready(function() {
 						
 						var g=graph_name;
 						var temp = find_index_of(g.replace(/\-/g,' '));
-						console.log("----------------------------");
-						console.log(graph_list);
+					
 						filters_f='';
 						for(var i=0;i<graph_list[temp]["filterList"].length;i++)
 						{
@@ -679,7 +678,7 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 									day_nps+= '<td><table class="dashboard_tables"> <tr class= "col1col2"><th> Promoters</th> <th>Detractors</th><th>Passives</th></tr>';
 									day_nps+= '<tr><td><img class="dashboard_icons" src="images/Promoters_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Detractors_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Passives_Icon.png"></img></td></tr>';
 									day_nps+='<tr><td>'+((positive/total)*100).toFixed(1)+' %</td><td>'+((negative/total)*100).toFixed(1)+' %</td><td>'+((neutral/total)*100).toFixed(1)+' %</td></tr></table></td>';
-									table_heading+='<th style="font-size: 20px;color:#193c63;">'+"Net Promoter Score"+": "+Math.abs((positive-negative)*100/total).toFixed(1)+' %</th>';
+									table_heading+='<th style="font-size: 20px;color:#193c63;" class="dashboard_heading">'+"Net Promoter Score "+": "+Math.abs((positive-negative)*100/total).toFixed(1)+' %</th>';
 
 								}
 
@@ -691,7 +690,7 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 									day_nps+= '<td><table class="dashboard_tables"> <tr class= "col1col2"><th> Positive</th> <th>Negative</th><th>Neutral</th></tr>';
 									day_nps+= '<tr><td><img class="dashboard_icons" src="images/Positive_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Negative_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Neutral_Icon.png"></img></td></tr>';
 									day_nps+='<tr><td>'+((positive/total)*100).toFixed(1)+' %</td><td>'+((negative/total)*100).toFixed(1)+' %</td><td>'+((neutral/total)*100).toFixed(1)+' %</td></tr></table></td>';
-									table_heading+='<th style="font-size: 20px;color:#193c63;">Number of Feedbacks: '+feedbacks_total+'</th>';
+									table_heading+='<th style="font-size: 20px;color:#193c63;" class="dashboard_heading">Number of Feedbacks : '+feedbacks_total+'</th>';
 									
 									var temp_avg_rating=hash_obj[dashboard_element][attributeList[i]["attributeId"]]["listCountPPl"];
 									for(var temp=0;temp<5;temp++)
@@ -710,12 +709,12 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 						   	if(attributeList[i]["attributeString"].trim().toLowerCase().indexOf("netpromoterscore")>-1)
 								{
 									nps_bool=1;
-									table_heading+='<th style="font-size: 20px;color:#193c63;">'+"Net Promoter Score:"+' 0 %</th>';
+									table_heading+='<th style="font-size: 20px;color:#193c63; " class="dashboard_heading">'+"Net Promoter Score :"+' 0 %</th>';
 								}
 							if(attributeList[i]["attributeString"].trim().toLowerCase().indexOf("overall_experience")>-1)
 								{
 									nofeedbacks_bool=1;
-									table_heading+='<th style="font-size: 20px;color:#193c63;" class="dashboard_heading">Number of Feedbacks: 0</th>';
+									table_heading+='<th style="font-size: 20px;color:#193c63;" class="dashboard_heading">Number of Feedbacks : 0</th>';
 								}
 
 						   }						
@@ -725,15 +724,15 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 
 						if(nps_bool==0)
 						{
-							table_heading+='<th style="font-size: 20px;color:#193c63;">Net Promoter Score: 0%</th>';
+							table_heading+='<th style="font-size: 20px;color:#193c63;" class="dashboard_heading">Net Promoter Score : 0%</th>';
 							day_nps+='<td class="user_defined_table" > No Data </td>';
 						}
 
 						if(avgRating_bool==0)
 						{
 							// console.log("in avg rating if");
-							table_heading+='<th style="font-size: 20px;color:#193c63;">Average Rating</th>';
-							day_nps+='<td class="user_defined_table" style="padding-bottom: 0px;" >'+avg_rating.toFixed(1)+'</td>';
+							table_heading+='<th style="font-size: 20px;color:#193c63;" class="dashboard_heading">Average Rating</th>';
+							day_nps+='<td class="user_defined_table rating"  style="padding-bottom: 0px;" >'+avg_rating.toFixed(1)+'</td>';
 						}
 
 						table_heading+='</tr>'
@@ -810,7 +809,7 @@ function set_current_elements(graph_name,graph_type)
 	var overall_filters='';
  	var basic_filters='<table id='+graph_name+"_basic_filters"+' class="basic_filters">';
 	basic_filters+='<tr>';
-	var b_filters='<td id='+graph_name+"_branch"+'><a class="filter_dropdown_style">Branch</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
+	var b_filters='<td id='+graph_name+"_branch"+'>Select Branch <a class="filter_dropdown_style">All</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
 	branchesList=company_data["branches"];
 	console.log(branchesList);
 	var a=(graph_name.split(":"))[1];
@@ -847,7 +846,7 @@ function set_current_elements(graph_name,graph_type)
 function load_overview(adv_overview_index,adv_overview_graphId,adv_overview_name,from_date,to_date,branches,filters,r_again)
 {
 	console.log("in load_overview");
-	console.log(branches);
+	console.log(adv_overview_name);
 	if (hash_obj.hasOwnProperty(adv_overview_name) && !r_again)
 	{   
 		// console.log("in if load_overview");
@@ -893,7 +892,7 @@ function load_trends(adv_trends_index,adv_trends_graphId,adv_trends_name,days,fr
 	console.log("in load_trends");
 	if (hash_obj.hasOwnProperty(adv_trends_name) && !r_again)
 	{   
-		set_data_of_series_trends(hash_obj[adv_trends_name],-1,"listDailyAttributeStatisticValues",days,adv_trends_name);
+		set_data_of_series_trends(hash_obj[adv_trends_name],-1,"listDailyAttributeStatisticValues",days,adv_trends_name,d_start_date,d_end_date);
 		return;
 	}
 	// console.log(days);
@@ -1519,11 +1518,11 @@ function load_employee_performance()
 			populateDefaultDates(graph_name_temp,adv_stats_elements[i]["type"]);
 			if (adv_stats_elements[i]["type"]=="overview")
 			{
-				load_overview(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),start_date,end_date,branch_id,null,false);		    
+				load_overview(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),start_date,end_date,branch_id,'',false);		    
 			}
 			else
 			{
-				load_trends(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),7,start_date,end_date,branch_id,null,false);
+				load_trends(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),7,start_date,end_date,branch_id,'',false);
 			}
 		}
 }
@@ -1656,7 +1655,7 @@ function set_filter(graph_name,filterList)
 	for(var i in filterList)
 	{
 		var temp=filterList[i]["attributeString"].split("_");
-		filters+='<td><a class="filter_dropdown_style">'+(temp[temp.length - 1])+'</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
+		filters+='<td>'+(temp[temp.length - 1])+'<a class="filter_dropdown_style">'+"All"+'</a><ul class="filter_dropdown_list" style="visibility: hidden;"> ';
 		for(var j in filterList[i]["attributeValues"])
 		{
 			filters+='<li class="filter_list_elements"><input type="checkbox" class="filter_list_input" name='+graph_name+"_"+filterList[i]["attributeString"].replace(/\s+/g, '_')+' id='+filterList[i]["attributeValues"][j]["value"]+',>&nbsp;&nbsp;'+filterList[i]["attributeValues"][j]["name"]+'</input></li>';
