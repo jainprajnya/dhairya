@@ -670,7 +670,7 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 								{	
 									nps_bool=1;
 									// console.log("in if");
-									day_nps+= '<td><table id="dash_day_nps"> <tr class= "col1col2"><th> Promoters</th> <th>Detractor</th><th>Passive</th></tr>';
+									day_nps+= '<td><table class="dashboard_tables"> <tr class= "col1col2"><th> Promoters</th> <th>Detractor</th><th>Passive</th></tr>';
 									day_nps+= '<tr><td><img class="dashboard_icons" src="images/Promoters_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Detractors_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Passives_Icon.png"></img></td></tr>';
 									day_nps+='<tr><td>'+((positive/total)*100).toFixed(1)+' %</td><td>'+((negative/total)*100).toFixed(1)+' %</td><td>'+((neutral/total)*100).toFixed(1)+' %</td></tr></table></td>';
 									table_heading+='<th style="font-size: 20px;color:#193c63;">'+"Net Promoter Score"+": "+Math.abs((positive-negative)*100/total).toFixed(1)+' %</th>';
@@ -682,7 +682,7 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 									nofeedbacks_bool=1;
 									// console.log("in if1");
 									
-									day_nps+= '<td><table id="dash_day_nps"> <tr class= "col1col2"><th> Positive</th> <th>Negative</th><th>Neutral</th></tr>';
+									day_nps+= '<td><table class="dashboard_tables"> <tr class= "col1col2"><th> Positive</th> <th>Negative</th><th>Neutral</th></tr>';
 									day_nps+= '<tr><td><img class="dashboard_icons" src="images/Positive_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Negative_Icon.png"></img></td><td><img class="dashboard_icons" src="images/Neutral_Icon.png"></img></td></tr>';
 									day_nps+='<tr><td>'+((positive/total)*100).toFixed(1)+' %</td><td>'+((negative/total)*100).toFixed(1)+' %</td><td>'+((neutral/total)*100).toFixed(1)+' %</td></tr></table></td>';
 									table_heading+='<th style="font-size: 20px;color:#193c63;">Number of Feedbacks: '+feedbacks_total+'</th>';
@@ -699,7 +699,7 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 						  else
 						   {
 						   	// console.log("in else");
-						   	day_nps+='<td style="height:120px; text-align:center;"> No Data </td>';
+						   	day_nps+='<td class="user_defined_table"> No Data </td>';
 						   	
 						   	if(attributeList[i]["attributeString"].trim().toLowerCase().indexOf("netpromoterscore")>-1)
 								{
@@ -720,14 +720,14 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 						if(nps_bool==0)
 						{
 							table_heading+='<th style="font-size: 20px;color:#193c63;">Net Promoter Score: 0%</th>';
-							day_nps+='<td style="height:120px; text-align:center;"> No Data </td>';
+							day_nps+='<td class="user_defined_table" > No Data </td>';
 						}
 
 						if(avgRating_bool==0)
 						{
 							// console.log("in avg rating if");
 							table_heading+='<th style="font-size: 20px;color:#193c63;">Average Rating</th>';
-							day_nps+='<td style="height:120px; text-align:center; font-size:50px;">'+avg_rating.toFixed(1)+'</td>';
+							day_nps+='<td class="user_defined_table" style="padding-bottom: 0px;" >'+avg_rating.toFixed(1)+'</td>';
 						}
 
 						table_heading+='</tr>'
