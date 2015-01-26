@@ -12,7 +12,7 @@
 	<li class="wlecome"><a href="#" class="level1 tooltip-viewport-bottom"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setting</span></a></li>
 	
 	<li class="welcome"><a href="login.php" class="level1"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signout</span></a></li></ul>
-	    <a id="company_contact"  style="float: right;"> Call us at +919900195062 </a>
+	    <p id="company_contact"  style="float: right;"> Call us at &nbsp; +919900195062 </p>
 	     <!-- <tr><td>
   <p id="company_contact"  style="float: right;"> contact +919000000011 </p>
 </td> -->
