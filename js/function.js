@@ -420,7 +420,7 @@ $(document).ready(function() {
 		var heading_row = '<th class="category_level_2" style="color: white;background: rgb(25, 60, 99);"><span class="category_level_2_text">Dashboard</span></th>';
 			// heading_row += '<th class="category_level_2" id="gen_stats"><span class="category_level_2_text" >General Statistics</span></th>';
 		heading_row+='<th class="category_level_2" id="adv_stats"><span class="category_level_2_text" >Feedback Results</span></th>';
-		heading_row+='<th class="category_level_2" id="emp_perf"><span class="category_level_2_text" >Employee Perfomance Result</span></th>';
+		heading_row+='<th class="category_level_2" id="emp_perf"><span class="category_level_2_text" >Employee Perfomance</span></th>';
 		heading_row+='<th class="category_level_2" id="comment"><span class="category_level_2_text" >Comments</span></th>';
 			// console.log("in here");
 		$("tr#table_heading").append(heading_row);
@@ -825,9 +825,9 @@ function set_current_elements(graph_name,graph_type)
 	basic_filters+=b_filters;
 	// var b_filters='';
 	
-	basic_filters+='<td class="startDate" id='+graph_name+"_from_date_filter"+'>Start Date: <input type="text" id='+graph_name+"_start_date"+' value='+default_start_date+' class="datepicker startDate"></p></td>';
-	basic_filters+='<td class="endDate" id='+graph_name+"_to_date_filter"+'>End Date: <input id='+graph_name+"_end_date"+' value='+default_end_date+' class="datepicker endDate" /></td>';
-	basic_filters+='<td id='+graph_name+"_filter_button" +' rowspan=2><button class='+"filter_button"+' name='+graph_type+'>Apply</button><button class='+"filter_reset_button"+' name='+graph_type+'>Reset</button></td></tr>'
+	basic_filters+='<td class="mystartDate" id='+graph_name+"_from_date_filter"+'>Start Date: <input type="text" id='+graph_name+"_start_date"+' value='+default_start_date+' class="datepicker"></p></td>';
+	basic_filters+='<td class="myendDate" id='+graph_name+"_to_date_filter"+'>End Date: <input id='+graph_name+"_end_date"+' value='+default_end_date+' class="datepicker" /></td>';
+	basic_filters+='<td id='+graph_name+"_filter_button" +' rowspan=2><button class="button blue"'+ 'name='+graph_type+'>Apply</button><button class="filter_reset_button button blue"'+' name='+graph_type+'>Reset</button></td></tr>'
 	
 	var quick_links='';
 	quick_links='<div class='+graph_type+' id=' + graph_name+"_quick_links"+'><a id='+graph_name+"_"+graph_type+"_-2" + ' class="back_link" style="margin-left: 20px;">'+"Home"+'</a></div>';

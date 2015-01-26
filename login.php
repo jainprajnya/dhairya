@@ -33,7 +33,7 @@
       <br>
       <br>
       <div class="login_actions" style="padding-right:0">
-        <button id="login_button" type="Submit" class="btn btn-green" tabindex="3" name="loginSubmit">Login</button>
+        <button id="login_button" type="Submit" class="button blue" tabindex="3" name="loginSubmit">Login</button>
       </div>
     </form>
      </div>

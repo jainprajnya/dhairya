@@ -67,98 +67,13 @@ border: 1px solid #bcbcbc;
   margin-left: 70px;
   margin-top: 80px;
 }
-ul.filter_dropdown_list{
-    position: absolute;
-    background: #fff;
-margin-left: 5px;
-padding: 0;
-border: 1px solid #ccc;
-/*min-height: 120px;*/
-max-height: 120px;
-overflow-y: auto;
-width: 180px;
-z-index: 15;
-margin-top: 1px;
 
-}
-.filter_dropdown_style ul{
-margin-left: 5px;
-padding: 0;
-border: 1px solid #ccc;
-max-height: 120px;
-/*min-height: 120px;*/
-overflow-y: auto;
-width: 120px;
-z-index: 15;
-}
-
-a.filter_dropdown_style{
-    padding: 5px;
-    background: #fff;
-display: inline-block;
-border: 1px solid #ccc;
-border-radius: 4px;
-color: #666;
-cursor: pointer;
-font-size: 12px;
-margin-left: 5px;
-
-}
-a.filter_dropdown_style:after{
-   content: ""; 
-   border-left: 6px solid transparent;
-border-right: 6px solid transparent;
-border-top: 6px solid #999;
-position: inherit;
-height: 0;
-width: 0;
-
-margin-top: 5px;
-margin-right: 2px;
-font-size: 10px;
-overflow: hidden;
-display: block;
-top: 20px;
-    right: 9px;
-    float: right;
-
-   /* content: "";
-    display: block;
-    position: inherit;
-    width: 0;
-    height: 0;
-    border: 5px solid transparent;
-    border-top-color: #999;
-    top: 20px;
-    right: 9px;
-    float: right;*/
-}
-li.filter_list_name:after{
-    content: "";
-    display: block;
-    position: inherit;
-    width: 0;
-    height: 0;
-    border: 5px solid transparent;
-    border-top-color: #999;
-    top: 20px;
-    right: 9px;
-    float: right;
-}
 #login{
   /*height: 600px;*/
   background: url("../images/login_bg.png") no-repeat;
   background-position: center;
 }
-.basic_filters{
-height: 60px;
-width: 97.5%;
-margin-right: 3px;
-padding: 10px;
-border: 1px solid #bcbcbc;
-background-color: white;
-margin: 20px;
-}
+
 #adv_overview_graph{
    min-width: 500px;
   margin-left: 30px;
@@ -263,6 +178,166 @@ width: 116px;
   left: 250px;*/
   /*height: 300px;*/
   background-color: #eee;
+}
+
+/* =========================================================
+   General
+   ========================================================= */
+   .button {
+  display: inline-block;
+  zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+  *display: inline;
+  vertical-align: baseline;
+  margin: 0 2px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font: 12px/100% 'Roboto', sans-serif;
+  padding: .5em 2em .55em;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  -webkit-border-radius: .5em; 
+  -moz-border-radius: .5em;
+  border-radius: .5em;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+
+}
+
+.blue{
+  color:white;
+  border: solid 1px #193c63;
+  background: #193c63;
+  
+}
+
+
+/* ==========================================================
+  filters
+   ========================================================== */
+
+.basic_filters{
+height: 60px;
+width: 97.5%;
+margin-right: 3px;
+padding: 10px;
+border: 1px solid #bcbcbc;
+background-color: white;
+margin: 20px;
+}
+
+table.basic_filters td{
+  width:200px;
+  margin-left:10px;
+  font-size: 12px;
+  padding-left: 30px;
+  text-align: left;
+
+
+}
+
+.mystartDate{
+  width: 300px;
+  margin-left: 10px;
+  padding: 0px;
+}
+
+.myendDate{
+  width: 300px;
+  margin-left: 10px;
+  padding: 0px;
+}
+
+.datepicker
+{
+  float: right;
+  background-color:  #f0f0f0; 
+  width: 125px;
+}
+ul.filter_dropdown_list{
+    position: absolute;
+  /*float: right;*/
+margin-left: 5px;
+padding: 0;
+border: 1px solid #ccc;
+/*min-height: 120px;*/
+max-height: 120px;
+overflow-y: auto;
+background-color:  #f0f0f0;
+width: 120px;
+z-index: 15;
+
+
+}
+.filter_dropdown_style ul{
+  position: absolute;
+margin-left: 5px;
+padding: 0;
+border: 1px solid #ccc;
+max-height: 120px;
+background-color:  #f0f0f0;
+/*min-height: 120px;*/
+overflow-y: auto;
+width: 120px;
+z-index: 15;
+}
+
+a.filter_dropdown_style{
+    padding: 5px;
+    background-color:  #f0f0f0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+color: #666;
+cursor: pointer;
+font-size: 12px;
+margin-left: 5px;
+width: 120px;
+float: right;
+
+}
+a.filter_dropdown_style:after{
+   content: ""; 
+   border-left: 6px solid transparent;
+border-right: 6px solid transparent;
+border-top: 6px solid #999;
+position: inherit;
+height: 0;
+width: 0;
+
+margin-top: 5px;
+margin-right: 2px;
+font-size: 10px;
+overflow: hidden;
+display: block;
+top: 20px;
+    right: 9px;
+    float: right;
+
+   /* content: "";
+    display: block;
+    position: inherit;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-top-color: #999;
+    top: 20px;
+    right: 9px;
+    float: right;*/
+}
+li.filter_list_name:after{
+    content: "";
+    display: block;
+    position: absolute;
+    
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-top-color: #999;
+    top: 20px;
+    right: 9px;
+    float: right;
 }
 
 /* ==========================================================
