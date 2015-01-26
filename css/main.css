@@ -36,11 +36,8 @@ th.category_level_2:hover {cursor: hand; cursor: pointer; }
 /*td.category_level_2:hover {cursor: hand; cursor: pointer;}*/
 .category_level_2:hover{background-color: #193c63;color: white;}
 .comments_less{
-width: 200px;
-height: 40px;
-padding: 2px;
+margin-bottom: 2px;
 background-color: white;
-margin-right: 200px;
 font-size: 14px;
 float: right;
 border-radius: 5px;
@@ -154,7 +151,7 @@ li.filter_list_name:after{
 }
 .basic_filters{
 height: 60px;
-width: 90%;
+width: 100%;
 padding: 10px;
 border: 1px solid #bcbcbc;
 background-color: white;
