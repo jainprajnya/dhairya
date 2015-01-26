@@ -46,7 +46,9 @@ var graph_list_names;
 						}
 					},
 					tooltip: {
-                		valueSuffix: ' Number of Feedbacks'
+                		formatter: function() {
+       					 return 'Number of feedbacks: <b>'+ this.y ;
+    					}
            			 },
            			 plotOptions: {
 			                column: {
@@ -95,7 +97,9 @@ var options_nonweighted = {
 						}
 					},
 					tooltip: {
-                		valueSuffix: ' Number of people'
+                		formatter: function() {
+        					return 'Number of feedbacks: <b>' + this.y ;
+    					}
            			 },
            			 plotOptions: {
 			                column: {
@@ -144,7 +148,9 @@ var options_trends = {
 						}
 					},
 					tooltip: {
-                		valueSuffix: 'Avg Rating'
+                		formatter: function() {
+        					return 'Average rating for <b>' + this.series.name +' on '+ this.x + '</b> is <b>' + this.y ;
+   						}
            			 },
            			 plotOptions: {
 			                column: {
