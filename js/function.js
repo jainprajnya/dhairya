@@ -377,11 +377,11 @@ $(document).ready(function() {
 					});
 
 	   // $('body').on('submit','#login',function(){
-		console.log("when clicked login");
+		// console.log("when clicked login");
 	  	var uname=(document.getElementById("username")).innerHTML;
 	  	var pword=(document.getElementById("password")).innerHTML;
-	  	console.log(uname);
-	  	console.log(pword);
+	  	// console.log(uname);
+	  	// console.log(pword);
 
 	  	var login_url = 'https://bizviewz.com:8080/feedback-review/login';
 
@@ -393,15 +393,15 @@ $(document).ready(function() {
 	   	
 	  	client.onreadystatechange=function()
 	  	{
-	  		console.log("in outer function");
+	  		// console.log("in outer function");
 	  		if (client.readyState==4 && client.status==401)
 	    	{
-	    		console.log("in this function");
+	    		// console.log("in this function");
 	    		window.location.href = "login.php";
 	    	}
 	    	if (client.readyState==4 && client.status==500)
 	    	{
-	    		console.log("in this function");
+	    		// console.log("in this function");
 	    		window.location.href = "login.php";
 	    	}
 	  	}
@@ -443,6 +443,8 @@ $(document).ready(function() {
 	  	branch_id_global=branch_id=company_data["branches"][0]["id"];
 
 		d_index = find_index_of("Dashboard");
+		// console.log(d_index);
+		// console.log(graph_list);
 		prepare_graph_list(graph_list);
 		load_dashboard(d_index,graph_list[d_index]["graphId"],branch_id);
 		

@@ -1,14 +1,14 @@
 <?php ?>
 <div id="header-toolbar-div">
 <table id="header-toolbar-table"><tr><td>
-<a style="float: left; margin-top: 5px; margin-left: 16px;top: 40px; font-size: 30px;font-family: 'Roboto', sans-serif;">BizViewz</a>
+<p style="float: left; margin-top: 5px; margin-left: 16px;top: 40px; font-size: 30px;color:white;font-family: 'Roboto', sans-serif;">BizViewz</p>
 </td>
 <td>
 	<ul class="header_toolbar" >
 	<?php if(isset($_POST['username'])) { ?>
 	<div id="username" style="visibility:hidden;height:0px;"><?php echo $_POST['username']; ?></div>
 	<div id="password" style="visibility:hidden;height:0px;"><?php echo $_POST['password']; ?></div>
-	<li class="welcome">Hello ! <?php echo $_POST['username'] ?></li>	
+	<li class="welcome">Welcome  <?php $a=preg_split('/@/',$_POST['username']);echo ucwords(strtolower($a[0]));  ?> !</li>	
 	<li class="wlecome"><a href="#" class="level1 tooltip-viewport-bottom"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setting</span></a></li>
 	
 	<li class="welcome"><a href="login.php" class="level1"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signout</span></a></li></ul>
