@@ -381,6 +381,31 @@ $(document).ready(function() {
 
 					});
 
+	$('body').on('click','.category_level_1_text',function(){
+				var category_level_1_elements = document.getElementsByClassName('category_level_1');
+						for (var i = 0; i < category_level_1_elements.length; i++) {
+					    	category_level_1_elements[i].style.background = "#193c63";
+					    	category_level_1_elements[i].style.color = "white";
+						}
+
+						this.style.background = "#f0f0f0";
+						this.style.color = "black";
+						console.log("clicked left pane");
+						console.log(this.id);
+						switch(this.id)
+						{
+							case "insights":load_insights();break;
+							case "marketing": load_marketing();break;
+							case "followup": load_followup();break;
+							case "profile": load_comments();break;
+							default:{d_index = find_index_of("Dashboard");
+										// console.log("dashboard index is"+d_index);
+									  	load_dashboard(d_index,graph_list[d_index]["graphId"]);}
+						}
+
+
+					});
+
 	   // $('body').on('submit','#login',function(){
 		// console.log("when clicked login");
 	  	var uname=(document.getElementById("username")).innerHTML;
@@ -1666,5 +1691,18 @@ function set_filter(graph_name,filterList)
 		x.innerHTML=filters;
 		filters='';
 	}
+
+}
+
+function load_insights()
+{
+var heading_row = '<th class="category_level_2" style="color: white;background: rgb(25, 60, 99);"><span class="category_level_2_text">Customer based Results</span></th>';
+			// heading_row += '<th class="category_level_2" id="gen_stats"><span class="category_level_2_text" >General Statistics</span></th>';
+		heading_row+='<th class="category_level_2" id="adv_stats"><span class="category_level_2_text" >Time based Results </span></th>';
+		heading_row+='<th class="category_level_2" id="emp_perf"><span class="category_level_2_text" >Branch Performance Details</span></th>';
+		
+			console.log("in here");
+		$("tr#table_heading").html(heading_row);
+
 
 }

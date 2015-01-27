@@ -9,7 +9,7 @@
 	</tr>
 	<tr class="category_level_1_row">
 		<td class="category_level_1">
-		<img src="images/Insights_Icon_01.png" class="category_level_1_icons"> <span class="category_level_1_text" id="analysis">INSIGHTS<span></td>
+		<img src="images/Insights_Icon_01.png" class="category_level_1_icons"> <span class="category_level_1_text" id="insights">INSIGHTS<span></td>
 		<td rowspan=17 colspan=5 class="main_data" id="main_data_td" >
 			<table id="graph_filters_table">
             </table>
