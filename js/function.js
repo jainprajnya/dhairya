@@ -203,6 +203,9 @@ $(document).ready(function() {
 							case "adv_stats": load_advance_statistics();break;
 							case "emp_perf": load_employee_performance();break;
 							case "comment": load_comments();break;
+							case "insights_time": load_insights_time();break;
+							case "insights_customer": load_insights_customer();break;
+							case "insights_branch":load_insights_branch();break;
 							default:{d_index = find_index_of("Dashboard");
 										// console.log("dashboard index is"+d_index);
 									  	load_dashboard(d_index,graph_list[d_index]["graphId"]);}
@@ -384,12 +387,15 @@ $(document).ready(function() {
 	$('body').on('click','.category_level_1_text',function(){
 				var category_level_1_elements = document.getElementsByClassName('category_level_1');
 						for (var i = 0; i < category_level_1_elements.length; i++) {
+							// console.log(category_level_1_elements[i]);
 					    	category_level_1_elements[i].style.background = "#193c63";
 					    	category_level_1_elements[i].style.color = "white";
 						}
-
-						this.style.background = "#f0f0f0";
-						this.style.color = "black";
+						document.getElementById('statistics').parentNode.style.background="#193c63";
+						document.getElementById('statistics').parentNode.style.color="white";
+						console.log(document.getElementById('statistics').parentNode);
+						this.parentNode.style.background = "#f0f0f0";
+						this.parentNode.style.color = "black";
 						console.log("clicked left pane");
 						console.log(this.id);
 						switch(this.id)
@@ -441,6 +447,8 @@ $(document).ready(function() {
 		set_session_id(client.getResponseHeader('sessionId'));
 	 	set_company_id(JSON.parse(client.responseText));
 	  		
+	  		document.getElementById('statistics').parentNode.style.background="#f0f0f0";
+			document.getElementById('statistics').parentNode.style.color="black";
 
 		var heading_row = '<th class="category_level_2" style="color: white;background: rgb(25, 60, 99);"><span class="category_level_2_text">Dashboard</span></th>';
 			// heading_row += '<th class="category_level_2" id="gen_stats"><span class="category_level_2_text" >General Statistics</span></th>';
@@ -474,8 +482,9 @@ $(document).ready(function() {
 
 		d_index = find_index_of("Dashboard");
 		// console.log(d_index);
-		// console.log(graph_list);
+		
 		prepare_graph_list(graph_list);
+		console.log(graph_list);
 		load_dashboard(d_index,graph_list[d_index]["graphId"],branch_id);
 		
 });
@@ -1696,13 +1705,56 @@ function set_filter(graph_name,filterList)
 
 function load_insights()
 {
-var heading_row = '<th class="category_level_2" style="color: white;background: rgb(25, 60, 99);"><span class="category_level_2_text">Customer based Results</span></th>';
+
+document.getElementById('statistics').parentNode.style.background="#193c63";
+document.getElementById('statistics').parentNode.style.color="white";
+var heading_row = '<th class="category_level_1" style="background-color: #f0f0f0; color:black;" >';
+heading_row+='<img src="images/Statistics_Icon_01.png" class="category_level_1_icons">';
+heading_row+='<span class="category_level_1_text" id="statistics" >STATISTICS</span></th>';
+heading_row+='<th class="category_level_2" style="color: white;background: rgb(25, 60, 99);" id="insights_customer"><span class="category_level_2_text">Customer based Results</span></th>';
 			// heading_row += '<th class="category_level_2" id="gen_stats"><span class="category_level_2_text" >General Statistics</span></th>';
-		heading_row+='<th class="category_level_2" id="adv_stats"><span class="category_level_2_text" >Time based Results </span></th>';
-		heading_row+='<th class="category_level_2" id="emp_perf"><span class="category_level_2_text" >Branch Performance Details</span></th>';
+		heading_row+='<th class="category_level_2" id="insights_time"><span class="category_level_2_text" >Time based Results </span></th>';
+		heading_row+='<th class="category_level_2" id="insights_branch"><span class="category_level_2_text" >Branch Performance Details</span></th>';
 		
 			console.log("in here");
 		$("tr#table_heading").html(heading_row);
+		if (company_id==11)
+			{customer_based='<img src="images/Company11/Company11-CustomerResults.png" style="width:1050px;" />';}
+		else
+			{customer_based='<img src="images/Company12/Company11-CustomerResults.png" style="width:1050px;" />';}
+		document.getElementById("adjustment_div").style.height="77%";
+		$('.main_data').html(customer_based);
 
 
+
+}
+
+function load_insights_time(){
+        if (company_id==11)
+			{customer_based='<img src="images/Company11/Company11-TimeResults.png" style="width:1050px;" />';}
+		else
+			{customer_based='<img src="images/Company12/Company12-TimeResults.png" style="width:1050px;" />';}
+		document.getElementById("adjustment_div").style.height="60%";
+		$('.main_data').html(customer_based);
+
+}
+
+function load_insights_customer(){
+
+	if (company_id==11)
+			{customer_based='<img src="images/Company11/Company11-CustomerResults.png" style="width:1050px;" />';}
+		else
+			{customer_based='<img src="images/Company12/Company12-CustomerResults.png" style="width:1050px;" />';}
+		document.getElementById("adjustment_div").style.height="77%";
+		$('.main_data').html(customer_based);
+}
+
+function load_insights_branch(){
+
+	if (company_id==11)
+			{customer_based='<img src="images/Company11/Company11-BranchPerformance.png" style="width:800px;margin-left:30px;" />';}
+		else
+			{customer_based='<img src="images/Company12/Company12-BranchPerformance.png" style="width:800px; margin-left:30px;" />';}
+		document.getElementById("adjustment_div").style.height="40%";
+		$('.main_data').html(customer_based);
 }

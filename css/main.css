@@ -144,7 +144,7 @@ width: 116px;
 }
 
 .category_level_1 {
-  margin-top: 10px;
+  margin-top: 2px;
   height: 30px;
   width : 230px;
   background-color: #193c63;
@@ -154,21 +154,23 @@ width: 116px;
     padding-left: 15px;
     padding-top: 0px;
     padding-bottom: 0px;
+    
     text-align: left;
-    /*text-align: center;*/
 }
 
 .category_level_1_icons{
 
   float:left;
+  width: 30px;
+  height: 28px;
   margin-left: 5px;
   margin-right: 19px;
 }
 .category_level_1_text
 {
-
+   padding-top: 15px;
   /*float: right;*/
-  /*margin-right: 5px;*/
+  margin-top: 5px;
 }
 
 .container-viewport {
