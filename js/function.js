@@ -404,9 +404,7 @@ $(document).ready(function() {
 							case "marketing": load_marketing();break;
 							case "followup": load_followup();break;
 							case "profile": load_comments();break;
-							default:{d_index = find_index_of("Dashboard");
-										// console.log("dashboard index is"+d_index);
-									  	load_dashboard(d_index,graph_list[d_index]["graphId"]);}
+							default:load_statistics();
 						}
 
 
