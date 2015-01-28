@@ -1702,6 +1702,7 @@ function set_filter(graph_name,filterList)
 }
 
 function load_statistics(){
+	console.log("in load");
 	document.getElementById('statistics').parentNode.style.background="#f0f0f0";
 			document.getElementById('statistics').parentNode.style.color="black";
 
@@ -1715,7 +1716,7 @@ heading_row+='<span class="category_level_1_text" id="statistics" >STATISTICS</s
 		heading_row+='<th class="category_level_2" id="comment"><span class="category_level_2_text" >Comments</span></th>';
 
 document.getElementById("adjustment_div").style.height="77%";
-		$('.main_data').html(customer_based);
+		$("tr#table_heading").html(heading_row);
 d_index = find_index_of("Dashboard");
 		// console.log(d_index);
 		load_dashboard(d_index,graph_list[d_index]["graphId"],branch_id);
@@ -1737,9 +1738,9 @@ heading_row+='<th class="category_level_2" style="color: white;background: rgb(2
 			console.log("in here");
 		$("tr#table_heading").html(heading_row);
 		if (company_id==11)
-			{customer_based='<img src="images/Company11/Company11-CustomerResults1.png" style="width:1000px;margin-left:12px;" />';}
+			{customer_based='<img src="images/Company11/Company11-CustomerResults1.png" style="margin-left:12px;" />';}
 		else
-			{customer_based='<img src="images/Company12/Company12-CustomerResults.png" style="width:1000px;margin-left:12px;" />';}
+			{customer_based='<img src="images/Company12/Company12-CustomerResults.png" style="margin-left:12px;" />';}
 		document.getElementById("adjustment_div").style.height="77%";
 		$('.main_data').html(customer_based);
 
@@ -1749,9 +1750,9 @@ heading_row+='<th class="category_level_2" style="color: white;background: rgb(2
 
 function load_insights_time(){
         if (company_id==11)
-			{customer_based='<img src="images/Company11/Company11-TimeResults1.png" style="width:1000px;margin-left:12px;" />';}
+			{customer_based='<img src="images/Company11/Company11-TimeResults1.png" style="margin-left:12px;" />';}
 		else
-			{customer_based='<img src="images/Company12/Company12-TimeResults.png" style="width:1000px;margin-left:12px;" />';}
+			{customer_based='<img src="images/Company12/Company12-TimeResults.png" style="margin-left:12px;" />';}
 		document.getElementById("adjustment_div").style.height="60%";
 		$('.main_data').html(customer_based);
 
@@ -1760,9 +1761,9 @@ function load_insights_time(){
 function load_insights_customer(){
 
 	if (company_id==11)
-			{customer_based='<img src="images/Company11/Company11-CustomerResults1.png" style="width:1000px;margin-left:12px;" />';}
+			{customer_based='<img src="images/Company11/Company11-CustomerResults1.png" style="margin-left:12px;" />';}
 		else
-			{customer_based='<img src="images/Company12/Company12-CustomerResults.png" style="width:1000px;margin-left:12px;" />';}
+			{customer_based='<img src="images/Company12/Company12-CustomerResults.png" style="margin-left:12px;" />';}
 		document.getElementById("adjustment_div").style.height="77%";
 		$('.main_data').html(customer_based);
 }
@@ -1770,9 +1771,9 @@ function load_insights_customer(){
 function load_insights_branch(){
 
 	if (company_id==11)
-			{customer_based='<img src="images/Company11/Company11-BranchPerformance1.png" style="width:1000px;margin-left:12px;" />';}
+			{customer_based='<img src="images/Company11/Company11-BranchPerformance1.png" style="margin-left:12px;" />';}
 		else
-			{customer_based='<img src="images/Company12/Company12-BranchPerformance.png" style="width:1000px; margin-left:12px;" />';}
+			{customer_based='<img src="images/Company12/Company12-BranchPerformance.png" style="margin-left:12px;" />';}
 		document.getElementById("adjustment_div").style.height="65%";
 		$('.main_data').html(customer_based);
 }
