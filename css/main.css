@@ -31,9 +31,12 @@ margin-top: 30px;
 font-weight: 1100;
 
 }
-
+.insights_images{
+  width: 900px;
+}
 th.category_level_2:hover {cursor: hand; cursor: pointer; }
 tr.category_level_1_row:hover {cursor: hand; cursor: pointer;}
+.category_level_1:hover{cursor: hand; cursor: pointer;}
 .category_level_2:hover{background-color: #193c63;color: white;}
 .comments_less{
 margin-bottom: 2px;
