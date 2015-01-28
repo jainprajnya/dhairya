@@ -1721,7 +1721,7 @@ heading_row+='<th class="category_level_2" style="color: white;background: rgb(2
 		if (company_id==11)
 			{customer_based='<img src="images/Company11/Company11-CustomerResults.png" style="width:1050px;" />';}
 		else
-			{customer_based='<img src="images/Company12/Company11-CustomerResults.png" style="width:1050px;" />';}
+			{customer_based='<img src="images/Company12/Company12-CustomerResults.png" style="width:1050px;" />';}
 		document.getElementById("adjustment_div").style.height="77%";
 		$('.main_data').html(customer_based);
 
