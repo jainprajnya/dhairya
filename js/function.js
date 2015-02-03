@@ -14,7 +14,9 @@ var graph_list_names;
  var company_id = '';
  var role='';
  var to_date=new Date();
- var default_start_date=((to_date.getMonth()+1)+"/"+(to_date.getDate()-6)+"/"+to_date.getFullYear());
+ var from_date= new Date(to_date.setDate(to_date.getDate() - 6));
+ console.log(from_date);
+ var default_start_date=(from_date.getMonth()+1)+"/"+(from_date.getDate())+"/"+from_date.getFullYear();
  var default_end_date=((to_date.getMonth()+1)+"/"+to_date.getDate()+"/"+to_date.getFullYear());
  var d_start_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-7);
  var d_end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
@@ -202,7 +204,7 @@ $(document).ready(function() {
 							case "gen_stats":load_general_statistics();break;
 							case "adv_stats": load_advance_statistics();break;
 							case "emp_perf": load_employee_performance();break;
-							case "comment": load_comments();break;
+							case "comments": load_comments();break;
 							case "insights_time": load_insights_time();break;
 							case "insights_customer": load_insights_customer();break;
 							case "insights_branch":load_insights_branch();break;
@@ -452,7 +454,7 @@ $(document).ready(function() {
 			// heading_row += '<th class="category_level_2" id="gen_stats"><span class="category_level_2_text" >General Statistics</span></th>';
 		heading_row+='<th class="category_level_2" id="adv_stats"><span class="category_level_2_text" >Feedback Results</span></th>';
 		heading_row+='<th class="category_level_2" id="emp_perf"><span class="category_level_2_text" >Employee Perfomance</span></th>';
-		heading_row+='<th class="category_level_2" id="comment"><span class="category_level_2_text" >Comments</span></th>';
+		heading_row+='<th class="category_level_2" id="comments"><span class="category_level_2_text" >Comments</span></th>';
 			// console.log("in here");
 		$("tr#table_heading").append(heading_row);
 						
@@ -664,6 +666,11 @@ function load_one_year_data_dashboard(dashboard_index,dashboard_graphID,from_dat
   // console.log("in load_one_year_data_dashboard");
 	make_graph_obj(current_day_data,graph_list[dashboard_index]["name"]+"_overall",dashboard_index);
 	dashboard_render(dashboard_index,graph_list[dashboard_index]["name"]+"_overall","Overall");
+	elements=document.getElementsByClassName('ui-widget-content');
+		console.log(elements);
+		for (var temp=0;temp<elements.length;temp++){
+		  elements[temp].style.background="#193c63";
+		}
 
 }
 
@@ -857,8 +864,8 @@ function set_current_elements(graph_name,graph_type)
 	basic_filters+=b_filters;
 	// var b_filters='';
 	
-	basic_filters+='<td class="mystartDate" id='+graph_name+"_from_date_filter"+'>Start Date: <input type="text" id='+graph_name+"_start_date"+' value='+default_start_date+' class="datepicker"></p></td>';
-	basic_filters+='<td class="myendDate" id='+graph_name+"_to_date_filter"+'>End Date: <input id='+graph_name+"_end_date"+' value='+default_end_date+' class="datepicker" /></td>';
+	basic_filters+='<td class="mystartDate" id='+graph_name+"_from_date_filter"+'>Start Date: <input type="text" id='+graph_name+"_start_date"+' value='+default_start_date+' class="datepicker" /></td>';
+	basic_filters+='<td class="myendDate" id='+graph_name+"_to_date_filter"+'>End Date: <input type="text"  id='+graph_name+"_end_date"+' value='+default_end_date+' class="datepicker" /></td>';
 	basic_filters+='<td id='+graph_name+"_filter_button" +' rowspan=2><button class="button blue"'+ 'name='+graph_type+'>Apply</button><button class="filter_reset_button button blue"'+' name='+graph_type+'>Reset</button></td></tr>'
 	
 	var quick_links='';
@@ -1228,7 +1235,7 @@ function make_graph_obj(data,name,index)
 						console.log(attributeList);
 						for(var i=0;i<data.length;i++){	
 							// console.log(i);
-							console.log(data[i]);
+							// console.log(data[i]);
 							attr_id= data[i]["attributeId"];
 							hash_obj[name][attr_id]["listDailyAttributeStatisticValues"]=data[i]["listDailyAttributeStatisticValues"];
 							hash_obj[name][attr_id]["listCountPPl"]=data[i]["listCountPPl"];
@@ -1702,6 +1709,7 @@ function set_filter(graph_name,filterList)
 }
 
 function load_statistics(){
+		
 	console.log("in load");
 	document.getElementById('statistics').parentNode.style.background="#f0f0f0";
 			document.getElementById('statistics').parentNode.style.color="black";
@@ -1776,3 +1784,80 @@ function load_insights_branch(){
 		document.getElementById("adjustment_div").style.height="65%";
 		$('.main_data').html(customer_based);
 }
+
+function load_comments()
+{
+
+	set_current_elements("comments_table","stats_comments_tab");
+	var heading='<div id=comments_heading> <div class="left_div"> Comments</div><div class="right_div"> From 1/30/2015 to 1/31/2015<img class="export_icon" src="images/export_icon_1.png" /> <span> Export</span></div></div>';
+	var table='<table id="comments_table">';
+	var table_heading='<tr><th>Name</th><th>Email Id/Mobile No</th><th class="comments_rating">Rating</th><th>Date</th><th>Comments</th>';
+	var table_row_name='<tr><td>'+company_name+'</td><td>'+username+'</td><td class="comments_rating">3</td><td>1/30/2015</td><td>Need improvement<input type="checkbox" class="comments_checkbox" /></td>';
+	var table_content=table_heading;
+	for(var i=0;i<10;i++)
+	{
+		table_content+=table_row_name;
+	}
+
+	table_content+='</table>';
+	$('.main_data').html(table_content);
+}
+
+function load_marketing(){
+
+	var heading_row = '<th class="category_level_1" style="background-color: #193c63; color:white;" >';
+heading_row+='<img src="images/Statistics_Icon_01.png" class="category_level_1_icons">';
+heading_row+='<span class="category_level_1_text" id="statistics" >STATISTICS</span></th>';
+heading_row+='<th class="category_level_2" style="color: white;background: rgb(25, 60, 99);" id="insights_customer"><span class="category_level_2_text">Marketing</span></th>';
+
+}
+
+
+					function show_offers(offers){
+						var rows='<form><p class="followup_title">Offers</p><button class="marketing_btn" id="mrktng_add_offer" type="button">Add New Offer</button><button type="button" id="mrktng_add_submit" class="marketing_btn">Submit</button>'
+						rows+='<table class="marketing_offers">';
+						rows+='<tr>'
+						rows+='<th><input type="checkbox">&nbsp;Select All</input></th>';
+						rows+='<th>Category</th>';
+						rows+='<th>Offer Details</th>';
+						rows+='<th>Start Date/Time</th>';
+						rows+='<th>End Date/Time</th>';
+						rows+='<th>Recurrence</th>';
+						rows+='<th>Disable</th>';
+						rows+='</tr>';
+							var host = 'http://localhost:8080/feedback-review';
+				var graph_c = '/company';
+				var company_id = '/1';
+				var params ='/offersAndInfo?callback=?'
+				var uri='';
+						var offers_res = $.ajax({
+					  url: uri.concat(host,graph_c,company_id,"/offersAndInfo?callback=?"),
+			          dataType: 'jsonp',
+			          type: 'GET',
+			          cache: false,
+			          jsonp: 'handle_data',
+			          crossDomain:true,
+			          async:false,
+					  success: function(response){
+					  	offersRes=response;
+					  	for(var i in offersRes){
+					  		console.log(offersRes[i]);
+							rows+='<tr>'
+							rows+='<td class="offers_row"><input type="checkbox">&nbsp;&nbsp;Select</input></td>';
+							rows+='<td class="offers_row">'+offersRes[i]["type"]+'</td>';
+							rows+='<td class="offers_row">'+offersRes[i]["details"]+'</td>';
+							rows+='<td class="offers_row"><input id="demo1" type="text" size="25"><a href="javascript:NewCal('+"demo1"+","+"ddmmyyyy"+","+'true'+","+24+')"><img src="images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>'+offersRes[i]["start"]+'</td>';
+							rows+='<td class="offers_row">'+offersRes[i]["end"]+'</td>';
+							rows+='<td class="offers_row">'+offersRes[i]["recurrence"]+'</td>';
+							rows+='<td class="offers_row"><img></img></textarea></td>';
+							rows+='</tr>';
+						}
+						rows+='</table>';
+						$('div#body_table').html(rows);
+					  	console.log(response);
+					  }
+				});
+						
+						
+
+					}
