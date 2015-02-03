@@ -41,7 +41,7 @@ tr.category_level_1_row:hover {cursor: hand; cursor: pointer;}
 .comments_less{
 margin-bottom: 2px;
 background-color: white;
-font-size: 14px;
+font-size: 15px;
 float: right;
 margin-right: 3px;
 border-radius: 5px;
@@ -228,7 +228,7 @@ width: 116px;
 height: 60px;
 width: 97.5%;
 margin-right: 3px;
-padding: 10px;
+padding: 5px;
 border: 1px solid #bcbcbc;
 background-color: white;
 margin: 20px;
@@ -268,7 +268,7 @@ table.basic_filters tr{
 ul.filter_dropdown_list{
     position: absolute;
   /*float: right;*/
-margin-left: 114px;
+margin-left: 123px;
 padding: 0;
 padding-top: 5px;
 border: 1px solid #ccc;
