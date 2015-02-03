@@ -302,6 +302,10 @@ $(document).ready(function() {
 					});
 
 	$('body').on('click','.filter_button',function (){
+						
+						var other_buttons=document.getElementsByTagName('button');
+						for (var temp=0;temp<other_buttons.length;temp++){other_buttons[temp].style.background="rgb(4, 63, 128)";}
+							this.style.background="#193c63";
 						var graph_name=this.parentNode.id.split("_")[0];
 						var graph_type=this.name;
 						var branch_selected=document.getElementsByTagName(graph_name+"-branches");
@@ -666,11 +670,7 @@ function load_one_year_data_dashboard(dashboard_index,dashboard_graphID,from_dat
   // console.log("in load_one_year_data_dashboard");
 	make_graph_obj(current_day_data,graph_list[dashboard_index]["name"]+"_overall",dashboard_index);
 	dashboard_render(dashboard_index,graph_list[dashboard_index]["name"]+"_overall","Overall");
-	elements=document.getElementsByClassName('ui-widget-content');
-		console.log(elements);
-		for (var temp=0;temp<elements.length;temp++){
-		  elements[temp].style.background="#193c63";
-		}
+	
 
 }
 
@@ -777,7 +777,13 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 						table_heading+='</tr>'
 
 					  	rows=rows+table_heading+'<tr>'+day_nps+'</tr></table>';
-					  	$("#"+dashboard_element).html(rows)
+					  	$("#"+dashboard_element).html(rows);
+
+					  	elements=document.getElementsByClassName('ui-widget-content');
+		console.log(elements);
+		for (var temp=0;temp<elements.length;temp++){
+		  elements[temp].style.background="#193c63";
+		}
 }
 
 
@@ -866,7 +872,7 @@ function set_current_elements(graph_name,graph_type)
 	
 	basic_filters+='<td class="mystartDate" id='+graph_name+"_from_date_filter"+'>Start Date: <input type="text" id='+graph_name+"_start_date"+' value='+default_start_date+' class="datepicker" /></td>';
 	basic_filters+='<td class="myendDate" id='+graph_name+"_to_date_filter"+'>End Date: <input type="text"  id='+graph_name+"_end_date"+' value='+default_end_date+' class="datepicker" /></td>';
-	basic_filters+='<td id='+graph_name+"_filter_button" +' rowspan=2><button class="button blue"'+ 'name='+graph_type+'>Apply</button><button class="filter_reset_button button blue"'+' name='+graph_type+'>Reset</button></td></tr>'
+	basic_filters+='<td id='+graph_name+"_filter_button" +' rowspan=2><button class="filter_button button blue"'+ 'name='+graph_type+'>Apply</button><button class="filter_reset_button button blue"'+' name='+graph_type+'>Reset</button></td></tr>'
 	
 	var quick_links='';
 	quick_links='<div class='+graph_type+' id=' + graph_name+"_quick_links"+'><a id='+graph_name+"_"+graph_type+"_-2" + ' class="back_link" style="margin-left: 20px;">'+"Home"+'</a></div>';

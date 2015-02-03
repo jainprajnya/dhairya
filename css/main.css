@@ -21,7 +21,7 @@ td.main_data{
 .back_link{
   margin-left: 2px;
   color:  #4075ab;
-  font-size: 20px;
+  font-size: 15px;
 }
 .stats_main_div
 {
@@ -199,7 +199,7 @@ width: 116px;
   text-align: center;
   text-decoration: none;
   font: 12px/100% 'Roboto', sans-serif;
-  padding: .5em 2em .55em;
+  
   text-shadow: 0 1px 1px rgba(0,0,0,.3);
   -webkit-border-radius: .5em; 
   -moz-border-radius: .5em;
@@ -213,9 +213,11 @@ width: 116px;
 .blue{
   color:white;
   border: solid 1px #193c63;
-  background: #193c63;
+  background: rgb(4, 63, 128);
   
 }
+
+.button:hover{background-color:#193c63; }
 
 
 /* ==========================================================
@@ -233,11 +235,14 @@ margin: 20px;
 }
 
 table.basic_filters td{
-  width:200px;
+  width:20px;
   margin-left:10px;
-  font-size: 12px;
+  font-size: 15px;
   padding-left: 30px;
-  text-align: left;
+  text-align: center;
+}
+table.basic_filters tr{
+ height: 37px
 
 
 }
@@ -263,8 +268,9 @@ table.basic_filters td{
 ul.filter_dropdown_list{
     position: absolute;
   /*float: right;*/
-margin-left: 77px;
+margin-left: 114px;
 padding: 0;
+padding-top: 5px;
 border: 1px solid #ccc;
 /*min-height: 120px;*/
 max-height: 120px;
@@ -272,6 +278,9 @@ overflow-y: auto;
 background-color:  #f0f0f0;
 width: 130px;
 z-index: 15;
+margin-top: 8px;
+text-align: left;
+font-size: 12px;
 
 
 }
