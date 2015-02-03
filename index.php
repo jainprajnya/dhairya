@@ -27,7 +27,7 @@
 	<script type="text/javascript" src="js/fullcalendar_min.js"></script>
 	 <style type="text/css">
 	  .ui-slider-horizontal .ui-state-default {background: url(images/Date_pointer_Icon.png) no-repeat scroll 50% 50% ; height:20px; width: 20px;  }
-	  .ui-widget-content { border: 1px solid #193c63;background: #193c63; }
+	  /*.ui-widget-content { border: 1px solid #193c63;background: #193c63; }*/
 	  </style>
 <!-- <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
   <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
