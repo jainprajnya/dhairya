@@ -1456,6 +1456,11 @@ function make_chart(options)
 	console.log("in make chart");
 	console.log(options.chart.renderTo);
 	chart = new Highcharts.Chart(options);
+	elements=document.getElementsByClassName('ui-widget-content');
+		console.log(elements);
+		for (var temp=0;temp<elements.length;temp++){
+		  elements[temp].style.background="#f0f0f0";
+		}
 }
 
 function populate_summary(options)
