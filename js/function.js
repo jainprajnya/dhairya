@@ -9,10 +9,13 @@ var graph_list_names;
  var response;
  var applyFilter=[];
  var graph_list={};
- response_d={};
+ var response_d={};
  var branch_id_global='';
  var company_id = '';
  var role='';
+ var company_name;
+ var username='';
+
  var to_date=new Date();
  var default_end_date=((to_date.getMonth()+1)+"/"+to_date.getDate()+"/"+to_date.getFullYear());
  var from_date= new Date(to_date.setDate(to_date.getDate() - 6));
@@ -301,24 +304,49 @@ $(document).ready(function() {
 
 					});
 
-	$('body').on('click','.filter_button',function (){
+	$('body').on('click','.filter_reset_button',function(){
+		var other_buttons=document.getElementsByTagName('button');
+
+		for (var temp=0;temp<other_buttons.length;temp++){other_buttons[temp].style.background="rgb(72, 117, 168)";}
+		this.style.background="#193c63";
+		var graph_name=this.parentNode.id.split("_")[0];
+		var graph_type=this.name;
+		var g=graph_name;
+	
+		var filter_elem=document.getElementById(graph_name+"_basic_filters");
+		var input_elem = filter_elem.getElementsByTagName('input');
+		console.log(input_elem);
+		$(document.getElementById(graph_name+"_start_date")).datepicker("setDate",default_start_date);
+		$(document.getElementById(graph_name+"_end_date")).datepicker("setDate",default_end_date);
+		for(var i=0;i<input_elem.length;i++)
+		{
+			input_elem[i].checked=false;
+
+			}
+	
+
+	});
+
+	$('body').on('click','.filter_button',function ()
+			{
 						
 						var other_buttons=document.getElementsByTagName('button');
-						for (var temp=0;temp<other_buttons.length;temp++){other_buttons[temp].style.background="rgb(4, 63, 128)";}
+						for (var temp=0;temp<other_buttons.length;temp++){other_buttons[temp].style.background="rgb(72, 117, 168)";}
 							this.style.background="#193c63";
 						var graph_name=this.parentNode.id.split("_")[0];
 						var graph_type=this.name;
-						var branch_selected=document.getElementsByTagName(graph_name+"-branches");
+						var branch_selected=document.getElementsByName(graph_name+"-branches");
 						var branches_f='';
 						var filters_f='';
-						console.log(role);
+						console.log(graph_name);
+						console.log(branch_selected);
 						if((role&4)==4)
 						{
 							for(var i=0;i<branch_selected.length;i++)
 							{
 								console.log(branch_selected[i]);
 								if(branch_selected[i].checked)
-									branches_f=branch_selected[i].id+",";
+									branches_f+=branch_selected[i].id+",";
 							}
 						}
 						else
@@ -378,7 +406,7 @@ $(document).ready(function() {
 							if(filters_v.length>0)
 							filters_f+="&"+filter_name+"="+filters_v;
 						}
-
+						filters_f+="&";
 						console.log(filters_f);
 
 						if(graph_type=="overview")
@@ -422,7 +450,7 @@ $(document).ready(function() {
 	  	var pword=(document.getElementById("password")).innerHTML;
 	  	// console.log(uname);
 	  	// console.log(pword);
-
+	  	username=uname;
 	  	var login_url = 'https://bizviewz.com:8080/feedback-review/login';
 
 
@@ -482,7 +510,9 @@ $(document).ready(function() {
 	  	}
 	  	xhr.send();
 	  	company_data = JSON.parse(xhr.responseText);
-	  	branch_id_global=branch_id=company_data["branches"][0]["id"];
+	  	company_name = company_data["name"];
+	  	if ((role&4)==4){branch_id='';}
+	  	else{branch_id_global=branch_id=company_data["branches"][0]["id"];}
 
 		d_index = find_index_of("Dashboard");
 		// console.log(d_index);
@@ -502,6 +532,7 @@ function set_session_id(id)
 
 function set_company_id(response_hash)
 {
+	console.log(response_hash);
 	company_id=response_hash.companyId;
 	if(company_id==-1)
 		{company_id=1;}
@@ -610,7 +641,17 @@ function load_current_day_dashboard(dashboard_index,dashboard_graphID,from_date,
 				
 	var uri='';
 	filters_g='startDate='+from_date+'&endDate='+to_date;
-	params='/statistics?'+'branch='+branch_id+'&'+filters_g;
+	var branches='';
+	console.log(role + branch_id);
+	if (branch_id.length==0 && ((role&4)==4))
+	{
+		console.log("he is the owner");	
+	}
+	else
+	{
+		branches='branch='+branch_id+'&';
+	}
+	params='/statistics?'+branches+filters_g;
 
 
 	var xhr = new XMLHttpRequest();
@@ -644,6 +685,17 @@ function load_one_year_data_dashboard(dashboard_index,dashboard_graphID,from_dat
 
 	// var from_date = to_date.setDate(to_date.getDate() - 365);
   	// var someFormattedDate = yy+mm+dd ;
+
+ 		var branches='';
+		if (branch_id.length==0 && ((role&4)==4))
+		{
+			console.log("he is the owner");	
+		}
+		else
+		{
+			branches='branch='+branch_id+'&';
+		}
+
   				var someFormattedDate='20141120';
 				var host = 'https://bizviewz.com:8080';
 				var path = '/feedback-review/company/'+company_id+'/graph/';
@@ -652,7 +704,7 @@ function load_one_year_data_dashboard(dashboard_index,dashboard_graphID,from_dat
 				// var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
 				var uri='';
 				filters_g='startDate='+from_date+'&endDate='+to_date;
-				params='/statistics?branch='+branch_id+'&'+filters_g;
+				params='/statistics?'+branches+filters_g;
 
 	var xhr = new XMLHttpRequest();
   xhr.open("GET", uri.concat(host,path,dashboard_graphID,params),false);
@@ -780,7 +832,7 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 					  	$("#"+dashboard_element).html(rows);
 
 					  	elements=document.getElementsByClassName('ui-widget-content');
-		console.log(elements);
+		
 		for (var temp=0;temp<elements.length;temp++){
 		  elements[temp].style.background="#193c63";
 		}
@@ -881,14 +933,16 @@ function set_current_elements(graph_name,graph_type)
     quick_links+='<div id='+graph_name+"_container_graph_filter"+' name='+graph_name+"_filter_identify_div"+' style="display:hidden;"></div>'
 	custom_filters='<tr id='+graph_name+"_filter_row"+'></tr></table>';
 	
+	var graph_container='<table class="main_graph_plot"><tr><td id='+graph_name+"_graph"+'></td></tr></table></div>';
 	var comments='<div class="comments_less" id='+graph_name+"_comments"+'>View Customer Comments<img src="images/comments_icon.png" style="height:20px; width:20px;margin-left:5px;" /></div>';
-	overall_filters = '<div id='+graph_name+"_filters"+ '><div class="stats_main_div">'+((graph_name.split(":"))[1]).replace(/\-/g, ' ')+'</div>'+basic_filters+custom_filters+comments+quick_links+'<table class="main_graph_plot"><tr><td id='+graph_name+"_graph"+'></td></tr></table></div>';
+	if(graph_name=="adv:Comments") {comments='';quick_links='';graph_container='';}
+	overall_filters = '<div id='+graph_name+"_filters"+ '><div class="stats_main_div">'+((graph_name.split(":"))[1]).replace(/\-/g, ' ')+'</div>'+basic_filters+custom_filters+comments+quick_links+graph_container;
 
 	return overall_filters;
 
 }
 
-function load_overview(adv_overview_index,adv_overview_graphId,adv_overview_name,from_date,to_date,branches,filters,r_again)
+function load_overview(adv_overview_index,adv_overview_graphId,adv_overview_name,from_date,to_date,branch_id,filters,r_again)
 {
 	console.log("in load_overview");
 	console.log(adv_overview_name);
@@ -906,10 +960,21 @@ function load_overview(adv_overview_index,adv_overview_graphId,adv_overview_name
 	
 	var uri='';
 	filters_g='startDate='+from_date+'&endDate='+to_date;
-	var params='/statistics?branch='+branches+filters+'&'+filters_g;
+	
+	var branches='';
+	if (branch_id.length==0 && ((role&4)==4))
+	{
+		console.log("he is the owner");	
+	}
+	else
+	{
+		branches='branch='+branch_id+'&';
+	}
+	console.log(branches);
+	var params='/statistics?'+branches+filters+filters_g;
 
 	var request_url=uri.concat(host,path,adv_overview_graphId,params);
-	var request_url_snaitized=request_url.replace(/\,\&/g, '&');
+	var request_url_snaitized=(request_url.replace(/\,\&/g, '&')).replace(/\&\&/g, '&');
 	console.log(request_url_snaitized);
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET",request_url_snaitized ,false);
@@ -946,12 +1011,25 @@ function load_trends(adv_trends_index,adv_trends_graphId,adv_trends_name,days,fr
 	
 	var uri='';
 	filters_g='startDate='+from_date+'&endDate='+to_date;
-	params='/statistics?branch='+branch_id+'&'+filters_g;
+	var branches='';
+	if (branch_id.length==0 && ((role&4)==4))
+	{
+		console.log("he is the owner");	
+	}
+	else
+	{
+		branches='branch='+branch_id+'&';
+	}
+	console.log(branches);
+	params='/statistics?'+branches+filters+filters_g;
 			
+	var request_url=uri.concat(host,path,adv_trends_graphId,params);
+	var request_url_snaitized=(request_url.replace(/\,\&/g, '&')).replace(/\&\&/g, '&');
+	console.log(request_url_snaitized);
 
 	var xhr = new XMLHttpRequest();
 	// console.log(uri.concat(host,path,adv_trends_graphId));
-  xhr.open("GET", uri.concat(host,path,adv_trends_graphId,params),false);
+  xhr.open("GET", request_url_snaitized,false);
   xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
   xhr.setRequestHeader('sessionId', session_id);
    xhr.onreadystatechange=function()
@@ -974,7 +1052,7 @@ function load_trends(adv_trends_index,adv_trends_graphId,adv_trends_name,days,fr
 
 }
 
-function load_nonweighted(adv_nonweighted_index,adv_nonweighted_graphId,adv_nonweighted_name,from_date,to_date,branches,filters,r_again)
+function load_nonweighted(adv_nonweighted_index,adv_nonweighted_graphId,adv_nonweighted_name,from_date,to_date,branch_id,filters,r_again)
 {
 
 	var host = 'https://bizviewz.com:8080';
@@ -982,9 +1060,22 @@ function load_nonweighted(adv_nonweighted_index,adv_nonweighted_graphId,adv_nonw
 	
 	var uri='';
 	filters_g='startDate='+from_date+'&endDate='+to_date;
-	var params='/statistics?branch='+branch_id+'&'+filters_g;
+	var branches='';
+	if (branch_id.length==0 && ((role&4)==4))
+	{
+		console.log("he is the owner");	
+	}
+	else
+	{
+		branches='branch='+branch_id+'&';
+	}
+	console.log(branches);
+	var params='/statistics?'+branches+filters+filters_g;
 	var attribue_api_nonweighted=uri.concat(host,path,adv_nonweighted_graphId);
 
+	var request_url=uri.concat(host,path,adv_nonweighted_graphId,params);
+	var request_url_snaitized=(request_url.replace(/\,\&/g, '&')).replace(/\&\&/g, '&');
+	console.log(request_url_snaitized);
 
 	if (hash_obj.hasOwnProperty(adv_nonweighted_name) && !r_again)
 	{   
@@ -994,7 +1085,7 @@ function load_nonweighted(adv_nonweighted_index,adv_nonweighted_graphId,adv_nonw
 	}
 
 	var xhr = new XMLHttpRequest();
-	xhr.open("GET", uri.concat(host,path,adv_nonweighted_graphId,params),false);
+	xhr.open("GET", request_url_snaitized,false);
 	xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
 	xhr.setRequestHeader('sessionId', session_id);
 	xhr.onreadystatechange=function()
@@ -1798,13 +1889,13 @@ function load_insights_branch(){
 
 function load_comments()
 {
-
-	set_current_elements("comments_table","stats_comments_tab");
+  document.getElementById("adjustment_div").style.height="63%";
+	var filters = set_current_elements("adv:Comments","stats_comments_tab");
 	var heading='<div id=comments_heading> <div class="left_div"> Comments</div><div class="right_div"> From 1/30/2015 to 1/31/2015<img class="export_icon" src="images/export_icon_1.png" /> <span> Export</span></div></div>';
 	var table='<table id="comments_table">';
 	var table_heading='<tr><th>Name</th><th>Email Id/Mobile No</th><th class="comments_rating">Rating</th><th>Date</th><th>Comments</th>';
 	var table_row_name='<tr><td>'+company_name+'</td><td>'+username+'</td><td class="comments_rating">3</td><td>1/30/2015</td><td>Need improvement<input type="checkbox" class="comments_checkbox" /></td>';
-	var table_content=table_heading;
+	var table_content=filters+heading+table+table_heading;
 	for(var i=0;i<10;i++)
 	{
 		table_content+=table_row_name;

@@ -184,6 +184,24 @@ width: 116px;
   /*height: 300px;*/
   background-color: #eee;
 }
+/* =========================================================
+   Comments
+   ========================================================= */
+#comments_table{
+  border: 1px solid #bcbcbc;
+  margin-left: 10%;
+padding: 5px;
+width: 80%;
+ border-collapse: collapse; 
+text-align: center;
+border-style: solid;
+
+}
+
+table#comments_table td{
+  border: 1px solid #bcbcbc;
+  padding: 5px;
+}
 
 /* =========================================================
    General
@@ -214,7 +232,7 @@ width: 116px;
 .blue{
   color:white;
   border: solid 1px #193c63;
-  background: rgb(4, 63, 128);
+  background: rgb(72, 117, 168);
   
 }
 
