@@ -18,6 +18,24 @@ td.main_data{
 
  
 }
+td.contactus-label{
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  padding: 15px;
+  text-align: left;
+}
+table#contactus-table{
+  position: absolute;
+  top: 240px;
+  left: 400px;
+}
+td.contactus-data{
+  text-align: left;
+}
+input.contectustext{
+  height: 20px;
+  width: 200px;
+}
 .back_link{
   margin-left: 2px;
   color:  #4075ab;
@@ -286,8 +304,8 @@ table.basic_filters tr{
 }
 ul.filter_dropdown_list{
     position: absolute;
-  /*float: right;*/
-margin-left: 123px;
+  float: right;*/
+margin-left: 18px;
 padding: 0;
 padding-top: 5px;
 border: 1px solid #ccc;
@@ -300,6 +318,7 @@ z-index: 15;
 margin-top: 8px;
 text-align: left;
 font-size: 12px;
+display:  inline-block;
 
 
 }
@@ -421,8 +440,31 @@ th.dashboard_heading{
   padding-bottom: 5px;
   /*border-bottom: 2px solid #193c63;*/
 }
+#dashboard_slider_monthly{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  margin-left: 10px;
+  font-size: 9px;
+  padding-bottom: 5px;
+}
+#monthly_slider_line{
+  
+    /*width: px;*/
+    margin-left: -10px;
+    text-align: center;
+    margin-top: 5px;
+    width: 650px;
+}
 #slider:after{
   
+}
+#monthly_slider_line label {
+    position: absolute;
+    /*width: px;*/
+    margin-left: -10px;
+    text-align: center;
+    margin-top: 20px;
 }
 #slider_line label {
     position: absolute;
@@ -435,7 +477,7 @@ th.dashboard_heading{
   /*float: right;*/
   width: 650px;
 }
-#slider_day{
+#slider_day #slider_month{
   width: 450px;
   font-size: 30px;
   font-family: 'Roboto', sans-serif;
@@ -451,6 +493,12 @@ th.dashboard_heading{
 #slider_row
 {
   /*margin-right: 40px;*/
+  padding-top: 15px;
+  padding-right: 40px;
+  text-align: right;
+  float: right;
+}
+#monthly_slider_row{
   padding-top: 15px;
   padding-right: 40px;
   text-align: right;

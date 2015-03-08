@@ -8,16 +8,24 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 <link href="css/extra.css" rel="stylesheet" type="text/css">
 <link href="css/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/function.js" ></script>
 </head>
 <body>
 
 
 <?php include("header.php"); ?>
 <div id="contact-us">
-	Reach us at bizviewz@outlook.com
+	Please fill out the contact form below. One of our Bizviewz representatives will contact you soon.
  <br>
  <br>
-Contact us at 9900195062 
+ <table id="contactus-table">
+ 	<tr><td class="contactus-label">Name: </td><td class="contactus-data"><input  class="contectustext" type="text"></td></tr>
+ 	<tr><td class="contactus-label">Email Id:</td><td  class="contactus-data"><input class="contectustext" type="text"></td></tr>
+ 	<tr><td class="contactus-label">City:</td><td class="contactus-data"> <input class="contectustext" type="text"></td></tr>
+ 	<tr><td class="contactus-label">Buisness Type:</td><td class="contactus-data"><input class="contectustext" type="text"></td></tr>
+ 	<tr ><td class="contactus-label">Comments</td><td class="contactus-data"><textarea style="margin-top:20px;" rows="4" cols="27"></textarea></td></tr>
+ 	<tr><td class="contactus-label"></td><td class="contactus-data"><button type="button" class="button" style="margin-right:25px;">Submit</button><button type="button" class="button">Cancel</button></td></tr>
+ </table>
 
 </div>
 <?php include("footer.php"); ?>

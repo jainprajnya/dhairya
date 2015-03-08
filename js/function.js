@@ -15,14 +15,22 @@ var graph_list_names;
  var role='';
  var company_name;
  var username='';
-
+var month = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
+var full_months=[ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
  var to_date=new Date();
+  console.log(to_date);
  var default_end_date=((to_date.getMonth()+1)+"/"+to_date.getDate()+"/"+to_date.getFullYear());
+  console.log(to_date);
  var from_date= new Date(to_date.setDate(to_date.getDate() - 6));
+to_date=new Date();
  console.log(from_date);
  var default_start_date=(from_date.getMonth()+1)+"/"+(from_date.getDate())+"/"+from_date.getFullYear();
- var d_start_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-7);
+ console.log(to_date);
+ var d_start_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-6);
+ console.log(to_date);
  var d_end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
+ console.log(to_date);
+ console.log(d_start_date+":"+d_end_date);
  var days_of_week=["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
  var full_days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
  var active_div="statistics"
@@ -181,7 +189,7 @@ var options_trends = {
 
 				}
 
-var month = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
+
 // var dow = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat","Sun" ]
 $(document).ready(function() {
 	$( ".datepicker startDate" ).datepicker({
@@ -305,6 +313,7 @@ $(document).ready(function() {
 					});
 
 	$('body').on('click','.filter_reset_button',function(){
+		
 		var other_buttons=document.getElementsByTagName('button');
 
 		for (var temp=0;temp<other_buttons.length;temp++){other_buttons[temp].style.background="rgb(72, 117, 168)";}
@@ -318,6 +327,8 @@ $(document).ready(function() {
 		console.log(input_elem);
 		$(document.getElementById(graph_name+"_start_date")).datepicker("setDate",default_start_date);
 		$(document.getElementById(graph_name+"_end_date")).datepicker("setDate",default_end_date);
+
+
 		for(var i=0;i<input_elem.length;i++)
 		{
 			input_elem[i].checked=false;
@@ -373,6 +384,14 @@ $(document).ready(function() {
 
 				  //       console.log(end_date);
 					
+					var parent_node=document.getElementById(graph_name+"_quick_links");
+		var to_b_removed = parent_node.childNodes;
+		while(to_b_removed.length>1)
+		{
+			parent_node.removeChild(parent_node.lastChild);
+			to_b_removed=parent_node.childNodes;
+		}
+		
 						
 						// console.log(start_date);
 						// console.log(end_date);
@@ -451,6 +470,9 @@ $(document).ready(function() {
 	  	// console.log(uname);
 	  	// console.log(pword);
 	  	username=uname;
+
+	  	$(".main_data").html('<img src="images/loading.png"> loading...');
+
 	  	var login_url = 'https://bizviewz.com:8080/feedback-review/login';
 
 
@@ -567,11 +589,14 @@ function load_dashboard(dashboard_index,dashboard_graphID,branch_id){
 	document.getElementById("adjustment_div").style.height="55%";
    var todays_date = new Date();
 	var todays_day = full_days[todays_date.getDay()];
+	var current_month = full_months[todays_date.getMonth()]
 	var current_div = '<div id="activeDiv" className='+dashboard_graphID+'></div>';
 	var dashboard_slider = '<div id="dashboard_slider"><div id=slider> <table><tr><td id="slider_day" class="dashboard_heading">'+todays_day+'</td><td id="slider_row"><div id="slider_line"></div></td></table></div></div>';
 	var slider_values = '<div id='+graph_list[dashboard_index]["name"]+"_current"+'></div>';
+	var monthly_slider = '<div id="dashboard_slider_monthly"><div id="slider_monthly"> <table><tr><td id="slider_month" class="dashboard_heading">'+current_month+'</td><td id="monthly_slider_row"><div id="monthly_slider_line"></div></td></table></div></div>';
+	var monthly_slider_values = '<div id='+graph_list[dashboard_index]["name"]+"_monthly"+'></div>';
 	var overall_values = '<div id='+graph_list[dashboard_index]["name"]+"_overall"+'>Overall</div>';
-	var dashboard = current_div + '<div id="dashboard_elements">' + dashboard_slider + slider_values + overall_values + '</div>';
+	var dashboard = current_div + '<div id="dashboard_elements">' + dashboard_slider + slider_values +monthly_slider+monthly_slider_values+ overall_values + '</div>';
 	$('.main_data').html(dashboard);
 
 	var labelArr = new Array("", "1 hour", "12 hours", "1 day", "3 day", "1 week");
@@ -615,13 +640,60 @@ function load_dashboard(dashboard_index,dashboard_graphID,branch_id){
 	  $( "#slider_line" ).append(el);
 	});
 
+	  $( "#monthly_slider_line" ).slider({
+	      value: 12,
+	      min: 1,
+	      max: 12,
+	      step: 1,
+	      slide: function( event, ui ) {
+	      			day_diff= 12 - ui.value;
+	      			console.log(ui.value);
+	      			var to_date = new Date();
+					to_date.setMonth(to_date.getMonth() - day_diff);
+					
+					delete hash_obj["Dashboard_monthly"];
+					
+					date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
+					var firstDay = new Date(to_date.getFullYear(), to_date.getMonth(), 1);
+					var lastDay = new Date(to_date.getFullYear(), to_date.getMonth() + 1, 0);
+					var firstDay_formatted = (firstDay.getFullYear()*100+(firstDay.getMonth()+1))*100+firstDay.getDate();
+	  				var lastDay_formatted =(lastDay.getFullYear()*100+(lastDay.getMonth()+1))*100+lastDay.getDate();
+					console.log(firstDay_formatted+":"+lastDay_formatted);
+	                load_monthly_dashboard(dashboard_index,dashboard_graphID,firstDay_formatted,lastDay_formatted,branch_id_global);
+	            }
+	  }).each(function() {
+	  var opt = $(this).data().uiSlider.options;
+	  var vals = opt.max - opt.min;
+	  var date = new Date();
+	  date.setMonth(date.getMonth() - 11);
+	  for (var i = 0; i <vals; i++) { 
+	  	var mm = date.getMonth();
+	  	var yy = date.getFullYear();
+	    var someFormattedDate = month[mm]+',\''+(yy%100);
+	    var el = $('<label>'+(someFormattedDate)+'</label>').css('left',(i/vals*100 - 1)+'%');
+	  
+	    $( "#monthly_slider_line" ).append(el);
+	    date.setMonth(date.getMonth() +1 );
+	    
+	  }
+	  var dd = date.getDate();
+	  	var mm = date.getMonth();
+	  	var yy = date.getFullYear();
+	    var someFormattedDate = month[mm]+',\''+(yy%100);
+	  var el = $('<label>'+(someFormattedDate)+'</label>').css('left',(98)+'%');
+	  $( "#monthly_slider_line" ).append(el);
+	});
+
 	  // console.log("while starting");
 	  // console.log(hash_obj);
 	  var to_date = new Date();
 	  var start_date_overall=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-365);
 	  var start_date_today=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-7);
 	var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
+	var start_date_month = new Date(todays_date.getFullYear(),todays_date.getMonth(),1);
+	var start_date_month_formatted=(start_date_month.getFullYear()*100+(start_date_month.getMonth()+1))*100+start_date_month.getDate();;
   load_current_day_dashboard(dashboard_index,dashboard_graphID,end_date,end_date,branch_id);
+  load_monthly_dashboard(dashboard_index,dashboard_graphID,start_date_month_formatted,end_date,branch_id);
   load_one_year_data_dashboard(dashboard_index,dashboard_graphID,start_date_overall,end_date,branch_id);
 }
 
@@ -672,6 +744,55 @@ function load_current_day_dashboard(dashboard_index,dashboard_graphID,from_date,
 	make_graph_obj(current_day_data,graph_list[dashboard_index]["name"]+"_current",dashboard_index);
 	// console.log(hash_obj);
 	dashboard_render(dashboard_index,graph_list[dashboard_index]["name"]+"_current");
+
+}
+function load_monthly_dashboard(dashboard_index,dashboard_graphID,from_date,to_date,branch_id)
+{
+	console.log("in dash");
+	// console.log(branch_id);
+	if (hash_obj.hasOwnProperty(graph_list[dashboard_index]["name"]+"_monthly"))
+	{   
+		dashboard_render(dashboard_index,graph_list[dashboard_index]["name"]+"_monthly");
+		return;
+	}
+	// var to_date = new Date();
+	// var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
+	var host = 'https://bizviewz.com:8080';
+	var path = '/feedback-review/company/'+company_id+'/graph/';
+				
+	var uri='';
+	filters_g='startDate='+from_date+'&endDate='+to_date;
+	var branches='';
+	console.log(role + branch_id);
+	if (branch_id.length==0 && ((role&4)==4))
+	{
+		console.log("he is the owner");	
+	}
+	else
+	{
+		branches='branch='+branch_id+'&';
+	}
+	params='/statistics?'+branches+filters_g;
+
+
+	var xhr = new XMLHttpRequest();
+  xhr.open("GET", uri.concat(host,path,dashboard_graphID,params),false);
+  xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
+  xhr.setRequestHeader('sessionId', session_id);
+  xhr.send();
+   xhr.onreadystatechange=function()
+  {
+  if (xhr.readyState==4 && xhr.status==401)
+    {
+    window.location.href = "login.php";
+    }
+  }
+  current_day_data= JSON.parse(xhr.responseText);
+  // console.log("in load_current_day_dashboard current day");
+  // console.log(current_day_data);
+	make_graph_obj(current_day_data,graph_list[dashboard_index]["name"]+"_monthly",dashboard_index);
+	// console.log(hash_obj);
+	dashboard_render(dashboard_index,graph_list[dashboard_index]["name"]+"_monthly", full_months[(from_date/100)%100]);
 
 }
 
@@ -841,6 +962,7 @@ function dashboard_render(dashboard_index,dashboard_element,dash_element_name)
 
 function load_advance_statistics()
 {
+	
 	document.getElementById("adjustment_div").style.height="85%";
 	var to_date = new Date();
 	
@@ -1416,7 +1538,7 @@ function set_data_of_series_trends(hash_obj,parent_id,period,days,graph_name,sta
 		var someFormattedDate;
 		var date = new Date();
 		var form_date=start_date;
-		date.setDate(form_date%100 + 1)
+		date.setDate(form_date%100)
 		form_date=form_date/100;
 		date.setMonth(form_date%100 - 1);
 		form_date=form_date/100;
@@ -1659,11 +1781,11 @@ function load_employee_performance()
 			populateDefaultDates(graph_name_temp,adv_stats_elements[i]["type"]);
 			if (adv_stats_elements[i]["type"]=="overview")
 			{
-				load_overview(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),start_date,end_date,branch_id,'',false);		    
+				load_overview(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),d_start_date,d_end_date,branch_id,'',false);		    
 			}
 			else
 			{
-				load_trends(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),7,start_date,end_date,branch_id,'',false);
+				load_trends(temp,graph_list[temp]["graphId"],adv_stats_elements[i]["name"].replace(/\s+/g, '-'),7,d_start_date,d_end_date,branch_id,'',false);
 			}
 		}
 }
@@ -1911,6 +2033,26 @@ function load_marketing(){
 heading_row+='<img src="images/Statistics_Icon_01.png" class="category_level_1_icons">';
 heading_row+='<span class="category_level_1_text" id="statistics" >STATISTICS</span></th>';
 heading_row+='<th class="category_level_2" style="color: white;background: rgb(25, 60, 99);" id="insights_customer"><span class="category_level_2_text">Marketing</span></th>';
+
+}
+
+function load_followup(){
+var heading_row = '<th class="category_level_1" style="background-color: #193c63; color:white;" >';
+heading_row+='<img src="images/Statistics_Icon_01.png" class="category_level_1_icons">';
+heading_row+='<span class="category_level_1_text" id="statistics" >STATISTICS</span></th>';
+heading_row+='<th class="category_level_2" style="color: white;background: rgb(25, 60, 99);" id="negative_followup"><span class="category_level_2_text">Negative Followup</span></th>';
+			// heading_row += '<th class="category_level_2" id="gen_stats"><span class="category_level_2_text" >General Statistics</span></th>';
+heading_row+='<th class="category_level_2" id="target_audience"><span class="category_level_2_text" >Target Audience </span></th>';
+		
+		
+		console.log("in here");
+		$("tr#table_heading").html(heading_row);
+		if (company_id==11)
+			{customer_based='<img class="insights_images" src="images/Company11/Company11-CustomerResults1.png" style="margin-left:12px;" />';}
+		else
+			{customer_based='<img class="insights_images" src="images/Company12/Company12-CustomerResults.png" style="margin-left:12px;" />';}
+		document.getElementById("adjustment_div").style.height="77%";
+		$('.main_data').html(customer_based);
 
 }
 
