@@ -431,7 +431,7 @@ $(document).ready(function() {
 						if(graph_type=="overview")
 							load_overview(temp,graph_list[temp]["graphId"],graph_name,start_date,end_date,branches_f,filters_f,true);
 						else if (graph_type=="trends")
-							load_trends(temp,graph_list[temp]["graphId"],graph_name,(end_date-start_date),start_date,end_date,branches_f,filters_f,true);
+							load_trends(temp,graph_list[temp]["graphId"],graph_name,(end_date-start_date + 1),start_date,end_date,branches_f,filters_f,true);
 						else
 							load_nonweighted(temp,graph_list[temp]["graphId"],graph_name,start_date,end_date,branches_f,filters_f,true);
 
@@ -1543,7 +1543,7 @@ function set_data_of_series_trends(hash_obj,parent_id,period,days,graph_name,sta
 		date.setMonth(form_date%100 - 1);
 		form_date=form_date/100;
 		date.setFullYear(form_date);
-		console.log(date);
+		console.log(days);
 		// date.setDate(date.getDate() - days + 1 );
 	  	for (var i = 1; i <= days; i++) {
 		  	var dd = date.getDate();
