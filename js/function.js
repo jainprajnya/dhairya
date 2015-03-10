@@ -612,7 +612,7 @@ function load_dashboard(dashboard_index,dashboard_graphID,branch_id){
 					to_date.setDate(to_date.getDate() - day_diff);
 					// console.log(to_date);
 					delete hash_obj["Dashboard_current"];
-					
+					document.getElementById('slider_day').innerHTML=full_days[to_date.getDay()];
 					date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
 	                load_current_day_dashboard(dashboard_index,dashboard_graphID,date,date,branch_id_global);
 	            }
@@ -652,7 +652,7 @@ function load_dashboard(dashboard_index,dashboard_graphID,branch_id){
 					to_date.setMonth(to_date.getMonth() - day_diff);
 					
 					delete hash_obj["Dashboard_monthly"];
-					
+					document.getElementById('slider_month').innerHTML=full_months[to_date.getMonth()];
 					date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
 					var firstDay = new Date(to_date.getFullYear(), to_date.getMonth(), 1);
 					var lastDay = new Date(to_date.getFullYear(), to_date.getMonth() + 1, 0);
