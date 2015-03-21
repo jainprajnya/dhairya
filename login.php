@@ -10,10 +10,10 @@
 <!--[if lte IE 8]>
 <script type="text/javascript" src="javascript/html5.js"></script>
 <![endif]-->
-<script src="http://code.jquery.com/jquery-1.11.2.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+<script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <!-- <script type="text/javascript" src="js/function.js" ></script> -->
 </head>
 <?php include("header.php"); ?>

@@ -7,7 +7,7 @@
 <link href="css/header_footer.css" rel="stylesheet" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 	<!-- <script src="jquery/jquery-1.11.1.js"></script> -->
-	<script src="http://code.jquery.com/jquery-1.11.2.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.2.js"></script>
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 	  
 	  <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
