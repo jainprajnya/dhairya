@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="https://www.w3.org/1999/xhtml">
 <head> 
 <meta http-equiv="Content-Type" content="application/x-www-form-urlencoded; charset=utf-8"/> 
 <meta http-equiv="Access-Control-Allow-Origin" content="*" />
 <title>Bizviewz Loading</title>
 <link href="css/header_footer.css" rel="stylesheet" type="text/css">
-<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 	<!-- <script src="jquery/jquery-1.11.1.js"></script> -->
 	<script src="http://code.jquery.com/jquery-1.11.2.js"></script>
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 	  
-	  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+	  <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 <link href="css/extra.css" rel="stylesheet" type="text/css">
 <link href="css/main.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/function_others.js" ></script>
