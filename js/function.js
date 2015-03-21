@@ -304,6 +304,25 @@ $(document).ready(function() {
 						// document.getElementsByClassName("filter_dropdown_list");
 						console.log("in click");
 						// console.log(elements);
+						var allul = document.getElementsByClassName('filter_dropdown_list');
+						var allli = document.getElementsByClassName('filter_list_elements');
+						console.log(allul.length);
+						console.log(allli.length);
+						for (var i=0,k=0;i< allul.length || k < allli.length;)
+						{
+							console.log(allul[i]);
+						console.log(allli[k]);
+							if (i < allul.length)
+							{
+								allul[i++].style.visibility=="hidden";
+								
+							}
+							if(k < allli.length)
+							{
+								allli[k++].style.visibility=="hidden";
+							}
+						}
+						
 						elements[1].style.visibility=elements[1].style.visibility=="visible"?"hidden":"visible";
 						for (var i = 0; i < elements[1].children.length; i++) {
 							// console.log(elements[1].children[i]);
@@ -473,11 +492,11 @@ $(document).ready(function() {
 
 	  	$(".main_data").html('<img src="images/loading.png"> loading...');
 
-	  	var login_url = 'https://bizviewz.com:8080/feedback-review/login';
+	  	var login_url = 'https://bizviewz.com:80/feedback-review/login';
 
 
 		var client = new XMLHttpRequest();
-	  	client.open("POST", "https://bizviewz.com:8080/feedback-review/login",false);
+	  	client.open("POST", "https://bizviewz.com:80/feedback-review/login",false);
 	  	client.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	   	var temp = "username="+uname+"&password="+pword;
 	   	
@@ -513,13 +532,13 @@ $(document).ready(function() {
 		$("tr#table_heading").append(heading_row);
 						
 	  	var xhr = new XMLHttpRequest();
-	  	xhr.open("GET", "https://bizviewz.com:8080/feedback-review/company/"+company_id+"/graphs",false);
+	  	xhr.open("GET", "https://bizviewz.com:80/feedback-review/company/"+company_id+"/graphs",false);
 	  	xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
 	  	xhr.setRequestHeader('sessionId', session_id);
 	  	xhr.send();
 	  	graph_list= JSON.parse(xhr.responseText);
 
-	 	xhr.open("GET", "https://bizviewz.com:8080/feedback-review/company/"+company_id,false);
+	 	xhr.open("GET", "https://bizviewz.com:80/feedback-review/company/"+company_id,false);
 	  	xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
 	  	xhr.setRequestHeader('sessionId', session_id);
 	  	
@@ -1387,7 +1406,7 @@ function collect_stats_populate_graph(graph_id,attributeList,filterList,applyFil
 {						
 	options.xAxis.categories=[];
 	// set_chart_type();
-	var host = 'https://bizviewz.com:8080/feedback-review/company/1/graph/';
+	var host = 'https://bizviewz.com:80/feedback-review/company/1/graph/';
 	var uri='';
 	graphsValues={};
 	var response11;
@@ -2040,7 +2059,7 @@ function load_followup(){
 var heading_row = '<th class="category_level_1" style="background-color: #193c63; color:white;" >';
 heading_row+='<img src="images/Statistics_Icon_01.png" class="category_level_1_icons">';
 heading_row+='<span class="category_level_1_text" id="statistics" >STATISTICS</span></th>';
-heading_row+='<th class="category_level_2" style="color: white;background: rgb(25, 60, 99);" id="negative_followup"><span class="category_level_2_text">Negative Followup</span></th>';
+heading_row+='<th class="category_level_2" style="color: white;background: rgb(25, 60, 99);" id="customer_recovery"><span class="category_level_2_text">Customer Recovery</span></th>';
 			// heading_row += '<th class="category_level_2" id="gen_stats"><span class="category_level_2_text" >General Statistics</span></th>';
 heading_row+='<th class="category_level_2" id="target_audience"><span class="category_level_2_text" >Target Audience </span></th>';
 		

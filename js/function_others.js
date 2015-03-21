@@ -13,7 +13,7 @@ $('body').on('click','.button',function(){
 
 		// var data="name:"+name+",emailId:"+email+",city:"+city+",businessType:"+business+",comment:"+comments;
 		var xhr = new XMLHttpRequest();
-	  	xhr.open("POST", "https://bizviewz.com:8080/feedback-review/contactUs",false);
+	  	xhr.open("POST", "https://bizviewz.com:80/feedback-review/contactUs",false);
 	  	xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 	     xhr.send(JSON.stringify({name: name1, emailId: email1, city: city1, businessType: business1, comment: comments1}
 ));
