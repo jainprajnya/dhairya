@@ -490,7 +490,7 @@ $(document).ready(function() {
 	  	// console.log(pword);
 	  	username=uname;
 
-	  	$(".main_data").html('<img src="images/loading.png"> loading...');
+	  	
 
 	  	var login_url = 'https://bizviewz.com:80/feedback-review/login';
 
