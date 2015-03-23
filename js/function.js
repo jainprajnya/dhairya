@@ -492,11 +492,11 @@ $(document).ready(function() {
 
 	  	
 
-	  	var login_url = 'https://bizviewz.com:80/feedback-review/login';
+	  	var login_url = 'https://bizviewz.com/feedback-review/login';
 
 
 		var client = new XMLHttpRequest();
-	  	client.open("POST", "https://bizviewz.com:80/feedback-review/login",false);
+	  	client.open("POST", "https://bizviewz.com/feedback-review/login",false);
 	  	client.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	   	var temp = "username="+uname+"&password="+pword;
 	   	
@@ -532,13 +532,13 @@ $(document).ready(function() {
 		$("tr#table_heading").append(heading_row);
 						
 	  	var xhr = new XMLHttpRequest();
-	  	xhr.open("GET", "https://bizviewz.com:80/feedback-review/company/"+company_id+"/graphs",false);
+	  	xhr.open("GET", "https://bizviewz.com/feedback-review/company/"+company_id+"/graphs",false);
 	  	xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
 	  	xhr.setRequestHeader('sessionId', session_id);
 	  	xhr.send();
 	  	graph_list= JSON.parse(xhr.responseText);
 
-	 	xhr.open("GET", "https://bizviewz.com:80/feedback-review/company/"+company_id,false);
+	 	xhr.open("GET", "https://bizviewz.com/feedback-review/company/"+company_id,false);
 	  	xhr.setRequestHeader('Content-Type', 'application/javascript;charset=UTF-8');
 	  	xhr.setRequestHeader('sessionId', session_id);
 	  	
@@ -727,7 +727,7 @@ function load_current_day_dashboard(dashboard_index,dashboard_graphID,from_date,
 	}
 	// var to_date = new Date();
 	// var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
-	var host = 'https://bizviewz.com:8080';
+	var host = 'https://bizviewz.com';
 	var path = '/feedback-review/company/'+company_id+'/graph/';
 				
 	var uri='';
@@ -776,7 +776,7 @@ function load_monthly_dashboard(dashboard_index,dashboard_graphID,from_date,to_d
 	}
 	// var to_date = new Date();
 	// var end_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+to_date.getDate();
-	var host = 'https://bizviewz.com:8080';
+	var host = 'https://bizviewz.com';
 	var path = '/feedback-review/company/'+company_id+'/graph/';
 				
 	var uri='';
@@ -837,7 +837,7 @@ function load_one_year_data_dashboard(dashboard_index,dashboard_graphID,from_dat
 		}
 
   				var someFormattedDate='20141120';
-				var host = 'https://bizviewz.com:8080';
+				var host = 'https://bizviewz.com';
 				var path = '/feedback-review/company/'+company_id+'/graph/';
 			
 				// var start_date=(to_date.getFullYear()*100+(to_date.getMonth()+1))*100+(to_date.getDate()-7);
@@ -1096,7 +1096,7 @@ function load_overview(adv_overview_index,adv_overview_graphId,adv_overview_name
 
 	
 	var someFormattedDate='20141120';
-	var host = 'https://bizviewz.com:8080';
+	var host = 'https://bizviewz.com';
 	var path = '/feedback-review/company/'+company_id+'/graph/';
 	
 	var uri='';
@@ -1147,7 +1147,7 @@ function load_trends(adv_trends_index,adv_trends_graphId,adv_trends_name,days,fr
 		return;
 	}
 	// console.log(days);
-	var host = 'https://bizviewz.com:8080';
+	var host = 'https://bizviewz.com';
 	var path = '/feedback-review/company/'+company_id+'/graph/';
 	
 	var uri='';
@@ -1196,7 +1196,7 @@ function load_trends(adv_trends_index,adv_trends_graphId,adv_trends_name,days,fr
 function load_nonweighted(adv_nonweighted_index,adv_nonweighted_graphId,adv_nonweighted_name,from_date,to_date,branch_id,filters,r_again)
 {
 
-	var host = 'https://bizviewz.com:8080';
+	var host = 'https://bizviewz.com';
 	var path = '/feedback-review/company/'+company_id+'/graph/';
 	
 	var uri='';
@@ -1406,7 +1406,7 @@ function collect_stats_populate_graph(graph_id,attributeList,filterList,applyFil
 {						
 	options.xAxis.categories=[];
 	// set_chart_type();
-	var host = 'https://bizviewz.com:80/feedback-review/company/1/graph/';
+	var host = 'https://bizviewz.com/feedback-review/company/1/graph/';
 	var uri='';
 	graphsValues={};
 	var response11;
